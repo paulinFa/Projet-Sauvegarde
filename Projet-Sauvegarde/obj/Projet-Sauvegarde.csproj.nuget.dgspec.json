@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\monli\\source\\repos\\Projet Developpement\\Projet Developpement.csproj": {}
+    "D:\\Bureau\\Projet C#\\Projet-Sauvegarde\\Projet-Sauvegarde\\Projet-Sauvegarde.csproj": {}
   },
   "projects": {
-    "C:\\Users\\monli\\source\\repos\\Projet Developpement\\Projet Developpement.csproj": {
+    "D:\\Bureau\\Projet C#\\Projet-Sauvegarde\\Projet-Sauvegarde\\Projet-Sauvegarde.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\monli\\source\\repos\\Projet Developpement\\Projet Developpement.csproj",
-        "projectName": "Projet Developpement",
-        "projectPath": "C:\\Users\\monli\\source\\repos\\Projet Developpement\\Projet Developpement.csproj",
+        "projectUniqueName": "D:\\Bureau\\Projet C#\\Projet-Sauvegarde\\Projet-Sauvegarde\\Projet-Sauvegarde.csproj",
+        "projectName": "Projet-Sauvegarde",
+        "projectPath": "D:\\Bureau\\Projet C#\\Projet-Sauvegarde\\Projet-Sauvegarde\\Projet-Sauvegarde.csproj",
         "packagesPath": "C:\\Users\\monli\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\monli\\source\\repos\\Projet Developpement\\obj\\",
+        "outputPath": "D:\\Bureau\\Projet C#\\Projet-Sauvegarde\\Projet-Sauvegarde\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\monli\\AppData\\Roaming\\NuGet\\NuGet.Config",

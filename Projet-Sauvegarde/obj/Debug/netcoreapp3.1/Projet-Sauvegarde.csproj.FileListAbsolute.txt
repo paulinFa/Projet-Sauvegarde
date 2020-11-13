@@ -1,0 +1,12 @@
+D:\Bureau\Projet C#\Projet-Sauvegarde\Projet-Sauvegarde\bin\Debug\netcoreapp3.1\Projet-Sauvegarde.exe
+D:\Bureau\Projet C#\Projet-Sauvegarde\Projet-Sauvegarde\bin\Debug\netcoreapp3.1\Projet-Sauvegarde.deps.json
+D:\Bureau\Projet C#\Projet-Sauvegarde\Projet-Sauvegarde\bin\Debug\netcoreapp3.1\Projet-Sauvegarde.runtimeconfig.json
+D:\Bureau\Projet C#\Projet-Sauvegarde\Projet-Sauvegarde\bin\Debug\netcoreapp3.1\Projet-Sauvegarde.runtimeconfig.dev.json
+D:\Bureau\Projet C#\Projet-Sauvegarde\Projet-Sauvegarde\bin\Debug\netcoreapp3.1\Projet-Sauvegarde.dll
+D:\Bureau\Projet C#\Projet-Sauvegarde\Projet-Sauvegarde\bin\Debug\netcoreapp3.1\Projet-Sauvegarde.pdb
+D:\Bureau\Projet C#\Projet-Sauvegarde\Projet-Sauvegarde\obj\Debug\netcoreapp3.1\Projet-Sauvegarde.AssemblyInfoInputs.cache
+D:\Bureau\Projet C#\Projet-Sauvegarde\Projet-Sauvegarde\obj\Debug\netcoreapp3.1\Projet-Sauvegarde.AssemblyInfo.cs
+D:\Bureau\Projet C#\Projet-Sauvegarde\Projet-Sauvegarde\obj\Debug\netcoreapp3.1\Projet-Sauvegarde.csproj.CoreCompileInputs.cache
+D:\Bureau\Projet C#\Projet-Sauvegarde\Projet-Sauvegarde\obj\Debug\netcoreapp3.1\Projet-Sauvegarde.dll
+D:\Bureau\Projet C#\Projet-Sauvegarde\Projet-Sauvegarde\obj\Debug\netcoreapp3.1\Projet-Sauvegarde.pdb
+D:\Bureau\Projet C#\Projet-Sauvegarde\Projet-Sauvegarde\obj\Debug\netcoreapp3.1\Projet-Sauvegarde.genruntimeconfig.cache
