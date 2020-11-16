@@ -10,3 +10,4 @@ D:\Bureau\Projet C#\Projet-Sauvegarde\Projet-Sauvegarde\obj\Debug\netcoreapp3.1\
 D:\Bureau\Projet C#\Projet-Sauvegarde\Projet-Sauvegarde\obj\Debug\netcoreapp3.1\Projet-Sauvegarde.dll
 D:\Bureau\Projet C#\Projet-Sauvegarde\Projet-Sauvegarde\obj\Debug\netcoreapp3.1\Projet-Sauvegarde.pdb
 D:\Bureau\Projet C#\Projet-Sauvegarde\Projet-Sauvegarde\obj\Debug\netcoreapp3.1\Projet-Sauvegarde.genruntimeconfig.cache
+D:\Bureau\Projet C#\Projet-Sauvegarde\Projet-Sauvegarde\obj\Debug\netcoreapp3.1\Projet-Sauvegarde.csprojAssemblyReference.cache
