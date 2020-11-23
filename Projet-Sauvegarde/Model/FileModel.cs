@@ -12,14 +12,16 @@ namespace Projet_Sauvegarde.Model
         public FileModel()
         {
             CreationDate = DateTime.Now;
-            StringDate = CreationDate.ToString("G");
+            StringDateLogFile = CreationDate.ToString("D");
+            StringDateStateFile = CreationDate.ToString("D");
         }
 
         public string Name { get; set; }
         public DateTime CreationDate { get; set; }
-        public string Path { get; set; }
-
-        public string StringDate { get; set; }
+        public string PathLogFile { get; set; }
+        public string PathStateFile { get; set; }
+        public string StringDateLogFile { get; set; }
+        public string StringDateStateFile { get; set; }
 
 
         /*public String TransformToJson(String DataToConverted)
@@ -32,7 +34,7 @@ namespace Projet_Sauvegarde.Model
 
         }
         */
-        
+
 
 
 

@@ -13,17 +13,17 @@ namespace Projet_Sauvegarde.Model
   
         public LogFile()
         {
-            Path = @"D:\TestFile.txt";
+            PathLogFile = @"D:\TestLogFile" + "-" + StringDateLogFile + ".txt";
 
             try
             {
                 // Create the file, or overwrite if the file exists.
-                Console.WriteLine(File.Exists(Path) ? "File exists." : "File does not exist.");
+                Console.WriteLine(File.Exists(PathLogFile) ? "File exists." : "File does not exist.");
                 
                 
-                using (FileStream fs = File.Create(Path))
+                using (FileStream fs = File.Create(PathLogFile))
                 {
-                    byte[] info = new UTF8Encoding(true).GetBytes("This is some text in the file. \n" + StringDate);
+                    byte[] info = new UTF8Encoding(true).GetBytes("This is some text in the file. \n" + StringDateLogFile);
                     
                     // Add some information to the file.
                     fs.Write(info, 0, info.Length);

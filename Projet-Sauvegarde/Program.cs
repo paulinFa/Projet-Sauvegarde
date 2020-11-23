@@ -7,6 +7,7 @@ namespace Projet_Sauvegarde
     {
         static void Main(string[] args)
         {
+            StateFile statefile = new StateFile();
             LogFile logfile = new LogFile();
         }
     }
