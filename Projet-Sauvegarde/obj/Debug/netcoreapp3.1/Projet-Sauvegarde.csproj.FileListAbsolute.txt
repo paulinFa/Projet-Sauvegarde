@@ -11,3 +11,18 @@ D:\Bureau\Projet C#\Projet-Sauvegarde\Projet-Sauvegarde\obj\Debug\netcoreapp3.1\
 D:\Bureau\Projet C#\Projet-Sauvegarde\Projet-Sauvegarde\obj\Debug\netcoreapp3.1\Projet-Sauvegarde.pdb
 D:\Bureau\Projet C#\Projet-Sauvegarde\Projet-Sauvegarde\obj\Debug\netcoreapp3.1\Projet-Sauvegarde.genruntimeconfig.cache
 D:\Bureau\Projet C#\Projet-Sauvegarde\Projet-Sauvegarde\obj\Debug\netcoreapp3.1\Projet-Sauvegarde.csprojAssemblyReference.cache
+C:\Users\flori\Documents\GitHub\Projet-Sauvegarde\Projet-Sauvegarde\obj\Debug\netcoreapp3.1\Projet-Sauvegarde.csprojAssemblyReference.cache
+C:\Users\flori\Documents\GitHub\Projet-Sauvegarde\Projet-Sauvegarde\obj\Debug\netcoreapp3.1\Projet-Sauvegarde.AssemblyInfoInputs.cache
+C:\Users\flori\Documents\GitHub\Projet-Sauvegarde\Projet-Sauvegarde\obj\Debug\netcoreapp3.1\Projet-Sauvegarde.AssemblyInfo.cs
+C:\Users\flori\Documents\GitHub\Projet-Sauvegarde\Projet-Sauvegarde\obj\Debug\netcoreapp3.1\Projet-Sauvegarde.csproj.CoreCompileInputs.cache
+C:\Users\flori\Documents\GitHub\Projet-Sauvegarde\Projet-Sauvegarde\obj\Debug\netcoreapp3.1\Projet-Sauvegarde.dll
+C:\Users\flori\Documents\GitHub\Projet-Sauvegarde\Projet-Sauvegarde\obj\Debug\netcoreapp3.1\Projet-Sauvegarde.pdb
+C:\Users\flori\Documents\GitHub\Projet-Sauvegarde\Projet-Sauvegarde\bin\Debug\netcoreapp3.1\Projet-Sauvegarde.exe
+C:\Users\flori\Documents\GitHub\Projet-Sauvegarde\Projet-Sauvegarde\bin\Debug\netcoreapp3.1\Projet-Sauvegarde.deps.json
+C:\Users\flori\Documents\GitHub\Projet-Sauvegarde\Projet-Sauvegarde\bin\Debug\netcoreapp3.1\Projet-Sauvegarde.runtimeconfig.json
+C:\Users\flori\Documents\GitHub\Projet-Sauvegarde\Projet-Sauvegarde\bin\Debug\netcoreapp3.1\Projet-Sauvegarde.runtimeconfig.dev.json
+C:\Users\flori\Documents\GitHub\Projet-Sauvegarde\Projet-Sauvegarde\bin\Debug\netcoreapp3.1\Projet-Sauvegarde.dll
+C:\Users\flori\Documents\GitHub\Projet-Sauvegarde\Projet-Sauvegarde\bin\Debug\netcoreapp3.1\Projet-Sauvegarde.pdb
+C:\Users\flori\Documents\GitHub\Projet-Sauvegarde\Projet-Sauvegarde\bin\Debug\netcoreapp3.1\Microsoft.OData.Edm.dll
+C:\Users\flori\Documents\GitHub\Projet-Sauvegarde\Projet-Sauvegarde\obj\Debug\netcoreapp3.1\Projet-Sauvegarde.csproj.CopyComplete
+C:\Users\flori\Documents\GitHub\Projet-Sauvegarde\Projet-Sauvegarde\obj\Debug\netcoreapp3.1\Projet-Sauvegarde.genruntimeconfig.cache

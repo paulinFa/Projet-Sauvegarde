@@ -7,10 +7,10 @@ namespace Projet_Sauvegarde.Model
     class StateFile
     {
 
-        private String template 
+        private String template;
 
         
-        public String template
+        public String Template
         {
             get { return template; }
             set { template = value; }

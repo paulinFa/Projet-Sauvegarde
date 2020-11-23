@@ -1,4 +1,5 @@
 ﻿using System;
+using Projet_Sauvegarde.Model;
 
 namespace Projet_Sauvegarde
 {
@@ -6,7 +7,7 @@ namespace Projet_Sauvegarde
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("Hello World!");
+            LogFile logfile = new LogFile();
         }
     }
 }

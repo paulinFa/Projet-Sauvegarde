@@ -7,10 +7,25 @@
   "targets": {
     ".NETCoreApp,Version=v3.1": {
       "Projet-Sauvegarde/1.0.0": {
+        "dependencies": {
+          "Microsoft.OData.Edm": "7.7.3"
+        },
         "runtime": {
           "Projet-Sauvegarde.dll": {}
         }
-      }
+      },
+      "Microsoft.OData.Edm/7.7.3": {
+        "dependencies": {
+          "System.Text.Json": "4.6.0"
+        },
+        "runtime": {
+          "lib/netstandard2.0/Microsoft.OData.Edm.dll": {
+            "assemblyVersion": "7.7.3.0",
+            "fileVersion": "7.7.3.11112"
+          }
+        }
+      },
+      "System.Text.Json/4.6.0": {}
     }
   },
   "libraries": {
@@ -18,6 +33,20 @@
       "type": "project",
       "serviceable": false,
       "sha512": ""
+    },
+    "Microsoft.OData.Edm/7.7.3": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-HjXsWLZ40qBaNHQ7+/9hLNSQ0xCaoqzYY+XLNRmVrKzUvxMJBJgmaWH2wg7pisEoXWNsMSLJwbYtn7x+4xfjLA==",
+      "path": "microsoft.odata.edm/7.7.3",
+      "hashPath": "microsoft.odata.edm.7.7.3.nupkg.sha512"
+    },
+    "System.Text.Json/4.6.0": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-4F8Xe+JIkVoDJ8hDAZ7HqLkjctN/6WItJIzQaifBwClC7wmoLSda/Sv2i6i1kycqDb3hWF4JCVbpAweyOKHEUA==",
+      "path": "system.text.json/4.6.0",
+      "hashPath": "system.text.json.4.6.0.nupkg.sha512"
     }
   }
 }
