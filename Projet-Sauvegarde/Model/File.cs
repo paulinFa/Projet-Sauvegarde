@@ -4,7 +4,7 @@ using System.Text;
 
 namespace Projet_Sauvegarde.Model
 {
-    class Fikle
+    class File
     {
     }
 }

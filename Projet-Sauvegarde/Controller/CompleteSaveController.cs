@@ -1,67 +1,93 @@
-﻿using System;
+﻿using Microsoft.VisualBasic.FileIO;
+using System;
 using System.Collections.Generic;
+using System.ComponentModel;
+using System.IO;
 using System.Text;
+using System.Threading.Tasks;
+using SearchOption = System.IO.SearchOption;
 
 namespace Projet_Sauvegarde.Controller
 {
     class CompleteSaveController
     {
-        public void MakeSaveComplete()
+        public string Name { get; set; }
+        public int TotalNumberFile { get; set; }
+        public long TotalLengthFile { get; set; }
+
+        [DefaultValue(0)]
+        public float Progression { get; set; }
+
+        [DefaultValue(0)]
+        public long RemainingLengthFile { get; set; }
+
+        [DefaultValue(0)]
+        public int RemainingNumberFile { get; set; }
+
+        public string SourcePath { get; set; }
+        public string DestinationPath { get; set; }
+
+        public void CopyFolder(string sourcePath, string destinationPath,string name)
         {
-            string fileName = "test.txt";
-            string sourcePath = @"C:\Users\Public\TestFolder";
-            string targetPath = @"C:\Users\Public\TestFolder\SubDir";
+            this.SourcePath = sourcePath;
+            
+            this.DestinationPath = destinationPath;
+            TotalLengthFile = DirSize(SourcePath);
+            TotalNumberFile = Directory.GetFiles(SourcePath, "*.*", SearchOption.AllDirectories).Length;
+            Console.WriteLine(SourcePath + " " + TotalLengthFile);
+            RemainingNumberFile = TotalNumberFile;
+            RemainingLengthFile = TotalLengthFile;
+            StartCopy(this.SourcePath,this.DestinationPath);
+        }
 
-            // Use Path class to manipulate file and directory paths.
-            string sourceFile = System.IO.Path.Combine(sourcePath, fileName);
-            string destFile = System.IO.Path.Combine(targetPath, fileName);
+        public void StartCopy(string sourcePath, string destinationPath)
+        {         
+            if (!Directory.Exists(destinationPath))
+                Directory.CreateDirectory(destinationPath);
 
-            // To copy a folder's contents to a new location:
-            // Create a new target folder.
-            // If the directory already exists, this method does not create a new directory.
-            System.IO.Directory.CreateDirectory(targetPath);
-
-            // To copy a file to another location and
-            // overwrite the destination file if it already exists.
-            System.IO.File.Copy(sourceFile, destFile, true);
-
-            // To copy all the files in one directory to another directory.
-            // Get the files in the source folder. (To recursively iterate through
-            // all subfolders under the current directory, see
-            // "How to: Iterate Through a Directory Tree.")
-            // Note: Check for target path was performed previously
-            //       in this code example.
-            if (System.IO.Directory.Exists(sourcePath))
+            string[] files = Directory.GetFiles(sourcePath);
+            foreach (string file in files)
             {
-                string[] files = System.IO.Directory.GetFiles(sourcePath);
-
-                // Copy the files and overwrite destination files if they already exist.
-                foreach (string s in files)
+                string name = Path.GetFileName(file);
+                string dest = Path.Combine(destinationPath, name);
+                if (!File.Exists(dest)){
+                    File.Copy(file, dest);
+                    var fi1 = new FileInfo(dest);
+                    RemainingNumberFile--;
+                    RemainingLengthFile -= fi1.Length;
+                    Progression = RemainingLengthFile !=0 ? Convert.ToSingle(TotalLengthFile - RemainingLengthFile) / Convert.ToSingle(TotalLengthFile) * 100 : 100;
+                    Console.WriteLine("remaining length : " + RemainingLengthFile + "remaining number : " + RemainingNumberFile + "length : " + fi1.Length +" Etat d'avancement = " +Progression + " %");
+                }              
+                
+            }
+            string[] folders = Directory.GetDirectories(sourcePath);
+            foreach (string folder in folders)
+            {
+                string name = Path.GetFileName(folder);
+                string dest = Path.Combine(destinationPath, name);
+                if (!Directory.Exists(dest))
                 {
-                    // Use static Path methods to extract only the file name from the path.
-                    fileName = System.IO.Path.GetFileName(s);
-                    destFile = System.IO.Path.Combine(targetPath, fileName);
-                    System.IO.File.Copy(s, destFile, true);
+                    StartCopy(folder, dest);
                 }
             }
-            else
-            {
-                Console.WriteLine("Source path does not exist!");
-            }
-
-            // Keep console window open in debug mode.
-            Console.WriteLine("Press any key to exit.");
-            Console.ReadKey();
         }
-        private bool VerifyFolderExisting(string FilePath)
+        public static long DirSize(string d)
         {
-            if (System.IO.Directory.Exists(FilePath)){
-                return true;
-            }
-            else
+            System.IO.DirectoryInfo dir = new System.IO.DirectoryInfo(d);
+            long size = 0;
+            // Add file sizes.
+            FileInfo[] fis = dir.GetFiles();
+            foreach (FileInfo fi in fis)
             {
-                return false;
+                size += fi.Length;
             }
+            // Add subdirectory sizes.
+            DirectoryInfo[] dis = dir.GetDirectories();
+            foreach (DirectoryInfo di in dis)
+            {
+                size += DirSize(di.FullName);
+            }
+            return size;
         }
 
     }
