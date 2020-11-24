@@ -3,15 +3,18 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Text;
 using Projet_Sauvegarde.Model;
+using Projet_Sauvegarde.View;
 
 namespace Projet_Sauvegarde.Controller
 {
-    class SaveController
+    public class SaveController
     {
-        Queue queue = new Queue();
-        SaveController()
+        private Queue queue = new Queue();
+        public SaveController()
         {
-
+            IView view = new ConsoleView();
+            view.setController(this);
+            view.StartingView();
         }
         public void AddSave(string[] tbl)
         {
