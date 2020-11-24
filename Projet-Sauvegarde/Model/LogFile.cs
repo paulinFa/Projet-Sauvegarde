@@ -17,7 +17,7 @@ namespace Projet_Sauvegarde.Model
         JsonFileLog dataJsonLog = new JsonFileLog();
 
 
-        public LogFile(string timestamp, string nameOfSave, string sourcePath, string destinationPath, int sizeSave, int transfertTime)
+        public LogFile(string timestamp, string nameOfSave, string sourcePath, string destinationPath, int sizeSave, string transfertTime)
         {
             dataJsonLog.Timestamp = timestamp;
             dataJsonLog.NameOfSave = nameOfSave;
@@ -35,10 +35,6 @@ namespace Projet_Sauvegarde.Model
                 Console.WriteLine("Log File exists.");
 
                 TransformToJsonLog();
-
-
-
-
             }
 
             else if (!File.Exists(PathLogFile))
@@ -70,7 +66,7 @@ namespace Projet_Sauvegarde.Model
         public string SourcePath { get; set; }
         public string DestinationPath { get; set; }
         public int SizeOfSave { get; set; }
-        public int TransfertTime { get; set; }
+        public string TransfertTime { get; set; }
 
     }
 

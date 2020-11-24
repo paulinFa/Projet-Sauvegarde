@@ -12,6 +12,7 @@ namespace Projet_Sauvegarde.Model
         public string Folder { get; set; }
         public void CopyFolder(string name ,string sourcePath, string destinationPath, string completeSavePath)
         {
+            DateTime firstDate = DateTime.Now;
             this.SourcePath = sourcePath;
             this.Name = name;
             this.CompleteSavePath = completeSavePath;
@@ -29,6 +30,17 @@ namespace Projet_Sauvegarde.Model
             RemainingLengthFile = TotalLengthFile;
 
             StartCopy(this.SourcePath, Folder);
+
+            DateTime secondDate = DateTime.Now;
+
+            TimeSpan diff = secondDate.Subtract(firstDate);
+
+            string diffString = diff.ToString();
+
+
+            LogFile logFile = new LogFile(DateTime.Now.ToString("MM-dd-yyyy_hh.ss.mm_tt"), Name, SourcePath, DestinationPath, (int)TotalLengthFile, diffString);
+            StateFile stateFile = new StateFile(DateTime.Now.ToString("MM-dd-yyyy_hh.ss.mm_tt"), Name, name, TotalNumberFile, (int)TotalLengthFile, Progression, RemainingNumberFile, (int)RemainingLengthFile, SourcePath, DestinationPath);
+
         }
 
         public void StartCopy(string sourcePath, string destinationPath)
@@ -54,6 +66,7 @@ namespace Projet_Sauvegarde.Model
                     RemainingLengthFile -= fi1.Length;
                     Progression = RemainingLengthFile != 0 ? Convert.ToSingle(TotalLengthFile - RemainingLengthFile) / Convert.ToSingle(TotalLengthFile) * 100 : 100;
                     Console.WriteLine("remaining length : " + RemainingLengthFile + "remaining number : " + RemainingNumberFile + "length : " + fi1.Length + " Etat d'avancement = " + Progression + " % " + fi1.LastWriteTime);
+                    StateFile stateFile = new StateFile(DateTime.Now.ToString("MM-dd-yyyy_hh.ss.mm_tt"), Name, name, TotalNumberFile, (int)TotalLengthFile, Progression, RemainingNumberFile, (int)RemainingLengthFile, SourcePath, DestinationPath);
                 }
 
             }
