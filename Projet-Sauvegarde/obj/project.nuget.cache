@@ -1,11 +1,19 @@
 {
   "version": 2,
-  "dgSpecHash": "2vcnuCk1foGdwdNRPqiKy7gNKzmGbozMQC1XNQHhBML1OxP8qv5Sq3mkef5/zFmk0R0OZ4kzd5TCPE5OZt5bsQ==",
+  "dgSpecHash": "bgjB6XhMHpBNWdSCAKmg+KVxyRPVtv6IL8bpb9Ox7i8Lg9CyL0wdZfsJriY60jd1mz3EjfxMdrsTSjla18ef7Q==",
   "success": true,
   "projectFilePath": "D:\\Bureau\\Projet C#\\Projet-Sauvegarde\\Projet-Sauvegarde\\Projet-Sauvegarde.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\monli\\.nuget\\packages\\microsoft.odata.edm\\7.7.3\\microsoft.odata.edm.7.7.3.nupkg.sha512",
+    "C:\\Users\\monli\\.nuget\\packages\\newtonsoft.json\\12.0.3\\newtonsoft.json.12.0.3.nupkg.sha512",
     "C:\\Users\\monli\\.nuget\\packages\\system.text.json\\4.6.0\\system.text.json.4.6.0.nupkg.sha512"
   ],
-  "logs": []
+  "logs": [
+    {
+      "code": "Undefined",
+      "level": "Warning",
+      "warningLevel": 1,
+      "message": "Problème de lecture du fichier cache D:\\Bureau\\Projet C#\\Projet-Sauvegarde\\Projet-Sauvegarde\\obj\\project.nuget.cache : Invalid property identifier character: <. Path 'version', line 3, position 0."
+    }
+  ]
 }

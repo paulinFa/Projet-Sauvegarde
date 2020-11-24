@@ -1,17 +1,21 @@
 ﻿using Microsoft.OData.Edm;
+using Newtonsoft.Json;
 using System;
 using System.IO;
 using System.Text;
+using System.Text.Json;
 
 namespace Projet_Sauvegarde.Model
 {
     public class FileModel
     {
 
-
+        JsonFile dataJson = new JsonFile();
         public FileModel()
         {
             CreationDate = DateTime.Now;
+            
+            
             StringDateLogFile = CreationDate.ToString("D");
             StringDateStateFile = CreationDate.ToString("D");
         }
@@ -23,6 +27,19 @@ namespace Projet_Sauvegarde.Model
         public string StringDateLogFile { get; set; }
         public string StringDateStateFile { get; set; }
 
+
+
+        public void TransformToJson()
+        {
+            string WroteJson = JsonConvert.SerializeObject(dataJson);
+
+            using (var tw = new StreamWriter(PathLogFile, true))
+            {
+                tw.WriteLine(WroteJson.ToString());
+                tw.Close();
+            }
+
+        }
 
         /*public String TransformToJson(String DataToConverted)
         {
