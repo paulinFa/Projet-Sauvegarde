@@ -7,11 +7,11 @@ using System.Text;
 using System.Threading.Tasks;
 using SearchOption = System.IO.SearchOption;
 
-namespace Projet_Sauvegarde.Controller
+namespace Projet_Sauvegarde.Model
 {
-    class CompleteSaveController : Save
+    class CompleteSave : Save
     {
-        public void CopyFolder(string sourcePath, string destinationPath,string name)
+        public void CopyFolder(string name,string sourcePath, string destinationPath)
         {
             this.SourcePath = sourcePath;
             this.Name = name;

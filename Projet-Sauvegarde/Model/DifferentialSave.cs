@@ -4,13 +4,13 @@ using System.ComponentModel;
 using System.IO;
 using System.Text;
 
-namespace Projet_Sauvegarde.Controller
+namespace Projet_Sauvegarde.Model
 {
-    class DifferentialSaveController : Save
+    class DifferentialSave : Save
     {
         public string CompleteSavePath { get; set; }
         public string Folder { get; set; }
-        public void CopyFolder(string sourcePath, string destinationPath, string completeSavePath, string name)
+        public void CopyFolder(string name ,string sourcePath, string destinationPath, string completeSavePath)
         {
             this.SourcePath = sourcePath;
             this.Name = name;
