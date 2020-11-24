@@ -8,9 +8,9 @@ namespace Projet_Sauvegarde
     {
         static void Main(string[] args)
         {
-            CompleteSaveController controller = new CompleteSaveController();
-            controller.CopyFolder("D:/Documents/GitHub", "D:/Bureau/Destination");
-    }
+            //CompleteSaveController controller = new CompleteSaveController();
+            //controller.CopyFolder("D:/Source", "D:/Destination", "TestCopy");
+    
             StateFile statefile = new StateFile();
             LogFile logfile = new LogFile();
         }

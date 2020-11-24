@@ -1,10 +1,11 @@
 {
   "version": 2,
-  "dgSpecHash": "/0oKFHETEbX3B0iWN+OA8Kg+OGpeglK3FFRo53ifiLH+e3ZTvTyc2sgeIpsEGZyd7reSVQGbyu9BZkBXwbaxgQ==",
+  "dgSpecHash": "eZ4O3k7ucWnO5Sn4KUE9NNECApzdIeK5mpBJUBXj2F4MxERMXcjAQHOnx3bxzrs7VyeM4T4ItvQDGCMEkdlXxw==",
   "success": true,
   "projectFilePath": "C:\\Users\\flori\\Documents\\GitHub\\Projet-Sauvegarde\\Projet-Sauvegarde\\Projet-Sauvegarde.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\flori\\.nuget\\packages\\microsoft.odata.edm\\7.7.3\\microsoft.odata.edm.7.7.3.nupkg.sha512",
+    "C:\\Users\\flori\\.nuget\\packages\\newtonsoft.json\\12.0.3\\newtonsoft.json.12.0.3.nupkg.sha512",
     "C:\\Users\\flori\\.nuget\\packages\\system.text.json\\4.6.0\\system.text.json.4.6.0.nupkg.sha512"
   ],
   "logs": []
