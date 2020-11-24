@@ -27,19 +27,19 @@ namespace Projet_Sauvegarde.Model
             dataJsonLog.TransfertTime = transfertTime;
 
 
-            PathLogFile = "D:/LogFile" + "-" + StringDateLogFile + ".json";
+            PathLogFile = @"D:\EasySave\Logs\Logs" + "-" + StringDateLogFile + ".json";
 
             if (File.Exists(PathLogFile))
             {
                 // Create the file, or overwrite if the file exists.
-                Console.WriteLine("Log File exists.");
+                //Console.WriteLine("Log File exists.");
 
                 TransformToJsonLog();
             }
 
             else if (!File.Exists(PathLogFile))
             {
-                Console.WriteLine("Log File does not exist.");
+                //Console.WriteLine("Log File does not exist.");
                 TransformToJsonLog();
             }
         }

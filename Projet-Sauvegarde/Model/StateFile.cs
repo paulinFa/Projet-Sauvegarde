@@ -26,12 +26,12 @@ namespace Projet_Sauvegarde.Model
             dataJsonState.SourcePath = sourcePath;
             dataJsonState.DestinationPath = destinationPath;
 
-            PathStateFile = @"D:\StateFile" + "-" + nameOfSave + ".json"; //Definition path of StateFile + json format
+            PathStateFile = @"D:\EasySave\Status\Status" + "-" + nameOfSave + ".json"; //Definition path of StateFile + json format
 
             if (File.Exists(PathStateFile)) //Verification if PathStateFile is already create
             {
                 // Create the file, or overwrite if the file exists.
-                Console.WriteLine("State File exists.");
+                //Console.WriteLine("State File exists.");
 
                 TransformToJsonState(); //insert parameters
 
@@ -42,7 +42,7 @@ namespace Projet_Sauvegarde.Model
 
             else if (!File.Exists(PathStateFile))  //create and insert parameters
             {
-                Console.WriteLine("State File does not exist.");
+                //Console.WriteLine("State File does not exist.");
                 TransformToJsonState();
             }
         }

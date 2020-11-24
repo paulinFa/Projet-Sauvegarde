@@ -16,12 +16,12 @@ namespace Projet_Sauvegarde.View
         }
         public void StartingView()
         {
-            Console.WriteLine("Welcom in EasySafe, a program to save your files");
+            Console.WriteLine("Welcome in EasySafe, a program to save your files");
             AskUser();
         }
         private void AskUser()
         {
-            Console.WriteLine("Do you want to make a save complete,differential or exit ?");
+            Console.WriteLine("Do you want to make a save complete,differential or exit ? (complete|differential|exit)");
             string i = Console.ReadLine();
             if (i == "complete")
             {
@@ -40,7 +40,7 @@ namespace Projet_Sauvegarde.View
         }
         private void InputCompleteToQueue()
         {
-            Console.WriteLine("What is name ?");
+            Console.WriteLine("Enter a name for the complete backup");
             string name = Console.ReadLine();
 
             while (name.Length == 0)
@@ -48,7 +48,7 @@ namespace Projet_Sauvegarde.View
                 Console.WriteLine("Wrong input");
                 name = Console.ReadLine();
             }
-            Console.WriteLine("What is sourcePath");
+            Console.WriteLine("Enter a source Path");
             string source = Console.ReadLine();
 
             while (!Directory.Exists(source))
@@ -56,7 +56,7 @@ namespace Projet_Sauvegarde.View
                 Console.WriteLine("Wrong source input");
                 source = Console.ReadLine();
             }
-            Console.WriteLine("What is destinationPath");
+            Console.WriteLine("Enter a destination Path");
             string destination = Console.ReadLine();
 
             while (!Directory.Exists(destination))
@@ -72,7 +72,7 @@ namespace Projet_Sauvegarde.View
         }
         private void InputDifferentialToQueue()
         {
-            Console.WriteLine("What is name ?");
+            Console.WriteLine("Enter a name for the differential backup");
             string name = Console.ReadLine();
 
             while (name.Length == 0)
@@ -80,7 +80,7 @@ namespace Projet_Sauvegarde.View
                 Console.WriteLine("Wrong input");
                 name = Console.ReadLine();
             }
-            Console.WriteLine("What is sourcePath");
+            Console.WriteLine("Enter a source Path");
             string source = Console.ReadLine();
 
             while (!Directory.Exists(source))
@@ -88,7 +88,7 @@ namespace Projet_Sauvegarde.View
                 Console.WriteLine("Wrong source input");
                 source = Console.ReadLine();
             }
-            Console.WriteLine("What is destinationPath");
+            Console.WriteLine("Enter a destination Path");
             string destination = Console.ReadLine();
 
             while (!Directory.Exists(destination))
@@ -97,7 +97,7 @@ namespace Projet_Sauvegarde.View
                 destination = Console.ReadLine();
             }
 
-            Console.WriteLine("What is completeSavePath");
+            Console.WriteLine("Enter the path to the full backup");
             string complete = Console.ReadLine();
 
             while (!Directory.Exists(complete))
@@ -113,7 +113,7 @@ namespace Projet_Sauvegarde.View
         }
         private void StartSave()
         {
-            Console.WriteLine("Would you like to start your save(s) or add a new ?");
+            Console.WriteLine("Do you want to start your backup(s) or add a new one? (add|start) \nYour status and log files are stored in the EasySave folder on your disk D");
             string choice = Console.ReadLine();
             if(choice == "add")
             {
