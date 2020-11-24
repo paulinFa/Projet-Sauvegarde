@@ -5,7 +5,7 @@ using System.IO;
 using System.Text;
 using System.Text.Json;
 using System.Text.Json.Serialization;
-using System.Xml.Linq;
+
 
 
 
@@ -22,7 +22,7 @@ namespace Projet_Sauvegarde.Model
             dataJsonLog.Timestamp = timestamp;
             dataJsonLog.NameOfSave = nameOfSave;
             dataJsonLog.SourcePath = sourcePath;
-            dataJsonLog.DesinationPath = destinationPath;
+            dataJsonLog.DestinationPath = destinationPath;
             dataJsonLog.SizeOfSave = sizeSave;
             dataJsonLog.TransfertTime = transfertTime;
 
@@ -68,7 +68,7 @@ namespace Projet_Sauvegarde.Model
         public string Timestamp { get; set; }
         public string NameOfSave { get; set; }
         public string SourcePath { get; set; }
-        public string DesinationPath { get; set; }
+        public string DestinationPath { get; set; }
         public int SizeOfSave { get; set; }
         public int TransfertTime { get; set; }
 

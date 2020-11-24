@@ -3,6 +3,9 @@ using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Text;
+using System.Text.Json;
+using System.Text.Json.Serialization;
+
 
 namespace Projet_Sauvegarde.Model
 {
@@ -11,9 +14,20 @@ namespace Projet_Sauvegarde.Model
         JsonFileState dataJsonState = new JsonFileState();
         public string template { get; set; }
 
-        public StateFile(string timestamp, string nameOfSave, string state, int eligibleFile, int transfertSize, float )
+        public StateFile(string timestamp, string nameOfSave, string state, int eligibleFile, int transfertSize, float progression, int remainingFile, int sizeOfRemainingFile, string sourcePath, string destinationPath)
         {
-            PathStateFile = @"D:\StateFile" + "-" + StringDateStateFile + ".json";
+            dataJsonState.Timestamp = timestamp;
+            dataJsonState.NameOfSave = nameOfSave;
+            dataJsonState.State = state;
+            dataJsonState.EligibleFile = eligibleFile;
+            dataJsonState.TransfertSize = transfertSize;
+            dataJsonState.Progression = progression;
+            dataJsonState.RemainingFile = remainingFile;
+            dataJsonState.SizeOfRemainingFile = sizeOfRemainingFile;
+            dataJsonState.SourcePath = sourcePath;
+            dataJsonState.DestinationPath = destinationPath;
+
+            PathStateFile = @"D:\StateFile" + "-" + nameOfSave + ".json";
 
             if (File.Exists(PathStateFile))
             {
@@ -52,10 +66,14 @@ namespace Projet_Sauvegarde.Model
 
         public string Timestamp { get; set; }
         public string NameOfSave { get; set; }
+        public string State { get; set; }
+        public int EligibleFile { get; set; }
+        public int TransfertSize { get; set; }
+        public float Progression { get; set; }
+        public int RemainingFile { get; set; }
+        public int SizeOfRemainingFile { get; set; }
         public string SourcePath { get; set; }
-        public string DesinationPath { get; set; }
-        public int SizeOfSave { get; set; }
-        public int TransfertTime { get; set; }
+        public string DestinationPath { get; set; }
 
     }
 } //end namespace
