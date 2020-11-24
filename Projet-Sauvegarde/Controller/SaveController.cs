@@ -16,6 +16,7 @@ namespace Projet_Sauvegarde.Controller
             view.setController(this);
             view.StartingView();
         }
+        //Add save in queue
         public void AddSave(string[] tbl)
         {
             queue.Enqueue(tbl);
