@@ -14,60 +14,64 @@ namespace Projet_Sauvegarde.Model
 
     public class LogFile : FileModel
     {
+        JsonFileLog dataJsonLog = new JsonFileLog();
 
-        
 
-        public LogFile()
+        public LogFile(string timestamp, string nameOfSave, string sourcePath, string destinationPath, int sizeSave, int transfertTime)
         {
-            PathLogFile = "D:/TestLogFile" + "-" + StringDateLogFile + ".json";
+            dataJsonLog.Timestamp = timestamp;
+            dataJsonLog.NameOfSave = nameOfSave;
+            dataJsonLog.SourcePath = sourcePath;
+            dataJsonLog.DesinationPath = destinationPath;
+            dataJsonLog.SizeOfSave = sizeSave;
+            dataJsonLog.TransfertTime = transfertTime;
 
-            try
+
+            PathLogFile = "D:/LogFile" + "-" + StringDateLogFile + ".json";
+
+            if (File.Exists(PathLogFile))
             {
                 // Create the file, or overwrite if the file exists.
-                Console.WriteLine(File.Exists(PathLogFile) ? "File exists." : "File does not exist.");
+                Console.WriteLine("Log File exists.");
 
-
-                TransformToJson();
-                
+                TransformToJsonLog();
 
 
 
-                /*using (FileStream fs = File.Create(PathLogFile))
-                {
-                    byte[] info = new UTF8Encoding(true).GetBytes("This is some text in the file. \n" + StringDateLogFile);
-                    
-                    // Add some information to the file.
-                    fs.Write(info, 0, info.Length);
-                   
-                }*/
 
             }
 
-            catch (Exception ex)
+            else if (!File.Exists(PathLogFile))
             {
-                Console.WriteLine(ex.ToString());
-              
+                Console.WriteLine("Log File does not exist.");
+                TransformToJsonLog();
             }
         }
 
-        public void AddData(string data)
+
+        public void TransformToJsonLog()
         {
 
+            string WroteJson = JsonConvert.SerializeObject(dataJsonLog, Formatting.Indented);
+
+            using (var tw = new StreamWriter(PathLogFile, true))
+            {
+                tw.WriteLine(WroteJson.ToString());
+                tw.Close();
+            }
+
         }
+    }
+    class JsonFileLog
+    {
 
-
-
-
-
-
-
-
-
-
-
-
-
-
+        public string Timestamp { get; set; }
+        public string NameOfSave { get; set; }
+        public string SourcePath { get; set; }
+        public string DesinationPath { get; set; }
+        public int SizeOfSave { get; set; }
+        public int TransfertTime { get; set; }
 
     }
+
 }

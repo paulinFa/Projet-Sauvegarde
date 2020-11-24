@@ -12,7 +12,7 @@ namespace Projet_Sauvegarde
             //controller.CopyFolder("D:/Source", "D:/Destination", "TestCopy");
     
             StateFile statefile = new StateFile();
-            LogFile logfile = new LogFile();
+            LogFile logFile = new LogFile("24 novembre 14:51", "TEstONE", "ALLER", "RETOUR", 52, 3);
         }
     }
 }
