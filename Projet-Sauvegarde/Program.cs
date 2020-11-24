@@ -9,10 +9,10 @@ namespace Projet_Sauvegarde
         static void Main(string[] args)
         {
             CompleteSaveController controller = new CompleteSaveController();
-            controller.CopyFolder("D:/Documents/GitHub", "D:/Bureau/Destination");
-    }
-            StateFile statefile = new StateFile();
-            LogFile logfile = new LogFile();
+            DifferentialSaveController differentialSaveController = new DifferentialSaveController();
+            differentialSaveController.CopyFolder("D:/Documents/GitHub", "D:/Bureau/Destination", "D:/Bureau/save complete/test_11-24-2020_11.00.46_","testons");
+            //controller.CopyFolder("D:/Documents/GitHub", "D:/Bureau/Destination","test");
+
         }
     }
 }

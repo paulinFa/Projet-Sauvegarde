@@ -9,42 +9,30 @@ using SearchOption = System.IO.SearchOption;
 
 namespace Projet_Sauvegarde.Controller
 {
-    class CompleteSaveController
+    class CompleteSaveController : Save
     {
-        public string Name { get; set; }
-        public int TotalNumberFile { get; set; }
-        public long TotalLengthFile { get; set; }
-
-        [DefaultValue(0)]
-        public float Progression { get; set; }
-
-        [DefaultValue(0)]
-        public long RemainingLengthFile { get; set; }
-
-        [DefaultValue(0)]
-        public int RemainingNumberFile { get; set; }
-
-        public string SourcePath { get; set; }
-        public string DestinationPath { get; set; }
-
         public void CopyFolder(string sourcePath, string destinationPath,string name)
         {
             this.SourcePath = sourcePath;
-            
-            this.DestinationPath = destinationPath;
+            this.Name = name;
+
             TotalLengthFile = DirSize(SourcePath);
             TotalNumberFile = Directory.GetFiles(SourcePath, "*.*", SearchOption.AllDirectories).Length;
             Console.WriteLine(SourcePath + " " + TotalLengthFile);
             RemainingNumberFile = TotalNumberFile;
             RemainingLengthFile = TotalLengthFile;
-            StartCopy(this.SourcePath,this.DestinationPath);
+            string folder = destinationPath + "/" + name + "_" + DateTime.Now.ToString("MM-dd-yyyy_hh.ss.mm_tt");
+
+            if (!Directory.Exists(folder))
+                Directory.CreateDirectory(folder);
+
+            StartCopy(this.SourcePath, folder);
         }
 
         public void StartCopy(string sourcePath, string destinationPath)
-        {         
+        {
             if (!Directory.Exists(destinationPath))
                 Directory.CreateDirectory(destinationPath);
-
             string[] files = Directory.GetFiles(sourcePath);
             foreach (string file in files)
             {
@@ -71,24 +59,5 @@ namespace Projet_Sauvegarde.Controller
                 }
             }
         }
-        public static long DirSize(string d)
-        {
-            System.IO.DirectoryInfo dir = new System.IO.DirectoryInfo(d);
-            long size = 0;
-            // Add file sizes.
-            FileInfo[] fis = dir.GetFiles();
-            foreach (FileInfo fi in fis)
-            {
-                size += fi.Length;
-            }
-            // Add subdirectory sizes.
-            DirectoryInfo[] dis = dir.GetDirectories();
-            foreach (DirectoryInfo di in dis)
-            {
-                size += DirSize(di.FullName);
-            }
-            return size;
-        }
-
     }
 }
