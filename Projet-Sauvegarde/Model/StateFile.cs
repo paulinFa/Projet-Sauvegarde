@@ -9,12 +9,11 @@ using System.Text.Json.Serialization;
 
 namespace Projet_Sauvegarde.Model
 {
-    public class StateFile : FileModel
+    public class StateFile : FileModel 
     {
         JsonFileState dataJsonState = new JsonFileState();
-        public string template { get; set; }
 
-        public StateFile(string timestamp, string nameOfSave, string state, int eligibleFile, int transfertSize, float progression, int remainingFile, int sizeOfRemainingFile, string sourcePath, string destinationPath)
+        public StateFile(string timestamp, string nameOfSave, string state, int eligibleFile, int transfertSize, float progression, int remainingFile, int sizeOfRemainingFile, string sourcePath, string destinationPath) //Method where objetcs are used into parameters, then create the StateFile and insert the parameters in it.
         {
             dataJsonState.Timestamp = timestamp;
             dataJsonState.NameOfSave = nameOfSave;
@@ -27,41 +26,41 @@ namespace Projet_Sauvegarde.Model
             dataJsonState.SourcePath = sourcePath;
             dataJsonState.DestinationPath = destinationPath;
 
-            PathStateFile = @"D:\StateFile" + "-" + nameOfSave + ".json";
+            PathStateFile = @"D:\StateFile" + "-" + nameOfSave + ".json"; //Definition path of StateFile + json format
 
-            if (File.Exists(PathStateFile))
+            if (File.Exists(PathStateFile)) //Verification if PathStateFile is already create
             {
                 // Create the file, or overwrite if the file exists.
                 Console.WriteLine("State File exists.");
 
-                TransformToJsonState();
+                TransformToJsonState(); //insert parameters
 
 
 
 
             }
 
-            else if (!File.Exists(PathStateFile))
+            else if (!File.Exists(PathStateFile))  //create and insert parameters
             {
                 Console.WriteLine("State File does not exist.");
                 TransformToJsonState();
             }
         }
 
-        public void TransformToJsonState()
+        public void TransformToJsonState() //Method to create the JSON file and insert parameters in it 
         {
 
-            string WroteJson = JsonConvert.SerializeObject(dataJsonState, Formatting.Indented);
+            string WroteJson = JsonConvert.SerializeObject(dataJsonState, Formatting.Indented); //object to add parameters into the JSON file
 
             using (var tw = new StreamWriter(PathStateFile, true))
             {
-                tw.WriteLine(WroteJson.ToString());
+                tw.WriteLine(WroteJson.ToString());  //We write the object WroteJson into the file
                 tw.Close();
             }
         }
-    }
+    } // end class StateFile 
 
-    class JsonFileState
+    class JsonFileState   //class to declare alls objects for the parameters 
     {
 
         public string Timestamp { get; set; }
@@ -75,5 +74,5 @@ namespace Projet_Sauvegarde.Model
         public string SourcePath { get; set; }
         public string DestinationPath { get; set; }
 
-    }
+    } //end class JsonFileState
 } //end namespace

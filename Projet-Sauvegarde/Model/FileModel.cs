@@ -13,13 +13,13 @@ namespace Projet_Sauvegarde.Model
         
         public FileModel()
         {
-            CreationDate = DateTime.Now;
+            CreationDate = DateTime.Now; 
             
             
-            StringDateLogFile = CreationDate.ToString("D");
-            StringDateStateFile = CreationDate.ToString("D");
-           
-           
+            StringDateLogFile = CreationDate.ToString("D"); //We convert the format of the date "monday 15 june 2009"
+            StringDateStateFile = CreationDate.ToString("D"); //We convert the format of the date "monday 15 june 2009"
+
+
         }
 
         public string Name { get; set; }
