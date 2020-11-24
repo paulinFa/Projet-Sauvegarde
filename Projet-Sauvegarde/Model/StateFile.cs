@@ -53,7 +53,7 @@ namespace Projet_Sauvegarde.Model
 
             string WroteJson = JsonConvert.SerializeObject(dataJsonState, Formatting.Indented);
 
-            using (var tw = new StreamWriter(PathLogFile, true))
+            using (var tw = new StreamWriter(PathStateFile, true))
             {
                 tw.WriteLine(WroteJson.ToString());
                 tw.Close();

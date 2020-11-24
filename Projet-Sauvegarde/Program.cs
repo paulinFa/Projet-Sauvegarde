@@ -11,7 +11,7 @@ namespace Projet_Sauvegarde
             //CompleteSaveController controller = new CompleteSaveController();
             //controller.CopyFolder("D:/Source", "D:/Destination", "TestCopy");
     
-            StateFile statefile = new StateFile();
+            StateFile statefile = new StateFile("novembre", "Firt", "Actif", 20, 50, 32, 10, 30, "Aller", "Retour");
             LogFile logFile = new LogFile("24 novembre 14:51", "TEstONE", "ALLER", "RETOUR", 52, 3);
         }
     }
