@@ -15,6 +15,8 @@ namespace Projet_Sauvegarde.Model
 
         public StateFile(string timestamp, string nameOfSave, string state, int eligibleFile, int transfertSize, float progression, int remainingFile, int sizeOfRemainingFile, string sourcePath, string destinationPath) //Method where objetcs are used into parameters, then create the StateFile and insert the parameters in it.
         {
+            CreateFolderStatus();
+
             dataJsonState.Timestamp = timestamp;
             dataJsonState.NameOfSave = nameOfSave;
             dataJsonState.State = state;
@@ -26,23 +28,15 @@ namespace Projet_Sauvegarde.Model
             dataJsonState.SourcePath = sourcePath;
             dataJsonState.DestinationPath = destinationPath;
 
-            PathStateFile = @"D:\EasySave\Status\Status" + "-" + nameOfSave + ".json"; //Definition path of StateFile + json format
+            PathStateFile = @"D:\EasySave\Status\StatusBackup" + "_" + nameOfSave + ".json"; //Definition path of StateFile + json format
 
             if (File.Exists(PathStateFile)) //Verification if PathStateFile is already create
             {
-                // Create the file, or overwrite if the file exists.
-                //Console.WriteLine("State File exists.");
-
                 TransformToJsonState(); //insert parameters
-
-
-
-
             }
 
             else if (!File.Exists(PathStateFile))  //create and insert parameters
             {
-                //Console.WriteLine("State File does not exist.");
                 TransformToJsonState();
             }
         }

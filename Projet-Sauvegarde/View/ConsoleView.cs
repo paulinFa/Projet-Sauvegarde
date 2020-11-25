@@ -113,7 +113,7 @@ namespace Projet_Sauvegarde.View
         }
         private void StartSave()
         {
-            Console.WriteLine("Do you want to start your backup(s) or add a new one? (add|start) \nYour status and log files are stored in the EasySave folder on your disk D");
+            Console.WriteLine("Do you want to start your backup(s) or add a new one? (add|start) \nYour status and log files are stored in the EasySave folder on your disk D/EasySave");
             string choice = Console.ReadLine();
             if(choice == "add")
             {
