@@ -129,10 +129,6 @@ namespace Projet_Sauvegarde.View
                 StartSave();
             }
         }
-        public void PrintError()
-        {
-
-        }
         private void DeleteInQueue()
         {
 
