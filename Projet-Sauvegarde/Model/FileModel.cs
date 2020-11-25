@@ -1,22 +1,18 @@
-﻿using Microsoft.OData.Edm;
-using Newtonsoft.Json;
-using System;
+﻿using System;
 using System.IO;
-using System.Text;
-using System.Text.Json;
 
 namespace Projet_Sauvegarde.Model
 {
     public class FileModel
     {
 
-        
+
         public FileModel()
         {
             CreateFolder();
 
-            CreationDate = DateTime.Now; 
-            
+            CreationDate = DateTime.Now;
+
             StringDateLogFile = CreationDate.ToString("D"); //We convert the format of the date "monday 15 june 2009"
             StringDateStateFile = CreationDate.ToString("D"); //We convert the format of the date "monday 15 june 2009"
         }
@@ -38,22 +34,22 @@ namespace Projet_Sauvegarde.Model
             }
             else
             {
-                 EasyFolder.Create();
+                EasyFolder.Create();
             }
-            
+
 
         }
         public void CreateFolderLog() //Method which makes it possible to check if the Logs folder exists and to create it if need be.
         {
             DirectoryInfo EasyFolderLog = new DirectoryInfo(@"D:\EasySave\Logs");
-         
+
             if (EasyFolderLog.Exists)
             {
 
             }
             else
             {
-                 EasyFolderLog.Create();
+                EasyFolderLog.Create();
             }
         }
         public void CreateFolderStatus() //Method which makes it possible to check if the Status folder exists and to create it if need be.
@@ -73,7 +69,7 @@ namespace Projet_Sauvegarde.Model
 
     }  //end Class File
 
-   
-    
+
+
 
 } //end namespace

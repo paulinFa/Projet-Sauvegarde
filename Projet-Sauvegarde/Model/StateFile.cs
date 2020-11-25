@@ -1,15 +1,10 @@
 ﻿using Newtonsoft.Json;
-using System;
-using System.Collections.Generic;
 using System.IO;
-using System.Text;
-using System.Text.Json;
-using System.Text.Json.Serialization;
 
 
 namespace Projet_Sauvegarde.Model
 {
-    public class StateFile : FileModel 
+    public class StateFile : FileModel
     {
         JsonFileState dataJsonState = new JsonFileState();
 

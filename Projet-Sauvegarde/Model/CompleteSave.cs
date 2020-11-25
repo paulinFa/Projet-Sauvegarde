@@ -1,17 +1,12 @@
-﻿using Microsoft.VisualBasic.FileIO;
-using System;
-using System.Collections.Generic;
-using System.ComponentModel;
+﻿using System;
 using System.IO;
-using System.Text;
-using System.Threading.Tasks;
 using SearchOption = System.IO.SearchOption;
 
 namespace Projet_Sauvegarde.Model
 {
     class CompleteSave : Save
     {
-        public void CopyFolder(string name,string sourcePath, string destinationPath)
+        public void CopyFolder(string name, string sourcePath, string destinationPath)
         {
             //Initialize all values
             DateTime firstDate = DateTime.Now;
@@ -43,7 +38,7 @@ namespace Projet_Sauvegarde.Model
             string diffString = diff.ToString();
 
 
-            LogFile logFile = new LogFile(DateTime.Now.ToString("MM-dd-yyyy_hh.ss.mm_tt"),Name,SourcePath,DestinationPath,(int)TotalLengthFile,diffString);
+            LogFile logFile = new LogFile(DateTime.Now.ToString("MM-dd-yyyy_hh.ss.mm_tt"), Name, SourcePath, DestinationPath, (int)TotalLengthFile, diffString);
             StateFile stateFile = new StateFile(DateTime.Now.ToString("MM-dd-yyyy_hh.ss.mm_tt"), Name, name, TotalNumberFile, (int)TotalLengthFile, Progression, RemainingNumberFile, (int)RemainingLengthFile, SourcePath, DestinationPath);
 
 
@@ -60,18 +55,19 @@ namespace Projet_Sauvegarde.Model
                 string name = Path.GetFileName(file);
                 string dest = Path.Combine(destinationPath, name);
                 //Verify if file existe in destination 
-                if (!File.Exists(dest)){
+                if (!File.Exists(dest))
+                {
                     File.Copy(file, dest);
                     var fi1 = new FileInfo(dest);
                     RemainingNumberFile--;
                     RemainingLengthFile -= fi1.Length;
 
                     //Watch the progress of moving files relative to their size
-                    Progression = RemainingLengthFile !=0 ? Convert.ToSingle(TotalLengthFile - RemainingLengthFile) / Convert.ToSingle(TotalLengthFile) * 100 : 100;
+                    Progression = RemainingLengthFile != 0 ? Convert.ToSingle(TotalLengthFile - RemainingLengthFile) / Convert.ToSingle(TotalLengthFile) * 100 : 100;
                     StateFile stateFile = new StateFile(DateTime.Now.ToString("MM-dd-yyyy_hh.ss.mm_tt"), Name, name, TotalNumberFile, (int)TotalLengthFile, Progression, RemainingNumberFile, (int)RemainingLengthFile, SourcePath, DestinationPath);
-                    Console.WriteLine("remaining length : " + RemainingLengthFile + "remaining number : " + RemainingNumberFile + "length : " + fi1.Length +" Etat d'avancement = " +Progression + " %");
-                }              
-                
+                    Console.WriteLine("remaining length : " + RemainingLengthFile + "remaining number : " + RemainingNumberFile + "length : " + fi1.Length + " Etat d'avancement = " + Progression + " %");
+                }
+
             }
             string[] folders = Directory.GetDirectories(sourcePath);
             //Create folder is not exist

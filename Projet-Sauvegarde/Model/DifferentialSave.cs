@@ -1,8 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
 using System.IO;
-using System.Text;
 
 namespace Projet_Sauvegarde.Model
 {
@@ -10,7 +7,7 @@ namespace Projet_Sauvegarde.Model
     {
         public string CompleteSavePath { get; set; }
         public string Folder { get; set; }
-        public void CopyFolder(string name ,string sourcePath, string destinationPath, string completeSavePath)
+        public void CopyFolder(string name, string sourcePath, string destinationPath, string completeSavePath)
         {
 
             //Initialize all values
@@ -65,7 +62,7 @@ namespace Projet_Sauvegarde.Model
                 FileInfo fiSource = new FileInfo(SourcePath + destWithoutParents);
 
                 //Verify if file existe in destination or if source file and complete file
-                if (!File.Exists(CompleteSavePath + destWithoutParents) || fiComplete.LastWriteTimeUtc!= fiSource.LastWriteTimeUtc)
+                if (!File.Exists(CompleteSavePath + destWithoutParents) || fiComplete.LastWriteTimeUtc != fiSource.LastWriteTimeUtc)
                 {
                     //Copy file to destination
                     File.Copy(file, dest);

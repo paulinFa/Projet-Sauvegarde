@@ -1,8 +1,6 @@
 ﻿using Projet_Sauvegarde.Controller;
 using System;
-using System.Collections.Generic;
 using System.IO;
-using System.Text;
 
 namespace Projet_Sauvegarde.View
 {
@@ -26,14 +24,17 @@ namespace Projet_Sauvegarde.View
             if (i == "complete")
             {
                 InputCompleteToQueue();
-            }else if(i == "differential")
+            }
+            else if (i == "differential")
             {
                 InputDifferentialToQueue();
-            }else if(i== "exit")
+            }
+            else if (i == "exit")
             {
                 Console.WriteLine("Bye bye");
             }
-            else{
+            else
+            {
                 Console.WriteLine("Wrong input (complete|differential|exit)");
                 AskUser();
             }
@@ -65,7 +66,7 @@ namespace Projet_Sauvegarde.View
                 destination = Console.ReadLine();
             }
 
-            string[] temp = new string[] { "complete",name, source, destination };
+            string[] temp = new string[] { "complete", name, source, destination };
             saveController.AddSave(temp);
             StartSave();
 
@@ -106,7 +107,7 @@ namespace Projet_Sauvegarde.View
                 complete = Console.ReadLine();
             }
 
-            string[] temp = new string[] { "differential",name, source, destination,complete };
+            string[] temp = new string[] { "differential", name, source, destination, complete };
             saveController.AddSave(temp);
             StartSave();
 
@@ -115,7 +116,7 @@ namespace Projet_Sauvegarde.View
         {
             Console.WriteLine("Do you want to start your backup(s) or add a new one? (add|start) \nYour status and log files are stored in the EasySave folder on your disk D/EasySave");
             string choice = Console.ReadLine();
-            if(choice == "add")
+            if (choice == "add")
             {
                 AskUser();
             }

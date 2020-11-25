@@ -1,6 +1,4 @@
-﻿using System;
-using Projet_Sauvegarde.Controller;
-using Projet_Sauvegarde.Model;
+﻿using Projet_Sauvegarde.Controller;
 
 namespace Projet_Sauvegarde
 {
