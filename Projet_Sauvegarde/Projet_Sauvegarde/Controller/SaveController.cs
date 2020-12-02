@@ -1,42 +1,73 @@
 ﻿using Projet_Sauvegarde.Model;
 using Projet_Sauvegarde.View;
 using System.Collections;
+using System.Linq;
+using System.Collections.Generic;
 
 namespace Projet_Sauvegarde.Controller
 {
     public class SaveController
     {
-        private Queue queue = new Queue();
+        
+        private List<SaveTask> listSave = new List<SaveTask>();
+        private ParameterFile parameterFile = new ParameterFile();
+        private string extension;
         public SaveController()
         {
             IView view = new ConsoleView();
+            parameterFile.GetSaveInformation();
+            parameterFile.Update();
+            this.listSave = parameterFile.SaveTasksList;
+            this.extension = parameterFile.Extension;
             view.setController(this);
             view.StartingView();
         }
         //Add save in queue
-        public void AddSave(string[] tbl)
+        public void AddOneSave(string type, string name, string sourcePath, string destinationPath, string completeSavePath = "")
         {
-            queue.Enqueue(tbl);
+            SaveTask saveTask = new SaveTask(type, name, sourcePath, destinationPath, completeSavePath);
+            listSave.Add(saveTask);
+            parameterFile.SaveTasksList = this.listSave;
+            parameterFile.Update();
         }
-        public void DeleteSave()
+        public void DeleteSave(SaveTask saveTask)
         {
-
+            listSave.Remove(saveTask);
+            parameterFile.SaveTasksList = this.listSave;
+            parameterFile.Update();
         }
-        public void StartSave()
+        public void StartOneSave(SaveTask saveTask)
         {
-            foreach (string[] str in queue)
+            if (saveTask.Type == "differential")
             {
-                if (str[0] == "differential")
+                DifferentialSave diff = new DifferentialSave();
+                diff.CopyFolder(saveTask, extension);
+            }
+            else if (saveTask.Type == "complete")
+            {
+                CompleteSave complete = new CompleteSave();
+                complete.CopyFolder(saveTask, extension);
+            }
+        }
+        public void StartAllSaves()
+        {
+            foreach (SaveTask saveTask in listSave)
+            {
+                if (saveTask.Type == "differential")
                 {
                     DifferentialSave diff = new DifferentialSave();
-                    diff.CopyFolder(str[1], str[2], str[3], str[4]);
+                    diff.CopyFolder(saveTask, extension);
                 }
-                else if (str[0] == "complete")
+                else if (saveTask.Type == "complete")
                 {
                     CompleteSave complete = new CompleteSave();
-                    complete.CopyFolder(str[1], str[2], str[3]);
+                    complete.CopyFolder(saveTask, extension);
                 }
             }
+        }
+        public void UpdateParameter()
+        {
+
         }
 
     }

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Projet_Sauvegarde.Controller;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -23,6 +24,7 @@ namespace Projet_Sauvegarde
         public MainWindow()
         {
             InitializeComponent();
+            SaveController controller = new SaveController();
         }
     }
 }

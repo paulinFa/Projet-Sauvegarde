@@ -18,10 +18,15 @@ namespace Projet_Sauvegarde.Model
         }
 
         public string Name { get; set; }
+
         public DateTime CreationDate { get; set; }
+
         public string PathLogFile { get; set; }
+
         public string PathStateFile { get; set; }
+
         public string StringDateLogFile { get; set; }
+
         public string StringDateStateFile { get; set; }
 
         public void CreateFolder() // Method which makes it possible to check if the EsaySave folder exists and to create it if need be.

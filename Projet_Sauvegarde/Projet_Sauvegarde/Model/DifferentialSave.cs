@@ -5,19 +5,21 @@ namespace Projet_Sauvegarde.Model
 {
     class DifferentialSave : Save
     {
+
         public string CompleteSavePath { get; set; }
         public string Folder { get; set; }
-        public void CopyFolder(string name, string sourcePath, string destinationPath, string completeSavePath)
+        public void CopyFolder(SaveTask saveTask, string extension)
         {
 
             //Initialize all values
             DateTime firstDate = DateTime.Now;
-            this.SourcePath = sourcePath;
-            this.Name = name;
-            this.CompleteSavePath = completeSavePath;
-            this.DestinationPath = destinationPath;
+            this.SourcePath = saveTask.SourcePath;
+            this.Name = saveTask.Name;
+            this.CompleteSavePath = saveTask.CompleteSavePath;
+            this.DestinationPath = saveTask.DestinationPath;
+            this.Extension = extension;
 
-            Folder = destinationPath + "/" + name + "_" + DateTime.Now.ToString("MM-dd-yyyy_hh.ss.mm_tt");
+            Folder = DestinationPath + "/" + Name + "_" + DateTime.Now.ToString("MM-dd-yyyy_hh.ss.mm_tt");
 
             if (!Directory.Exists(Folder))
                 Directory.CreateDirectory(Folder);
@@ -40,7 +42,7 @@ namespace Projet_Sauvegarde.Model
 
             //Update log and state file
             new LogFile(DateTime.Now.ToString("MM-dd-yyyy_hh.ss.mm_tt"), Name, SourcePath, DestinationPath, (int)TotalLengthFile, diffString);
-            new StateFile(DateTime.Now.ToString("MM-dd-yyyy_hh.ss.mm_tt"), Name, name, TotalNumberFile, (int)TotalLengthFile, Progression, RemainingNumberFile, (int)RemainingLengthFile, SourcePath, DestinationPath);
+            new StateFile(DateTime.Now.ToString("MM-dd-yyyy_hh.ss.mm_tt"), Name, "active", TotalNumberFile, (int)TotalLengthFile, Progression, RemainingNumberFile, (int)RemainingLengthFile, SourcePath, DestinationPath);
 
         }
 
@@ -64,8 +66,14 @@ namespace Projet_Sauvegarde.Model
                 //Verify if file existe in destination or if source file and complete file
                 if (!File.Exists(CompleteSavePath + destWithoutParents) || fiComplete.LastWriteTimeUtc != fiSource.LastWriteTimeUtc)
                 {
-                    //Copy file to destination
-                    File.Copy(file, dest);
+                    if (Path.GetExtension(dest) == Extension)
+                    {
+                        throw new NotImplementedException();
+                    }
+                    else
+                    {
+                        File.Copy(file, dest);
+                    }
                     var fi1 = new FileInfo(dest);
                     RemainingNumberFile--;
                     RemainingLengthFile -= fi1.Length;

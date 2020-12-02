@@ -6,20 +6,21 @@ namespace Projet_Sauvegarde.Model
 {
     class CompleteSave : Save
     {
-        public void CopyFolder(string name, string sourcePath, string destinationPath)
+        public void CopyFolder(SaveTask saveTask, string extension)
         {
             //Initialize all values
             DateTime firstDate = DateTime.Now;
-            this.SourcePath = sourcePath;
-            this.Name = name;
-            this.DestinationPath = destinationPath;
+            this.SourcePath = saveTask.SourcePath;
+            this.Name = saveTask.Name;
+            this.DestinationPath = saveTask.DestinationPath;
+            this.Extension = extension;
 
             TotalLengthFile = DirSize(SourcePath);
             TotalNumberFile = Directory.GetFiles(SourcePath, "*.*", SearchOption.AllDirectories).Length;
             Console.WriteLine(SourcePath + " " + TotalLengthFile);
             RemainingNumberFile = TotalNumberFile;
             RemainingLengthFile = TotalLengthFile;
-            string folder = destinationPath + "/" + name + "_" + DateTime.Now.ToString("MM-dd-yyyy_hh.ss.mm_tt");
+            string folder = DestinationPath + "/" + Name + "_" + DateTime.Now.ToString("MM-dd-yyyy_hh.ss.mm_tt");
 
 
 
@@ -39,7 +40,7 @@ namespace Projet_Sauvegarde.Model
 
 
             LogFile logFile = new LogFile(DateTime.Now.ToString("MM-dd-yyyy_hh.ss.mm_tt"), Name, SourcePath, DestinationPath, (int)TotalLengthFile, diffString);
-            StateFile stateFile = new StateFile(DateTime.Now.ToString("MM-dd-yyyy_hh.ss.mm_tt"), Name, name, TotalNumberFile, (int)TotalLengthFile, Progression, RemainingNumberFile, (int)RemainingLengthFile, SourcePath, DestinationPath);
+            StateFile stateFile = new StateFile(DateTime.Now.ToString("MM-dd-yyyy_hh.ss.mm_tt"), Name, "active", TotalNumberFile, (int)TotalLengthFile, Progression, RemainingNumberFile, (int)RemainingLengthFile, SourcePath, DestinationPath);
 
 
         }
@@ -57,7 +58,14 @@ namespace Projet_Sauvegarde.Model
                 //Verify if file existe in destination 
                 if (!File.Exists(dest))
                 {
-                    File.Copy(file, dest);
+                    if(Path.GetExtension(dest) == Extension)
+                    {
+                        throw new NotImplementedException();
+                    }
+                    else
+                    {
+                        File.Copy(file, dest);
+                    }
                     var fi1 = new FileInfo(dest);
                     RemainingNumberFile--;
                     RemainingLengthFile -= fi1.Length;

@@ -1,4 +1,5 @@
 ﻿using Projet_Sauvegarde.Controller;
+using Projet_Sauvegarde.Model;
 using System;
 using System.IO;
 
@@ -14,8 +15,11 @@ namespace Projet_Sauvegarde.View
         }
         public void StartingView()
         {
-            Console.WriteLine("Welcome in EasySafe, a program to save your files");
-            AskUser();
+            saveController.AddOneSave("complete", "super", "D:/Bureau/2.0 bis", "D:/Bureau/Destination");
+            saveController.AddOneSave("complete", "super", "D:/Bureau/2.0 bis", "D:/Bureau/Destination");
+            saveController.StartAllSaves();
+            /*Console.WriteLine("Welcome in EasySafe, a program to save your files");
+            AskUser();*/
         }
         private void AskUser()
         {
@@ -67,7 +71,7 @@ namespace Projet_Sauvegarde.View
             }
 
             string[] temp = new string[] { "complete", name, source, destination };
-            saveController.AddSave(temp);
+            saveController.AddOneSave("complete", name,source,destination);
             StartSave();
 
         }
@@ -107,8 +111,7 @@ namespace Projet_Sauvegarde.View
                 complete = Console.ReadLine();
             }
 
-            string[] temp = new string[] { "differential", name, source, destination, complete };
-            saveController.AddSave(temp);
+            saveController.AddOneSave("complete", name, source, destination,complete);
             StartSave();
 
         }
@@ -122,7 +125,7 @@ namespace Projet_Sauvegarde.View
             }
             else if (choice == "start")
             {
-                saveController.StartSave();
+                saveController.StartAllSaves();
             }
             else
             {
