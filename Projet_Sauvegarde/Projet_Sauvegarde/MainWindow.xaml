@@ -5,8 +5,35 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Projet_Sauvegarde"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
-    <Grid>
+        Title="MainWindow" Height="450" Width="665">
+    <Grid Margin="0,0,10,0">
+        <RadioButton x:Name="CompleteRadio" Content="Complete" HorizontalAlignment="Left" Margin="40,29,0,0" VerticalAlignment="Top" Checked="CompleteRadioButton_Checked"/>
+        <RadioButton x:Name="DiffRadio" Content="Differential" HorizontalAlignment="Left" Margin="152,29,0,0" VerticalAlignment="Top" Checked="DiffRadioButton_Checked_1"/>
+        <Button x:Name="QuitAppButton" Content="Quit" HorizontalAlignment="Left" Margin="26,372,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.232,0.616" Width="38" Click="QuitAppButton_Click"/>
+        <TextBox x:Name="TextNameOfSave" HorizontalAlignment="Left" Margin="40,114,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="151" Height="22"/>
+        <TextBox x:Name="TextSourcePath" HorizontalAlignment="Left" Margin="40,172,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="151" Height="22"/>
+        <Label Content="Enter Name of Backup : " HorizontalAlignment="Left" Margin="40,88,0,0" VerticalAlignment="Top"/>
+        <Label Content="Enter Source Path :" HorizontalAlignment="Left" Margin="40,141,0,0" VerticalAlignment="Top"/>
+        <Label Content="Enter Destination Path : " HorizontalAlignment="Left" Margin="40,199,0,0" VerticalAlignment="Top"/>
+        <TextBox x:Name="TextDestinationPath" HorizontalAlignment="Left" Margin="40,230,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="151" Height="23"/>
+        <Button x:Name="AddBackupButton" Content="Add Backup" HorizontalAlignment="Left" Margin="40,327,0,0" VerticalAlignment="Top" Width="90" Click="AddBackupButton_Click"/>
+        <Button x:Name="StartSaveButton" Content="Start " HorizontalAlignment="Left" Margin="152,327,0,0" VerticalAlignment="Top" Width="39" Click="StartSaveButton_Click"/>
+        <ListView x:Name="ListBackup" Margin="333,10,41,66">
+            <ListView.View>
+                <GridView>
+                    <GridViewColumn Header="Type" DisplayMemberBinding="{Binding typeBackup}" />
+                    <GridViewColumn Header="Name" DisplayMemberBinding="{Binding nameBackup}" />
+                    <GridViewColumn Header="SourcePath" DisplayMemberBinding="{Binding sourceBackup}" />
+                    <GridViewColumn Header="DestinationPath" DisplayMemberBinding="{Binding destinationBackup}" />
+                    <GridViewColumn Header="LastComplete" DisplayMemberBinding="{Binding lastCompleteBackup}" />
+                </GridView>
+            </ListView.View>
+        </ListView>
+        <Button x:Name="DeleteConfigButton" Content="Delete Config" HorizontalAlignment="Left" Margin="428,377,0,0" VerticalAlignment="Top" Click="DeleteConfigButton_Click"/>
+        <Label Content="If Differential, Enter Name of Complete Backup :" HorizontalAlignment="Left" Margin="40,258,0,0" VerticalAlignment="Top"/>
+        <TextBox x:Name="TextLastComplete" HorizontalAlignment="Left" Margin="40,289,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="151" Height="23"/>
+        <Label Content="Type Of Save : " HorizontalAlignment="Left" Margin="14,0,0,0" VerticalAlignment="Top" FontWeight="Bold" FontSize="14"/>
+        <Label Content="Backup Info :" HorizontalAlignment="Left" Margin="14,68,0,0" VerticalAlignment="Top" FontWeight="Bold" FontSize="14"/>
 
     </Grid>
 </Window>

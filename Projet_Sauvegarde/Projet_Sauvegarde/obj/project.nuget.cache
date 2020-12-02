@@ -1,8 +1,10 @@
 {
   "version": 2,
-  "dgSpecHash": "NeWKTAuVEaX5ez+8LHl7LYBdnQTZDlWnp3HDtKU5akN5iz9IxAwpin183vg8oTv2gsjTD4tW7BV2NfMji+kj/w==",
+  "dgSpecHash": "YCrA1S4i98JhAbWCixnTvDRvyuKzp0aJi8UTUs8cSGXitsecff3UcfIRezPfdHt43xvh7t6ssgaTaWd+EY5ktw==",
   "success": true,
-  "projectFilePath": "D:\\Bureau\\2.0 bis\\Projet_Sauvegarde\\Projet_Sauvegarde\\Projet_Sauvegarde.csproj",
-  "expectedPackageFiles": [],
+  "projectFilePath": "C:\\Users\\flori\\source\\repos\\paulinFa\\Projet-Sauvegarde\\Projet_Sauvegarde\\Projet_Sauvegarde\\Projet_Sauvegarde.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\flori\\.nuget\\packages\\newtonsoft.json\\12.0.3\\newtonsoft.json.12.0.3.nupkg.sha512"
+  ],
   "logs": []
 }
