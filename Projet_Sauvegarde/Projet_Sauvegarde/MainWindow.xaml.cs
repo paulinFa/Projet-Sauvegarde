@@ -60,7 +60,7 @@ namespace Projet_Sauvegarde
 
         public void PopupErrorProcess(string message) //Method who show pop-up when there is an error
         {
-            MessageBox.Show(message);
+            MessageBox.Show(message,"Error Save Stop", MessageBoxButton.OK, MessageBoxImage.Error);
         }
         private void AddBackupButton_Click(object sender, RoutedEventArgs e) //Method who add one backup configuration on the config file on click
         {

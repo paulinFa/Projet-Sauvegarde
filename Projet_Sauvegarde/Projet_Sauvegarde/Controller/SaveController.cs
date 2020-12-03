@@ -75,7 +75,7 @@ namespace Projet_Sauvegarde.Controller
             {
                 window.PopupErrorProcess("Error process " + software + " is running " + "save(s) are stop");
             }
-            if (saveTask.Type == "differential")
+            else if (saveTask.Type == "differential")
             {
                 DifferentialSave diff = new DifferentialSave();
                 diff.CopyFolder(saveTask, extension);
@@ -97,7 +97,7 @@ namespace Projet_Sauvegarde.Controller
                 {
                     window.PopupErrorProcess("Error process " + software + " is running " + "save(s) are stop");
                 }
-                if (saveTask.Type == "differential")
+                else if (saveTask.Type == "differential")
                 {
                     DifferentialSave diff = new DifferentialSave();
                     diff.CopyFolder(saveTask, extension);
@@ -121,7 +121,7 @@ namespace Projet_Sauvegarde.Controller
                 {
                     window.PopupErrorProcess("Error process " + software + " is running " + "save(s) are stop");
                 }
-                if (saveTask.Type == "differential")
+                else if (saveTask.Type == "differential")
                 {
                     DifferentialSave diff = new DifferentialSave();
                     diff.CopyFolder(saveTask, extension);

@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Diagnostics;
 using System.IO;
 using SearchOption = System.IO.SearchOption;
 
@@ -72,7 +73,7 @@ namespace Projet_Sauvegarde.Model
                 {
                     if(Path.GetExtension(dest) == Extension)
                     {
-                        throw new NotImplementedException();
+                        Trace.WriteLine(Extension + " is detected");
 
                         ///TODO TimeEncryption = 
                     }
@@ -81,7 +82,7 @@ namespace Projet_Sauvegarde.Model
                         TimeEncryption = "0";
                         File.Copy(file, dest);
                     }
-                    var fi1 = new FileInfo(dest);
+                    var fi1 = new FileInfo(file);
                     RemainingNumberFile--;
                     RemainingLengthFile -= fi1.Length;
 

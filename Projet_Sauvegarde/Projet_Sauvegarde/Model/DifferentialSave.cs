@@ -88,7 +88,7 @@ namespace Projet_Sauvegarde.Model
                         TimeEncryption = "0";
                         File.Copy(file, dest);
                     }
-                    var fi1 = new FileInfo(dest);
+                    var fi1 = new FileInfo(file);
                     RemainingNumberFile--;
                     RemainingLengthFile -= fi1.Length;
 
