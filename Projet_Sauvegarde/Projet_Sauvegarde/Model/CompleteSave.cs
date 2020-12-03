@@ -4,8 +4,16 @@ using SearchOption = System.IO.SearchOption;
 
 namespace Projet_Sauvegarde.Model
 {
+    /// <summary>
+    /// Class to make CompleteSave
+    /// </summary>
     class CompleteSave : Save
     {
+        /// <summary>
+        /// Method to initialized complete save
+        /// </summary>
+        /// <param name="saveTask">All information for save</param>
+        /// <param name="extension">Extension file to crypt</param>
         public void CopyFolder(SaveTask saveTask, string extension)
         {
             //Initialize all values

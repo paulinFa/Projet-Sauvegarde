@@ -7,6 +7,9 @@ using System.Diagnostics;
 
 namespace Projet_Sauvegarde.Controller
 {
+    /// <summary>
+    /// Controller to controll Save System
+    /// </summary>
     public class SaveController
     {
         public List<SaveTask> ListSave { get; set; }
@@ -24,7 +27,14 @@ namespace Projet_Sauvegarde.Controller
             view.setController(this);
             view.StartingView();
         }
-        //Add save in queue
+        /// <summary>
+        /// Add One save to List 
+        /// </summary>
+        /// <param name="type">Type Of save (complete|differential)</param>
+        /// <param name="name">Name of save</param>
+        /// <param name="sourcePath"></param>
+        /// <param name="destinationPath"></param>
+        /// <param name="completeSavePath">If is differential save</param>
         public void AddOneSave(string type, string name, string sourcePath, string destinationPath, string completeSavePath = "")
         {
             SaveTask saveTask = new SaveTask(type, name, sourcePath, destinationPath, completeSavePath);
@@ -32,12 +42,20 @@ namespace Projet_Sauvegarde.Controller
             parameterFile.SaveTasksList = this.ListSave;
             parameterFile.Update();
         }
+        /// <summary>
+        /// Delete save from list and file parameter
+        /// </summary>
+        /// <param name="saveTask">Save to delete</param>
         public void DeleteSave(SaveTask saveTask)
         {
             ListSave.Remove(saveTask);
             parameterFile.SaveTasksList = this.ListSave;
             parameterFile.Update();
         }
+        /// <summary>
+        /// Launch one save
+        /// </summary>
+        /// <param name="saveTask">Save to launch</param>
         public void StartOneSave(SaveTask saveTask)
         {
             if (TestProcess())
@@ -55,6 +73,9 @@ namespace Projet_Sauvegarde.Controller
                 complete.CopyFolder(saveTask, extension);
             }
         }
+        /// <summary>
+        /// Start all Saves in list
+        /// </summary>
         public void StartAllSaves()
         {
             foreach (SaveTask saveTask in ListSave)
@@ -75,6 +96,10 @@ namespace Projet_Sauvegarde.Controller
                 }
             }
         }
+        /// <summary>
+        /// Start all save in Parameter
+        /// </summary>
+        /// <param name="saveTasks">List of save to launch</param>
         public void StartMultipleSaves(List<SaveTask> saveTasks)
         {
             foreach (SaveTask saveTask in saveTasks)
@@ -95,6 +120,10 @@ namespace Projet_Sauvegarde.Controller
                 }
             }
         }
+        /// <summary>
+        /// Verify if software is launch
+        /// </summary>
+        /// <returns>Return false if software is not running</returns>
         public bool TestProcess()
         {
             Process[] pname = Process.GetProcessesByName(software);

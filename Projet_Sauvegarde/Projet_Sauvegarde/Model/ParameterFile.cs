@@ -9,7 +9,7 @@ using System.Text;
 namespace Projet_Sauvegarde.Model
 {
     /// <summary>
-    /// Class for use parameterFile
+    /// Class to modify create and deleter ParameterFile
     /// </summary>
     public class ParameterFile : FileModel
     {

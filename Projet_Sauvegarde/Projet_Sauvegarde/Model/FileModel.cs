@@ -3,6 +3,9 @@ using System.IO;
 
 namespace Projet_Sauvegarde.Model
 {
+    /// <summary>
+    /// Model to modify create and delete different File
+    /// </summary>
     public class FileModel
     {
 
@@ -28,7 +31,9 @@ namespace Projet_Sauvegarde.Model
         public string StringDateLogFile { get; set; }
 
         public string StringDateStateFile { get; set; }
-
+        /// <summary>
+        /// Method to create parent directory
+        /// </summary>
         public void CreateFolder() // Method which makes it possible to check if the EsaySave folder exists and to create it if need be.
         {
             DirectoryInfo EasyFolder = new DirectoryInfo(@"D:\EasySave");
@@ -44,6 +49,9 @@ namespace Projet_Sauvegarde.Model
 
 
         }
+        /// <summary>
+        /// Method to create log directory
+        /// </summary>
         public void CreateFolderLog() //Method which makes it possible to check if the Logs folder exists and to create it if need be.
         {
             DirectoryInfo EasyFolderLog = new DirectoryInfo(@"D:\EasySave\Logs");
@@ -57,6 +65,9 @@ namespace Projet_Sauvegarde.Model
                 EasyFolderLog.Create();
             }
         }
+        /// <summary>
+        /// Method to create status directory
+        /// </summary>
         public void CreateFolderStatus() //Method which makes it possible to check if the Status folder exists and to create it if need be.
         {
             DirectoryInfo EasyFolderStatus = new DirectoryInfo(@"D:\EasySave\Status");
