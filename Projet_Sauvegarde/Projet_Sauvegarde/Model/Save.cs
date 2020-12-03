@@ -27,7 +27,7 @@ namespace Projet_Sauvegarde.Model
         /// </summary>
         /// <param name="directoryPath">Path of directory</param>
         /// <returns></returns>
-        private static long DirSize(string directoryPath)
+        public static long DirSize(string directoryPath)
         {
             System.IO.DirectoryInfo dir = new System.IO.DirectoryInfo(directoryPath);
             long size = 0;
