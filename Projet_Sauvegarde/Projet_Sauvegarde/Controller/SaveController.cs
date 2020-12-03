@@ -15,14 +15,14 @@ namespace Projet_Sauvegarde.Controller
         private string software;
         public SaveController()
         {
-            IView view = new ConsoleView();
+            //IView view = new ConsoleView();
             parameterFile.GetAllInformation();
             parameterFile.Update();
             this.ListSave = parameterFile.SaveTasksList;
             this.extension = parameterFile.Extension;
             this.software = parameterFile.Software;
-            view.setController(this);
-            view.StartingView();
+            /*view.setController(this);
+            view.StartingView();*/
         }
         //Add save in queue
         public void AddOneSave(string type, string name, string sourcePath, string destinationPath, string completeSavePath = "")
@@ -38,6 +38,17 @@ namespace Projet_Sauvegarde.Controller
             parameterFile.SaveTasksList = this.ListSave;
             parameterFile.Update();
         }
+
+        public void DeleteSaves(List<SaveTask> saveTasks)
+        {
+            foreach (SaveTask save in saveTasks)
+            {
+                ListSave.Remove(save);
+            }
+            parameterFile.SaveTasksList = this.ListSave;
+            parameterFile.Update();
+        }
+
         public void StartOneSave(SaveTask saveTask)
         {
             if (TestProcess())

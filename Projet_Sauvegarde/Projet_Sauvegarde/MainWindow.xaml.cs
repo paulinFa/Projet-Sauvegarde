@@ -58,6 +58,10 @@ namespace Projet_Sauvegarde
             System.Environment.Exit(0);
         }
 
+        public void PopupErrorProcess(string message)
+        {
+            MessageBox.Show(message);
+        }
         private void AddBackupButton_Click(object sender, RoutedEventArgs e)
         {
 
@@ -107,21 +111,31 @@ namespace Projet_Sauvegarde
             {
                 MessageBox.Show("Select Type Of Backup");
             }
+            TextNameOfSave.Text = String.Empty;
+            TextSourcePath.Text = String.Empty;
+            TextDestinationPath.Text = String.Empty;
+            TextLastComplete.Text = String.Empty;
         }
 
         private void StartSaveButton_Click(object sender, RoutedEventArgs e)
         {
 
-            //saveController.StartMulitpleSaves(AllBackupLaunch.ToList<SaveTask>);
-            
+            saveController.StartMultipleSaves(AllBackupLaunch.ToList());
+            AllBackupLaunch.Clear();
         }
 
       
 
         private void DeleteConfigButton_Click(object sender, RoutedEventArgs e)
         {
-            
-            //saveController.DeleteSaves(AllConfigList.SelectedItems);
+            var allConfig = AllConfigList.SelectedItems;
+            List<SaveTask> listSaveTask = new List<SaveTask>();
+            foreach (SaveTask save in allConfig)
+            {
+                listSaveTask.Add(save);
+            }
+            saveController.DeleteSaves(listSaveTask);
+            UpdateListBackup();
         }
 
 
