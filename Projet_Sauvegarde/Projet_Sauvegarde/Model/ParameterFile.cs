@@ -14,6 +14,7 @@ namespace Projet_Sauvegarde.Model
         public static string pathParameterFile = @"D:\EasySave\Parameter\Parameter.json";
         public string Extension { get; set; }
         public List<SaveTask> SaveTasksList { get; set; }
+        public string Software { get; set; }
         public ParameterFile()
         {
             SaveTasksList = new List<SaveTask>();
@@ -65,7 +66,7 @@ namespace Projet_Sauvegarde.Model
             }
         }
 
-        public void GetSaveInformation()
+        public void GetAllInformation()
         {
             if (File.Exists(pathParameterFile)) //Verification if PathStateFile is already create
             {
@@ -84,6 +85,10 @@ namespace Projet_Sauvegarde.Model
                         if (parameterFile.Extension != null)
                         {
                             this.Extension = parameterFile.Extension;
+                        }
+                        if (parameterFile.Software != null)
+                        {
+                            this.Software = parameterFile.Software;
                         }
                     }
 
@@ -107,5 +112,6 @@ namespace Projet_Sauvegarde.Model
 {
     public string Extension { get; set; }
     public List<SaveTask> SaveTasksList { get; set; }
+    public string Software { get; set; }
 }
 

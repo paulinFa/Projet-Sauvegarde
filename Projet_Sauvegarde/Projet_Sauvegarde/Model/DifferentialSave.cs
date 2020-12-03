@@ -41,7 +41,7 @@ namespace Projet_Sauvegarde.Model
             string diffString = diff.ToString();
 
             //Update log and state file
-            new LogFile(DateTime.Now.ToString("MM-dd-yyyy_hh.ss.mm_tt"), Name, SourcePath, DestinationPath, (int)TotalLengthFile, diffString);
+            new LogFile(DateTime.Now.ToString("MM-dd-yyyy_hh.ss.mm_tt"), Name, SourcePath, DestinationPath, (int)TotalLengthFile, diffString,"0");
             new StateFile(DateTime.Now.ToString("MM-dd-yyyy_hh.ss.mm_tt"), Name, "active", TotalNumberFile, (int)TotalLengthFile, Progression, RemainingNumberFile, (int)RemainingLengthFile, SourcePath, DestinationPath);
 
         }
@@ -66,12 +66,14 @@ namespace Projet_Sauvegarde.Model
                 //Verify if file existe in destination or if source file and complete file
                 if (!File.Exists(CompleteSavePath + destWithoutParents) || fiComplete.LastWriteTimeUtc != fiSource.LastWriteTimeUtc)
                 {
+
                     if (Path.GetExtension(dest) == Extension)
                     {
                         throw new NotImplementedException();
                     }
                     else
                     {
+                        TimeEncryption = "0";
                         File.Copy(file, dest);
                     }
                     var fi1 = new FileInfo(dest);

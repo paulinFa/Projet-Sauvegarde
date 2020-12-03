@@ -13,7 +13,7 @@ namespace Projet_Sauvegarde.Model
         JsonFileLog dataJsonLog = new JsonFileLog();
 
 
-        public LogFile(string timestamp, string nameOfSave, string sourcePath, string destinationPath, int sizeSave, string transfertTime) //Method where objetcs are used into parameters, then create the LogFile and insert the parameters in it.
+        public LogFile(string timestamp, string nameOfSave, string sourcePath, string destinationPath, int sizeSave, string transfertTime,string timeEncryptionTransfert) //Method where objetcs are used into parameters, then create the LogFile and insert the parameters in it.
         {
 
 
@@ -26,6 +26,7 @@ namespace Projet_Sauvegarde.Model
             dataJsonLog.DestinationPath = destinationPath;
             dataJsonLog.SizeOfSave = sizeSave;
             dataJsonLog.TransfertTime = transfertTime;
+            dataJsonLog.TimeEncryptionTransfert = timeEncryptionTransfert;
 
 
             PathLogFile = @"D:\EasySave\Logs\Log" + "_" + StringDateLogFile + ".json"; //Definition path of LogFile + json format
@@ -66,6 +67,7 @@ namespace Projet_Sauvegarde.Model
         public string DestinationPath { get; set; }
         public int SizeOfSave { get; set; }
         public string TransfertTime { get; set; }
+        public string TimeEncryptionTransfert { get; set; }
 
     } //end class JsonFileState
 

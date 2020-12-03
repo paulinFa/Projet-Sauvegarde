@@ -1,20 +1,20 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\flori\\source\\repos\\paulinFa\\Projet-Sauvegarde\\Projet_Sauvegarde\\Projet_Sauvegarde\\Projet_Sauvegarde.csproj": {}
+    "D:\\Bureau\\Projet C#\\Projet-Sauvegarde\\Projet_Sauvegarde\\Projet_Sauvegarde\\Projet_Sauvegarde.csproj": {}
   },
   "projects": {
-    "C:\\Users\\flori\\source\\repos\\paulinFa\\Projet-Sauvegarde\\Projet_Sauvegarde\\Projet_Sauvegarde\\Projet_Sauvegarde.csproj": {
+    "D:\\Bureau\\Projet C#\\Projet-Sauvegarde\\Projet_Sauvegarde\\Projet_Sauvegarde\\Projet_Sauvegarde.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\flori\\source\\repos\\paulinFa\\Projet-Sauvegarde\\Projet_Sauvegarde\\Projet_Sauvegarde\\Projet_Sauvegarde.csproj",
+        "projectUniqueName": "D:\\Bureau\\Projet C#\\Projet-Sauvegarde\\Projet_Sauvegarde\\Projet_Sauvegarde\\Projet_Sauvegarde.csproj",
         "projectName": "Projet_Sauvegarde",
-        "projectPath": "C:\\Users\\flori\\source\\repos\\paulinFa\\Projet-Sauvegarde\\Projet_Sauvegarde\\Projet_Sauvegarde\\Projet_Sauvegarde.csproj",
-        "packagesPath": "C:\\Users\\flori\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\flori\\source\\repos\\paulinFa\\Projet-Sauvegarde\\Projet_Sauvegarde\\Projet_Sauvegarde\\obj\\",
+        "projectPath": "D:\\Bureau\\Projet C#\\Projet-Sauvegarde\\Projet_Sauvegarde\\Projet_Sauvegarde\\Projet_Sauvegarde.csproj",
+        "packagesPath": "C:\\Users\\monli\\.nuget\\packages\\",
+        "outputPath": "D:\\Bureau\\Projet C#\\Projet-Sauvegarde\\Projet_Sauvegarde\\Projet_Sauvegarde\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\flori\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\monli\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [

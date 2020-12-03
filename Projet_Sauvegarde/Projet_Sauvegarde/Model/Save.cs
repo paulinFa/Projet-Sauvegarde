@@ -5,6 +5,7 @@ namespace Projet_Sauvegarde.Model
 {
     class Save
     {
+        public string TimeEncryption { get; set; }
         public string Extension { get; set; }
         public string Name { get; set; }
         public int TotalNumberFile { get; set; }

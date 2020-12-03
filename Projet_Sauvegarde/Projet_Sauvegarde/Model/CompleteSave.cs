@@ -39,7 +39,7 @@ namespace Projet_Sauvegarde.Model
             string diffString = diff.ToString();
 
 
-            LogFile logFile = new LogFile(DateTime.Now.ToString("MM-dd-yyyy_hh.ss.mm_tt"), Name, SourcePath, DestinationPath, (int)TotalLengthFile, diffString);
+            LogFile logFile = new LogFile(DateTime.Now.ToString("MM-dd-yyyy_hh.ss.mm_tt"), Name, SourcePath, DestinationPath, (int)TotalLengthFile, diffString, TimeEncryption);
             StateFile stateFile = new StateFile(DateTime.Now.ToString("MM-dd-yyyy_hh.ss.mm_tt"), Name, "active", TotalNumberFile, (int)TotalLengthFile, Progression, RemainingNumberFile, (int)RemainingLengthFile, SourcePath, DestinationPath);
 
 
@@ -61,9 +61,12 @@ namespace Projet_Sauvegarde.Model
                     if(Path.GetExtension(dest) == Extension)
                     {
                         throw new NotImplementedException();
+
+                        //TODO TimeEncryption = 
                     }
                     else
                     {
+                        TimeEncryption = "0";
                         File.Copy(file, dest);
                     }
                     var fi1 = new FileInfo(dest);

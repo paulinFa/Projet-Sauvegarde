@@ -3,6 +3,7 @@ using Projet_Sauvegarde.View;
 using System.Collections;
 using System.Linq;
 using System.Collections.Generic;
+using System.Diagnostics;
 
 namespace Projet_Sauvegarde.Controller
 {
@@ -12,13 +13,15 @@ namespace Projet_Sauvegarde.Controller
         private List<SaveTask> listSave = new List<SaveTask>();
         private ParameterFile parameterFile = new ParameterFile();
         private string extension;
+        private string software;
         public SaveController()
         {
             IView view = new ConsoleView();
-            parameterFile.GetSaveInformation();
+            parameterFile.GetAllInformation();
             parameterFile.Update();
             this.listSave = parameterFile.SaveTasksList;
             this.extension = parameterFile.Extension;
+            this.software = parameterFile.Software;
             view.setController(this);
             view.StartingView();
         }
@@ -38,6 +41,10 @@ namespace Projet_Sauvegarde.Controller
         }
         public void StartOneSave(SaveTask saveTask)
         {
+            if (TestProcess())
+            {
+                return;
+            }
             if (saveTask.Type == "differential")
             {
                 DifferentialSave diff = new DifferentialSave();
@@ -53,6 +60,30 @@ namespace Projet_Sauvegarde.Controller
         {
             foreach (SaveTask saveTask in listSave)
             {
+                if (TestProcess())
+                {
+                    return;
+                }
+                if (saveTask.Type == "differential")
+                {
+                    DifferentialSave diff = new DifferentialSave();
+                    diff.CopyFolder(saveTask, extension);
+                }
+                else if (saveTask.Type == "complete")
+                {
+                    CompleteSave complete = new CompleteSave();
+                    complete.CopyFolder(saveTask, extension);
+                }
+            }
+        }
+        public void StartMultipleSaves(List<SaveTask> saveTasks)
+        {
+            foreach (SaveTask saveTask in saveTasks)
+            {
+                if(TestProcess())
+                {
+                    return;
+                }
                 if (saveTask.Type == "differential")
                 {
                     DifferentialSave diff = new DifferentialSave();
@@ -68,6 +99,14 @@ namespace Projet_Sauvegarde.Controller
         public void UpdateParameter()
         {
 
+        }
+        public bool TestProcess()
+        {
+            Process[] pname = Process.GetProcessesByName(software);
+            if (pname.Length == 0)
+                return false;
+            else
+                return true;
         }
 
     }
