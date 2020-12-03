@@ -6,13 +6,24 @@ using System.IO;
 
 namespace Projet_Sauvegarde.Model
 {
-
+    /// <summary>
+    /// Class to modify create and deleter Logfile
+    /// </summary>
     public class LogFile : FileModel
     {
 
         JsonFileLog dataJsonLog = new JsonFileLog();
 
-
+        /// <summary>
+        /// Constructor
+        /// </summary>
+        /// <param name="timestamp">Elapsed time for backup</param>
+        /// <param name="nameOfSave"></param>
+        /// <param name="sourcePath"></param>
+        /// <param name="destinationPath"></param>
+        /// <param name="sizeSave"></param>
+        /// <param name="transfertTime"></param>
+        /// <param name="timeEncryptionTransfert"></param>
         public LogFile(string timestamp, string nameOfSave, string sourcePath, string destinationPath, int sizeSave, string transfertTime,string timeEncryptionTransfert) //Method where objetcs are used into parameters, then create the LogFile and insert the parameters in it.
         {
 
@@ -45,7 +56,7 @@ namespace Projet_Sauvegarde.Model
             }
         }
 
-        public void TransformToJsonLog() //Method to create the JSON file and insert parameters in it 
+        private void TransformToJsonLog() //Method to create the JSON file and insert parameters in it 
         {
 
             string WroteJson = JsonConvert.SerializeObject(dataJsonLog, Formatting.Indented); //object to add parameters into the JSON file

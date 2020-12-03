@@ -3,6 +3,9 @@ using System.IO;
 
 namespace Projet_Sauvegarde.Model
 {
+    /// <summary>
+    /// Class for gestion save
+    /// </summary>
     class Save
     {
         public string TimeEncryption { get; set; }

@@ -4,6 +4,9 @@ using System.Text;
 
 namespace Projet_Sauvegarde.Model
 {
+    /// <summary>
+    /// Class with Save information
+    /// </summary>
     public class SaveTask
     {
 

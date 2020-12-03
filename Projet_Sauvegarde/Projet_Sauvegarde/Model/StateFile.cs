@@ -5,7 +5,7 @@ using System.IO;
 namespace Projet_Sauvegarde.Model
 {
     /// <summary>
-    /// Class to use Statefile
+    /// Class to modify create and deleter StateFile
     /// </summary>
     public class StateFile : FileModel
     {
@@ -64,7 +64,7 @@ namespace Projet_Sauvegarde.Model
                 tw.Close();
             }
         }
-    } // end class StateFile 
+    }
     /// <summary>
     /// Class to transform data in json and after write in file
     /// </summary>

@@ -3,11 +3,19 @@ using System.IO;
 
 namespace Projet_Sauvegarde.Model
 {
+    /// <summary>
+    /// Class to make DifferentialSave
+    /// </summary>
     class DifferentialSave : Save
     {
 
         public string CompleteSavePath { get; set; }
         public string Folder { get; set; }
+        /// <summary>
+        /// Method to initialized differential save
+        /// </summary>
+        /// <param name="saveTask">All information for save</param>
+        /// <param name="extension">Extension file to crypt</param>
         public void CopyFolder(SaveTask saveTask, string extension)
         {
 
@@ -45,7 +53,11 @@ namespace Projet_Sauvegarde.Model
             new StateFile(DateTime.Now.ToString("MM-dd-yyyy_hh.ss.mm_tt"), Name, "active", TotalNumberFile, (int)TotalLengthFile, Progression, RemainingNumberFile, (int)RemainingLengthFile, SourcePath, DestinationPath);
 
         }
-
+        /// <summary>
+        /// Start Copy
+        /// </summary>
+        /// <param name="sourcePath"></param>
+        /// <param name="destinationPath"></param>
         public void StartCopy(string sourcePath, string destinationPath)
         {
 
