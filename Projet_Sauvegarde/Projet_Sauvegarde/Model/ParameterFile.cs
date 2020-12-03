@@ -127,8 +127,8 @@ namespace Projet_Sauvegarde.Model
 /// </summary>
 public class ParameterJson
 {
+    public string Software { get; set; }
     public string Extension { get; set; }
     public List<SaveTask> SaveTasksList { get; set; }
-    public string Software { get; set; }
 }
 
