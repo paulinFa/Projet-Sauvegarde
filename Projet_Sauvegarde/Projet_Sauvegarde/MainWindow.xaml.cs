@@ -111,7 +111,7 @@ namespace Projet_Sauvegarde
         {
 
             AllConfigBackup.Clear();
-            foreach (SaveTask backup in saveController.listSave)
+            foreach (SaveTask backup in saveController.ListSave)
             {
                
                 AllConfigBackup.Add(backup);
