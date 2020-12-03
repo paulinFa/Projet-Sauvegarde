@@ -1,6 +1,8 @@
 ﻿using Projet_Sauvegarde.Controller;
+using Projet_Sauvegarde.Model;
 using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading;
@@ -14,6 +16,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using System.Linq;
 
 namespace Projet_Sauvegarde
 {
@@ -22,11 +25,22 @@ namespace Projet_Sauvegarde
     /// </summary>
     public partial class MainWindow : Window
     {
+        SaveController saveController;
+        public ObservableCollection<SaveTask> AllConfigBackup { get; set; }
+        public ObservableCollection<SaveTask> AllBackupLaunch { get; set; }
         public MainWindow()
         {
+            
+            DataContext = this;
+            saveController = new SaveController();
+            AllConfigBackup = new ObservableCollection<SaveTask>();
+            AllBackupLaunch = new ObservableCollection<SaveTask>();
+           
             InitializeComponent();
-            //SaveController saveController = new SaveController();
+            UpdateListBackup();
+
         }
+
 
         private void CompleteRadioButton_Checked(object sender, RoutedEventArgs e)
         {
@@ -47,15 +61,15 @@ namespace Projet_Sauvegarde
         {
             if(CompleteRadio.IsChecked == true)
             {
-                //AddOneSave("complete", TextNameOfSave.Text, TextSourcePath.Text, TextDestinationPath.Text);
+                saveController.AddOneSave("complete", TextNameOfSave.Text, TextSourcePath.Text, TextDestinationPath.Text, TextLastComplete.Text);
                 MessageBox.Show("The Complete Backup has been added to the list");
                 UpdateListBackup();
             }
             else if (DiffRadio.IsChecked == true)
             {
-                //AddOneSave("differential", TextNameOfSave.Text, TextSourcePath.Text, TextDestinationPath.Text, TextLastComplete.Text);
+                saveController.AddOneSave("differential", TextNameOfSave.Text, TextSourcePath.Text, TextDestinationPath.Text, TextLastComplete.Text);
                 MessageBox.Show("The Differential Backup has been added to the list");
-                UpdateListBackup2();
+                UpdateListBackup();
             }
             else
             {
@@ -66,37 +80,46 @@ namespace Projet_Sauvegarde
         private void StartSaveButton_Click(object sender, RoutedEventArgs e)
         {
 
+            //saveController.StartMulitpleSaves(AllBackupLaunch.ToList<SaveTask>);
+            
         }
 
       
 
         private void DeleteConfigButton_Click(object sender, RoutedEventArgs e)
         {
+            
+            //saveController.DeleteSaves(AllConfigList.SelectedItems);
+        }
 
+
+        private void TakeConfigButton_Click(object sender, RoutedEventArgs e)
+        {
+            
+            foreach(SaveTask LaunchBackup in AllConfigList.SelectedItems)
+            {
+                AllBackupLaunch.Add(LaunchBackup);
+            }
+        }
+
+        private void DeleteQueueButton_Click(object sender, RoutedEventArgs e)
+        {
+            AllBackupLaunch.Clear();
         }
 
         public void UpdateListBackup()
         {
-            //ListBackup.Items.Clear();
-            Thread.Sleep(100);
-            /*foreach (saveTask backup in listSave)
+
+            AllConfigBackup.Clear();
+            foreach (SaveTask backup in saveController.listSave)
             {
-                ListBackup.Items.Add(new MyItem { typeBackup = backup.Type, nameBackup = backup.Name, sourceBackup = backup.SoucePath, destinationBackup = backup.DestinationPath, lastCompleteBackup = backup.CompleteSavePath });
-            }*/
-            ListBackup.Items.Add(new MyItem { typeBackup = "Complete", nameBackup = "FirstTry", sourceBackup = "Source", destinationBackup = "Destination", lastCompleteBackup = "" });
-            
-        }
-        public void UpdateListBackup2()
-        {
-            //ListBackup.Items.Clear();
-            Thread.Sleep(100);
-            /*foreach (saveTask backup in listSave)
-            {
-                ListBackup.Items.Add(new MyItem { typeBackup = backup.Type, nameBackup = backup.Name, sourceBackup = backup.SoucePath, destinationBackup = backup.DestinationPath, lastCompleteBackup = backup.CompleteSavePath });
-            }*/
-            ListBackup.Items.Add(new MyItem { typeBackup = "differential", nameBackup = "FirstTry", sourceBackup = "Source", destinationBackup = "Destination", lastCompleteBackup = "fa" });
+               
+                AllConfigBackup.Add(backup);
+            }
 
         }
+        
+        
 
         public class MyItem
         {
@@ -107,5 +130,6 @@ namespace Projet_Sauvegarde
             public string lastCompleteBackup { get; set; }
 
         }
+
     }
 }
