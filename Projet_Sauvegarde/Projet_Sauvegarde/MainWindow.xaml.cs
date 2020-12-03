@@ -24,7 +24,7 @@ namespace Projet_Sauvegarde
     /// <summary>
     /// Interaction logic for MainWindow.xaml
     /// </summary>
-    public partial class MainWindow : Window
+    public partial class MainWindow : Window //Method who initialize components
     {
         SaveController saveController;
         public ObservableCollection<SaveTask> AllConfigBackup { get; set; }
@@ -53,19 +53,19 @@ namespace Projet_Sauvegarde
            
         }
 
-        private void QuitAppButton_Click(object sender, RoutedEventArgs e)
+        private void QuitAppButton_Click(object sender, RoutedEventArgs e) //Method who shutdown the app on click
         {
             System.Environment.Exit(0);
         }
 
-        public void PopupErrorProcess(string message)
+        public void PopupErrorProcess(string message) //Method who show pop-up when there is an error
         {
             MessageBox.Show(message);
         }
-        private void AddBackupButton_Click(object sender, RoutedEventArgs e)
+        private void AddBackupButton_Click(object sender, RoutedEventArgs e) //Method who add one backup configuration on the config file on click
         {
 
-           
+            //Check if there is an error in the insertion of the values
             if (TextNameOfSave.Text.Length == 0)
             {
                 MessageBox.Show("Enter a Valid Name");
@@ -87,8 +87,8 @@ namespace Projet_Sauvegarde
                 return;
             }
 
-            
 
+            //Look at the type of backup adds the corresponding configuration
 
             if (CompleteRadio.IsChecked == true)
             {
@@ -117,7 +117,7 @@ namespace Projet_Sauvegarde
             TextLastComplete.Text = String.Empty;
         }
 
-        private void StartSaveButton_Click(object sender, RoutedEventArgs e)
+        private void StartSaveButton_Click(object sender, RoutedEventArgs e) //Method who start all the backup on click
         {
 
             saveController.StartMultipleSaves(AllBackupLaunch.ToList());
@@ -126,7 +126,7 @@ namespace Projet_Sauvegarde
 
       
 
-        private void DeleteConfigButton_Click(object sender, RoutedEventArgs e)
+        private void DeleteConfigButton_Click(object sender, RoutedEventArgs e) //Method who Delete one backup configuration on click
         {
             var allConfig = AllConfigList.SelectedItems;
             List<SaveTask> listSaveTask = new List<SaveTask>();
@@ -139,7 +139,7 @@ namespace Projet_Sauvegarde
         }
 
 
-        private void TakeConfigButton_Click(object sender, RoutedEventArgs e)
+        private void TakeConfigButton_Click(object sender, RoutedEventArgs e) //Method who transmits a backup configuration to be executed on click
         {
             
             foreach(SaveTask LaunchBackup in AllConfigList.SelectedItems)
@@ -148,12 +148,12 @@ namespace Projet_Sauvegarde
             }
         }
 
-        private void DeleteQueueButton_Click(object sender, RoutedEventArgs e)
+        private void DeleteQueueButton_Click(object sender, RoutedEventArgs e) //Method who delete all the backup configuration in the queue on click
         {
             AllBackupLaunch.Clear();
         }
 
-        public void UpdateListBackup()
+        public void UpdateListBackup() //Method who update the graphic interface 
         {
 
             AllConfigBackup.Clear();
