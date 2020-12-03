@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Diagnostics;
 using System.IO;
 
 namespace Projet_Sauvegarde.Model
@@ -8,7 +9,6 @@ namespace Projet_Sauvegarde.Model
     /// </summary>
     class DifferentialSave : Save
     {
-
         public string CompleteSavePath { get; set; }
         public string Folder { get; set; }
         /// <summary>
@@ -74,6 +74,11 @@ namespace Projet_Sauvegarde.Model
 
                 FileInfo fiComplete = new FileInfo(CompleteSavePath + destWithoutParents);
                 FileInfo fiSource = new FileInfo(SourcePath + destWithoutParents);
+                bool test = File.Exists(CompleteSavePath + destWithoutParents);
+                DateTime test2= fiComplete.LastWriteTimeUtc;
+                DateTime test3= fiSource.LastWriteTimeUtc;
+
+
 
                 //Verify if file existe in destination or if source file and complete file
                 if (!File.Exists(CompleteSavePath + destWithoutParents) || fiComplete.LastWriteTimeUtc != fiSource.LastWriteTimeUtc)
@@ -81,7 +86,7 @@ namespace Projet_Sauvegarde.Model
 
                     if (Path.GetExtension(dest) == Extension)
                     {
-                        throw new NotImplementedException();
+                        Trace.WriteLine(Extension + " is detected");
                     }
                     else
                     {
