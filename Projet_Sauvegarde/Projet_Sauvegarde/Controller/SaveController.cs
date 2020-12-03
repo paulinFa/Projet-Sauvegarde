@@ -15,7 +15,7 @@ namespace Projet_Sauvegarde.Controller
         public SaveController()
         {
             //IView view = new ConsoleView();
-            parameterFile.GetSaveInformation();
+            parameterFile.GetAllInformation();
             parameterFile.Update();
             this.listSave = parameterFile.SaveTasksList;
             this.extension = parameterFile.Extension;

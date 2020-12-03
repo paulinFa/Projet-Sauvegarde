@@ -17,6 +17,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using System.Linq;
+using System.IO;
 
 namespace Projet_Sauvegarde
 {
@@ -59,7 +60,33 @@ namespace Projet_Sauvegarde
 
         private void AddBackupButton_Click(object sender, RoutedEventArgs e)
         {
-            if(CompleteRadio.IsChecked == true)
+
+           
+            if (TextNameOfSave.Text.Length == 0)
+            {
+                MessageBox.Show("Enter a Valid Name");
+                return;
+            }
+
+            
+
+            if (!Directory.Exists(TextSourcePath.Text))
+            {
+                MessageBox.Show("The Source Path does not exist");
+                return;
+            }
+            
+
+            if (!Directory.Exists(TextDestinationPath.Text))
+            {
+                MessageBox.Show("The Destination Path does not exist");
+                return;
+            }
+
+            
+
+
+            if (CompleteRadio.IsChecked == true)
             {
                 saveController.AddOneSave("complete", TextNameOfSave.Text, TextSourcePath.Text, TextDestinationPath.Text, TextLastComplete.Text);
                 MessageBox.Show("The Complete Backup has been added to the list");
@@ -67,6 +94,11 @@ namespace Projet_Sauvegarde
             }
             else if (DiffRadio.IsChecked == true)
             {
+                if (!Directory.Exists(TextLastComplete.Text))
+                {
+                    MessageBox.Show("The Path of the Complete Backup does not exist");
+                    return;
+                }
                 saveController.AddOneSave("differential", TextNameOfSave.Text, TextSourcePath.Text, TextDestinationPath.Text, TextLastComplete.Text);
                 MessageBox.Show("The Differential Backup has been added to the list");
                 UpdateListBackup();
