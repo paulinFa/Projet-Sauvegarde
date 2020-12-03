@@ -4,10 +4,25 @@ using System.IO;
 
 namespace Projet_Sauvegarde.Model
 {
+    /// <summary>
+    /// Class to use Statefile
+    /// </summary>
     public class StateFile : FileModel
     {
         JsonFileState dataJsonState = new JsonFileState();
-
+        /// <summary>
+        /// Constructor
+        /// </summary>
+        /// <param name="timestamp">Elapsed time for backup</param>
+        /// <param name="nameOfSave"></param>
+        /// <param name="state">State of save (Active|inactive)</param>
+        /// <param name="eligibleFile">Total Number of file</param>
+        /// <param name="transfertSize"></param>
+        /// <param name="progression">progression in percentage</param>
+        /// <param name="remainingFile">Number of file remaining</param>
+        /// <param name="sizeOfRemainingFile">Size in byte of file remaining</param>
+        /// <param name="sourcePath"></param>
+        /// <param name="destinationPath"></param>
         public StateFile(string timestamp, string nameOfSave, string state, int eligibleFile, int transfertSize, float progression, int remainingFile, int sizeOfRemainingFile, string sourcePath, string destinationPath) //Method where objetcs are used into parameters, then create the StateFile and insert the parameters in it.
         {
             CreateFolderStatus();
@@ -35,8 +50,10 @@ namespace Projet_Sauvegarde.Model
                 TransformToJsonState();
             }
         }
-
-        public void TransformToJsonState() //Method to create the JSON file and insert parameters in it 
+        /// <summary>
+        /// Tranfsorm JsonFileState in json and write in file
+        /// </summary>
+        private void TransformToJsonState() //Method to create the JSON file and insert parameters in it 
         {
 
             string WroteJson = JsonConvert.SerializeObject(dataJsonState, Formatting.Indented); //object to add parameters into the JSON file
@@ -48,7 +65,9 @@ namespace Projet_Sauvegarde.Model
             }
         }
     } // end class StateFile 
-
+    /// <summary>
+    /// Class to transform data in json and after write in file
+    /// </summary>
     class JsonFileState   //class to declare alls objects for the parameters 
     {
 

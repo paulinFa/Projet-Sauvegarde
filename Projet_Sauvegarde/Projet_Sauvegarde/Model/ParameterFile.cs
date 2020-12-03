@@ -8,6 +8,9 @@ using System.Text;
 
 namespace Projet_Sauvegarde.Model
 {
+    /// <summary>
+    /// Class for use parameterFile
+    /// </summary>
     public class ParameterFile : FileModel
     {
         public ParameterJson parameterJson = new ParameterJson();
@@ -21,8 +24,10 @@ namespace Projet_Sauvegarde.Model
             CreateFolder();
             CreateFolderParameter();
         }
-
-        public void CreateFolderParameter()
+        /// <summary>
+        /// Method to create folder if not exist
+        /// </summary>
+        private void CreateFolderParameter()
         {
             DirectoryInfo EasyFolderLog = new DirectoryInfo(@"D:\EasySave\Parameter");
 
@@ -35,12 +40,17 @@ namespace Projet_Sauvegarde.Model
                 EasyFolderLog.Create();
             }
         }
-
-        public void ModifyListSave(List<SaveTask> saveTasks) //Method where objetcs are used into parameters, then create the StateFile and insert the parameters in it.
+        /// <summary>
+        /// Method to modify SaveTask
+        /// </summary>
+        /// <param name="saveTasks">List of SaveTask</param>
+        public void ModifyListSave(List<SaveTask> saveTasks)
         {
             this.SaveTasksList = saveTasks;
         }
-
+        /// <summary>
+        /// Method to update Parameter file
+        /// </summary>
         public void Update()
         {
             if (File.Exists(PathStateFile)) //Verification if PathStateFile is already create
@@ -53,8 +63,10 @@ namespace Projet_Sauvegarde.Model
                 TransformToJsonState();
             }
         }
-
-        public void TransformToJsonState() //Method to create the JSON file and insert parameters in it 
+        /// <summary>
+        /// Méthod to transform class ParameterJson to json and write in file
+        /// </summary>
+        private void TransformToJsonState() //Method to create the JSON file and insert parameters in it 
         {
             parameterJson.SaveTasksList = this.SaveTasksList;
             parameterJson.Extension = this.Extension;
@@ -65,7 +77,9 @@ namespace Projet_Sauvegarde.Model
                 tw.Close();
             }
         }
-
+        /// <summary>
+        /// Méthod to update parameter in this class from data in file
+        /// </summary>
         public void GetAllInformation()
         {
             if (File.Exists(pathParameterFile)) //Verification if PathStateFile is already create
@@ -108,7 +122,10 @@ namespace Projet_Sauvegarde.Model
         }
     }
 }
-    public class ParameterJson
+/// <summary>
+/// Class to transform data in json and after write in file
+/// </summary>
+public class ParameterJson
 {
     public string Extension { get; set; }
     public List<SaveTask> SaveTasksList { get; set; }
