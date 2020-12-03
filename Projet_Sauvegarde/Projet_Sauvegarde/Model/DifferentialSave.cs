@@ -58,7 +58,7 @@ namespace Projet_Sauvegarde.Model
         /// </summary>
         /// <param name="sourcePath"></param>
         /// <param name="destinationPath"></param>
-        public void StartCopy(string sourcePath, string destinationPath)
+        private void StartCopy(string sourcePath, string destinationPath)
         {
 
             //Check if directory exist else create

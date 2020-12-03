@@ -52,8 +52,12 @@ namespace Projet_Sauvegarde.Model
 
 
         }
-
-        public void StartCopy(string sourcePath, string destinationPath)
+        /// <summary>
+        /// Start Copy
+        /// </summary>
+        /// <param name="sourcePath"></param>
+        /// <param name="destinationPath"></param>
+        private void StartCopy(string sourcePath, string destinationPath)
         {
             //Check if directory exist else create
             if (!Directory.Exists(destinationPath))
