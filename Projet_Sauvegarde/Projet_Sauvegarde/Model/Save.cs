@@ -22,10 +22,14 @@ namespace Projet_Sauvegarde.Model
 
         public string SourcePath { get; set; }
         public string DestinationPath { get; set; }
-
-        public static long DirSize(string d)
+        /// <summary>
+        /// Méthod to take the size of directory
+        /// </summary>
+        /// <param name="directoryPath">Path of directory</param>
+        /// <returns></returns>
+        public static long DirSize(string directoryPath)
         {
-            System.IO.DirectoryInfo dir = new System.IO.DirectoryInfo(d);
+            System.IO.DirectoryInfo dir = new System.IO.DirectoryInfo(directoryPath);
             long size = 0;
             // Add file sizes.
             FileInfo[] fis = dir.GetFiles();
