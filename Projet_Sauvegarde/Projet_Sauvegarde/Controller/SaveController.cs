@@ -9,18 +9,18 @@ namespace Projet_Sauvegarde.Controller
     public class SaveController
     {
         
-        private List<SaveTask> listSave = new List<SaveTask>();
+        public List<SaveTask> listSave = new List<SaveTask>();
         private ParameterFile parameterFile = new ParameterFile();
         private string extension;
         public SaveController()
         {
-            IView view = new ConsoleView();
+            //IView view = new ConsoleView();
             parameterFile.GetSaveInformation();
             parameterFile.Update();
             this.listSave = parameterFile.SaveTasksList;
             this.extension = parameterFile.Extension;
-            view.setController(this);
-            view.StartingView();
+            //view.setController(this);
+            //view.StartingView();
         }
         //Add save in queue
         public void AddOneSave(string type, string name, string sourcePath, string destinationPath, string completeSavePath = "")
