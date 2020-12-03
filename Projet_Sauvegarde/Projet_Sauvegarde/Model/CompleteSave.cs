@@ -17,7 +17,7 @@ namespace Projet_Sauvegarde.Model
 
             TotalLengthFile = DirSize(SourcePath);
             TotalNumberFile = Directory.GetFiles(SourcePath, "*.*", SearchOption.AllDirectories).Length;
-            Console.WriteLine(SourcePath + " " + TotalLengthFile);
+            
             RemainingNumberFile = TotalNumberFile;
             RemainingLengthFile = TotalLengthFile;
             string folder = DestinationPath + "/" + Name + "_" + DateTime.Now.ToString("MM-dd-yyyy_hh.ss.mm_tt");
@@ -62,7 +62,7 @@ namespace Projet_Sauvegarde.Model
                     {
                         throw new NotImplementedException();
 
-                        //TODO TimeEncryption = 
+                        ///TODO TimeEncryption = 
                     }
                     else
                     {
