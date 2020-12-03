@@ -33,9 +33,18 @@ namespace Projet_Sauvegarde.Controller
             parameterFile.SaveTasksList = this.listSave;
             parameterFile.Update();
         }
-        public void DeleteSave(SaveTask saveTask)
+        public void DeleteSaves(SaveTask[] saveTask)
         {
-            listSave.Remove(saveTask);
+            foreach(SaveTask save in saveTask)
+            {
+                listSave.Remove(save);
+            }
+            parameterFile.SaveTasksList = this.listSave;
+            parameterFile.Update();
+        }
+        public void DeleteSave(SaveTask save)
+        {
+            listSave.Remove(save);
             parameterFile.SaveTasksList = this.listSave;
             parameterFile.Update();
         }
