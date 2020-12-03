@@ -16,16 +16,15 @@ namespace Projet_Sauvegarde.Controller
         private ParameterFile parameterFile = new ParameterFile();
         private string extension;
         private string software;
-        public SaveController()
+        private MainWindow window;
+        public SaveController(MainWindow mainWindow)
         {
-            //IView view = new ConsoleView();
+            this.window = mainWindow;
             parameterFile.GetAllInformation();
             parameterFile.Update();
             this.ListSave = parameterFile.SaveTasksList;
             this.extension = parameterFile.Extension;
             this.software = parameterFile.Software;
-            /*view.setController(this);
-            view.StartingView();*/
         }
         /// <summary>
         /// Add One save to List 
@@ -53,6 +52,10 @@ namespace Projet_Sauvegarde.Controller
             parameterFile.Update();
         }
 
+        /// <summary>
+        /// Delete a list of Save
+        /// </summary>
+        /// <param name="saveTasks">List of save to delete</param>
         public void DeleteSaves(List<SaveTask> saveTasks)
         {
             foreach (SaveTask save in saveTasks)
@@ -71,7 +74,7 @@ namespace Projet_Sauvegarde.Controller
         {
             if (TestProcess())
             {
-                return;
+                window.PopupErrorProcess("Error process " + software + " is running " + "save(s) are stop");
             }
             if (saveTask.Type == "differential")
             {
@@ -93,7 +96,7 @@ namespace Projet_Sauvegarde.Controller
             {
                 if (TestProcess())
                 {
-                    return;
+                    window.PopupErrorProcess("Error process " + software + " is running " + "save(s) are stop");
                 }
                 if (saveTask.Type == "differential")
                 {
@@ -117,7 +120,7 @@ namespace Projet_Sauvegarde.Controller
             {
                 if (TestProcess())
                 {
-                    return;
+                    window.PopupErrorProcess("Error process " + software + " is running " + "save(s) are stop");
                 }
                 if (saveTask.Type == "differential")
                 {

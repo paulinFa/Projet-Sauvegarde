@@ -33,7 +33,7 @@ namespace Projet_Sauvegarde
         {
             
             DataContext = this;
-            saveController = new SaveController();
+            saveController = new SaveController(this);
             AllConfigBackup = new ObservableCollection<SaveTask>();
             AllBackupLaunch = new ObservableCollection<SaveTask>();
            
