@@ -18,17 +18,56 @@ using System.Windows.Navigation;
 using System.Windows.Shapes;
 using System.Linq;
 using System.IO;
+using System.ComponentModel;
 
 namespace Projet_Sauvegarde
 {
     /// <summary>
     /// Interaction logic for MainWindow.xaml
     /// </summary>
-    public partial class MainWindow : Window //Method who initialize components
+    
+    public partial class MainWindow : INotifyPropertyChanged //Method who initialize components
     {
         SaveController saveController;
+        private string _extensionSave;
+        public string ExtensionSave
+        {
+            get { return _extensionSave; }
+            set
+            {
+                if (_extensionSave != value)
+                {
+                    _extensionSave = value;
+                    OnPropertyChanged("ExtensionSave");
+                }
+            }
+        }
+        public event PropertyChangedEventHandler PropertyChanged;
+        public void OnPropertyChanged(string propertyName = null)
+        {
+            if (PropertyChanged != null)
+            {
+                PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+            }
+
+        }
+        private string _processSave;
+        public string ProcessSave
+        {
+            get { return _processSave; }
+            set
+            {
+                if (_processSave != value)
+                {
+                    _processSave = value;
+                    OnPropertyChanged("ProcessSave");
+                }
+            }
+        }
+
         public ObservableCollection<SaveTask> AllConfigBackup { get; set; }
         public ObservableCollection<SaveTask> AllBackupLaunch { get; set; }
+
         public MainWindow()
         {
             
@@ -36,13 +75,17 @@ namespace Projet_Sauvegarde
             saveController = new SaveController(this);
             AllConfigBackup = new ObservableCollection<SaveTask>();
             AllBackupLaunch = new ObservableCollection<SaveTask>();
+            
+            
            
             InitializeComponent();
             UpdateListBackup();
-
+            UpdateExtension();
+            UpdateProcess();
+            
         }
 
-
+       
         private void CompleteRadioButton_Checked(object sender, RoutedEventArgs e)
         {
           
@@ -167,15 +210,7 @@ namespace Projet_Sauvegarde
         
         
 
-        public class MyItem
-        {
-            public string typeBackup { get; set; }
-            public string nameBackup { get; set; }
-            public string sourceBackup { get; set; }
-            public string destinationBackup { get; set; }
-            public string lastCompleteBackup { get; set; }
 
-        }
 
         private void EnglishButton_Click(object sender, RoutedEventArgs e) //Method who change the language in English
         {
@@ -186,5 +221,31 @@ namespace Projet_Sauvegarde
         {
 
         }
+
+        private void SaveExtension_Click(object sender, RoutedEventArgs e)
+        {
+            saveController.ModifyExtension(TextExtEncrypt.Text);
+            UpdateExtension();
+            TextExtEncrypt.Clear();
+        }
+        public void UpdateExtension ()
+        {
+            ExtensionSave = "";
+            ExtensionSave = saveController.Extension;
+            
+        }
+
+        private void SaveProcess_Click(object sender, RoutedEventArgs e)
+        {
+            saveController.ModifySoftware(ExecutableText.Text);
+            UpdateProcess();
+            ExecutableText.Clear();
+        }
+        public void UpdateProcess()
+        {
+            ProcessSave = "";
+            ProcessSave = saveController.Software;
+        }
+
     }
 }
