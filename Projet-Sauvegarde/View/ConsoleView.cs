@@ -1,12 +1,15 @@
 ﻿using Projet_Sauvegarde.Controller;
 using System;
 using System.IO;
+using System.Reflection;
+using System.Resources;
 
 namespace Projet_Sauvegarde.View
 {
 
     class ConsoleView : IView
     {
+        private ResourceManager rm = fr.ResourceManager;
         private SaveController saveController;
         public void setController(SaveController controller)
         {
@@ -14,55 +17,75 @@ namespace Projet_Sauvegarde.View
         }
         public void StartingView()
         {
-            Console.WriteLine("Welcome in EasySafe, a program to save your files");
+            Console.WriteLine("Choice your language (english|francais)");
+            string i = Console.ReadLine();
+            if (i == "francais")
+            {
+                
+                rm = fr.ResourceManager;
+                Welcom();
+            }
+            else if (i=="english")
+            {
+                rm = en.ResourceManager;
+                Welcom();
+            }
+            else
+            {
+                StartingView();
+            }
+        }
+        public void Welcom()
+        {
+            Console.WriteLine(rm.GetString("welcom"));
             AskUser();
         }
         private void AskUser()
         {
-            Console.WriteLine("Do you want to make a save complete,differential or exit ? (complete|differential|exit)");
+            Console.WriteLine(rm.GetString("typeSave"));
             string i = Console.ReadLine();
-            if (i == "complete")
+            if (i == rm.GetString("complete"))
             {
                 InputCompleteToQueue();
             }
-            else if (i == "differential")
+            else if (i == rm.GetString("differential"))
             {
                 InputDifferentialToQueue();
             }
-            else if (i == "exit")
+            else if (i == rm.GetString("exit"))
             {
-                Console.WriteLine("Bye bye");
+                Console.WriteLine(rm.GetString("byeBye"));
             }
             else
             {
-                Console.WriteLine("Wrong input (complete|differential|exit)");
+                Console.WriteLine(rm.GetString("Entrez incorrecte (complète|differentiellle|quitter)"));
                 AskUser();
             }
         }
         private void InputCompleteToQueue()
         {
-            Console.WriteLine("Enter a name for the complete backup");
+            Console.WriteLine(rm.GetString("enterNameCompleteBackup"));
             string name = Console.ReadLine();
 
             while (name.Length == 0)
             {
-                Console.WriteLine("Wrong input");
+                Console.WriteLine(rm.GetString("wrongInputName"));
                 name = Console.ReadLine();
             }
-            Console.WriteLine("Enter a source Path");
+            Console.WriteLine(rm.GetString("enterSourcePath"));
             string source = Console.ReadLine();
 
             while (!Directory.Exists(source))
             {
-                Console.WriteLine("Wrong source input");
+                Console.WriteLine(rm.GetString("wrongInputSource"));
                 source = Console.ReadLine();
             }
-            Console.WriteLine("Enter a destination Path");
+            Console.WriteLine(rm.GetString("enterDestinationPath"));
             string destination = Console.ReadLine();
 
             while (!Directory.Exists(destination))
             {
-                Console.WriteLine("Wrong destination input");
+                Console.WriteLine(rm.GetString("wrongInputDestination"));
                 destination = Console.ReadLine();
             }
 
@@ -73,37 +96,37 @@ namespace Projet_Sauvegarde.View
         }
         private void InputDifferentialToQueue()
         {
-            Console.WriteLine("Enter a name for the differential backup");
+            Console.WriteLine(rm.GetString("enterNameDifferentialBackup"));
             string name = Console.ReadLine();
 
             while (name.Length == 0)
             {
-                Console.WriteLine("Wrong input");
+                Console.WriteLine(rm.GetString("wrongInputName"));
                 name = Console.ReadLine();
             }
-            Console.WriteLine("Enter a source Path");
+            Console.WriteLine(rm.GetString("enterSourcePath"));
             string source = Console.ReadLine();
 
             while (!Directory.Exists(source))
             {
-                Console.WriteLine("Wrong source input");
+                Console.WriteLine(rm.GetString("wrongInputSource"));
                 source = Console.ReadLine();
             }
-            Console.WriteLine("Enter a destination Path");
+            Console.WriteLine(rm.GetString("enterDestinationPath"));
             string destination = Console.ReadLine();
 
             while (!Directory.Exists(destination))
             {
-                Console.WriteLine("Wrong destination input");
+                Console.WriteLine(rm.GetString("wrongInputDestination"));
                 destination = Console.ReadLine();
             }
 
-            Console.WriteLine("Enter the path to the full backup");
+            Console.WriteLine(rm.GetString("enterCompletePath"));
             string complete = Console.ReadLine();
 
             while (!Directory.Exists(complete))
             {
-                Console.WriteLine("Wrong complete input");
+                Console.WriteLine(rm.GetString("wrongCompletePath"));
                 complete = Console.ReadLine();
             }
 
@@ -114,19 +137,19 @@ namespace Projet_Sauvegarde.View
         }
         private void StartSave()
         {
-            Console.WriteLine("Do you want to start your backup(s) or add a new one? (add|start) \nYour status and log files are stored in the EasySave folder on your disk D/EasySave");
+            Console.WriteLine(rm.GetString("chooseBetwwenAddOrStart"));
             string choice = Console.ReadLine();
-            if (choice == "add")
+            if (choice == rm.GetString("add"))
             {
                 AskUser();
             }
-            else if (choice == "start")
+            else if (choice == rm.GetString("start"))
             {
                 saveController.StartSave();
             }
             else
             {
-                Console.WriteLine("Wrong input (add|start)");
+                Console.WriteLine(rm.GetString("wrongInputAddOrStart"));
                 StartSave();
             }
         }

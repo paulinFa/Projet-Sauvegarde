@@ -45,3 +45,6 @@ D:\Bureau\Projet C#\Projet-Sauvegarde\Projet-Sauvegarde\bin\Debug\netcoreapp3.1\
 D:\Bureau\Projet C#\Projet-Sauvegarde\Projet-Sauvegarde\obj\Debug\netcoreapp3.1\Projet-Sauvegarde.csproj.CopyComplete
 C:\Users\flori\Documents\GitHub\Projet-Sauvegarde\Projet-Sauvegarde\bin\Debug\netcoreapp3.1\Newtonsoft.Json.dll
 D:\Bureau\Projet C#\Projet-Sauvegarde\Projet-Sauvegarde\bin\Debug\netcoreapp3.1\Newtonsoft.Json.dll
+D:\Bureau\Projet C#\Projet-Sauvegarde\Projet-Sauvegarde\obj\Debug\netcoreapp3.1\Projet_Sauvegarde.View.en.resources
+D:\Bureau\Projet C#\Projet-Sauvegarde\Projet-Sauvegarde\obj\Debug\netcoreapp3.1\Projet_Sauvegarde.View.fr.resources
+D:\Bureau\Projet C#\Projet-Sauvegarde\Projet-Sauvegarde\obj\Debug\netcoreapp3.1\Projet-Sauvegarde.csproj.GenerateResource.cache
