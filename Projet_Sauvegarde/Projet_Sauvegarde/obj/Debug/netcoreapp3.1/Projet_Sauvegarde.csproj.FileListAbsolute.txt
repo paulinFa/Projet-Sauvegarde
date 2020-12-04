@@ -18,7 +18,6 @@ D:\Bureau\2.0 bis\Projet_Sauvegarde\Projet_Sauvegarde\obj\Debug\netcoreapp3.1\Pr
 D:\Bureau\2.0 bis\Projet_Sauvegarde\Projet_Sauvegarde\obj\Debug\netcoreapp3.1\Projet_Sauvegarde.pdb
 D:\Bureau\2.0 bis\Projet_Sauvegarde\Projet_Sauvegarde\obj\Debug\netcoreapp3.1\Projet_Sauvegarde.genruntimeconfig.cache
 C:\Users\flori\source\repos\paulinFa\Projet-Sauvegarde\Projet_Sauvegarde\Projet_Sauvegarde\obj\Debug\netcoreapp3.1\Projet_Sauvegarde.csprojAssemblyReference.cache
-C:\Users\flori\source\repos\paulinFa\Projet-Sauvegarde\Projet_Sauvegarde\Projet_Sauvegarde\obj\Debug\netcoreapp3.1\MainWindow.g.cs
 C:\Users\flori\source\repos\paulinFa\Projet-Sauvegarde\Projet_Sauvegarde\Projet_Sauvegarde\obj\Debug\netcoreapp3.1\App.g.cs
 C:\Users\flori\source\repos\paulinFa\Projet-Sauvegarde\Projet_Sauvegarde\Projet_Sauvegarde\obj\Debug\netcoreapp3.1\Projet_Sauvegarde_MarkupCompile.cache
 C:\Users\flori\source\repos\paulinFa\Projet-Sauvegarde\Projet_Sauvegarde\Projet_Sauvegarde\obj\Debug\netcoreapp3.1\Projet_Sauvegarde.dll
@@ -30,7 +29,6 @@ C:\Users\flori\source\repos\paulinFa\Projet-Sauvegarde\Projet_Sauvegarde\Projet_
 C:\Users\flori\source\repos\paulinFa\Projet-Sauvegarde\Projet_Sauvegarde\Projet_Sauvegarde\bin\Debug\netcoreapp3.1\Projet_Sauvegarde.dll
 C:\Users\flori\source\repos\paulinFa\Projet-Sauvegarde\Projet_Sauvegarde\Projet_Sauvegarde\bin\Debug\netcoreapp3.1\Projet_Sauvegarde.pdb
 C:\Users\flori\source\repos\paulinFa\Projet-Sauvegarde\Projet_Sauvegarde\Projet_Sauvegarde\bin\Debug\netcoreapp3.1\Newtonsoft.Json.dll
-C:\Users\flori\source\repos\paulinFa\Projet-Sauvegarde\Projet_Sauvegarde\Projet_Sauvegarde\obj\Debug\netcoreapp3.1\MainWindow.baml
 C:\Users\flori\source\repos\paulinFa\Projet-Sauvegarde\Projet_Sauvegarde\Projet_Sauvegarde\obj\Debug\netcoreapp3.1\Projet_Sauvegarde.g.resources
 C:\Users\flori\source\repos\paulinFa\Projet-Sauvegarde\Projet_Sauvegarde\Projet_Sauvegarde\obj\Debug\netcoreapp3.1\Projet_Sauvegarde.AssemblyInfoInputs.cache
 C:\Users\flori\source\repos\paulinFa\Projet-Sauvegarde\Projet_Sauvegarde\Projet_Sauvegarde\obj\Debug\netcoreapp3.1\Projet_Sauvegarde.AssemblyInfo.cs
@@ -59,3 +57,5 @@ D:\Bureau\Projet C#\Projet-Sauvegarde\Projet_Sauvegarde\Projet_Sauvegarde\obj\De
 D:\Bureau\Projet C#\Projet-Sauvegarde\Projet_Sauvegarde\Projet_Sauvegarde\obj\Debug\netcoreapp3.1\Projet_Sauvegarde.pdb
 D:\Bureau\Projet C#\Projet-Sauvegarde\Projet_Sauvegarde\Projet_Sauvegarde\obj\Debug\netcoreapp3.1\Projet_Sauvegarde.genruntimeconfig.cache
 C:\Users\flori\source\repos\paulinFa\Projet-Sauvegarde\Projet_Sauvegarde\Projet_Sauvegarde\obj\Debug\netcoreapp3.1\Projet_Sauvegarde_MarkupCompile.lref
+C:\Users\flori\source\repos\paulinFa\Projet-Sauvegarde\Projet_Sauvegarde\Projet_Sauvegarde\obj\Debug\netcoreapp3.1\View\MainWindow.g.cs
+C:\Users\flori\source\repos\paulinFa\Projet-Sauvegarde\Projet_Sauvegarde\Projet_Sauvegarde\obj\Debug\netcoreapp3.1\View\MainWindow.baml
