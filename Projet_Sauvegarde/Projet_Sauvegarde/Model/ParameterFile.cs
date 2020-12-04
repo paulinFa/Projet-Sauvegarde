@@ -70,6 +70,7 @@ namespace Projet_Sauvegarde.Model
         {
             parameterJson.SaveTasksList = this.SaveTasksList;
             parameterJson.Extension = this.Extension;
+            parameterJson.Software = this.Software;
             string WroteJson = JsonConvert.SerializeObject(parameterJson, Formatting.Indented); //object to add parameters into the JSON file
             using (var tw = new StreamWriter(pathParameterFile, false))
             {

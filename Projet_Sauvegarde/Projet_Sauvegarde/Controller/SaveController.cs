@@ -75,7 +75,7 @@ namespace Projet_Sauvegarde.Controller
             {
                 window.PopupErrorProcess("Error process " + software + " is running " + "save(s) are stop");
             }
-            if (saveTask.Type == "differential")
+            else if (saveTask.Type == "differential")
             {
                 DifferentialSave diff = new DifferentialSave();
                 diff.CopyFolder(saveTask, extension);
@@ -97,7 +97,7 @@ namespace Projet_Sauvegarde.Controller
                 {
                     window.PopupErrorProcess("Error process " + software + " is running " + "save(s) are stop");
                 }
-                if (saveTask.Type == "differential")
+                else if (saveTask.Type == "differential")
                 {
                     DifferentialSave diff = new DifferentialSave();
                     diff.CopyFolder(saveTask, extension);
@@ -121,7 +121,7 @@ namespace Projet_Sauvegarde.Controller
                 {
                     window.PopupErrorProcess("Error process " + software + " is running " + "save(s) are stop");
                 }
-                if (saveTask.Type == "differential")
+                else if (saveTask.Type == "differential")
                 {
                     DifferentialSave diff = new DifferentialSave();
                     diff.CopyFolder(saveTask, extension);
@@ -144,6 +144,26 @@ namespace Projet_Sauvegarde.Controller
                 return false;
             else
                 return true;
+        }
+        /// <summary>
+        /// Modify extension from controller and parameterFile
+        /// </summary>
+        /// <param name="extension">Extension of file you want to crypt</param>
+        public void ModifyExtension(string extension)
+        {
+            this.extension = extension;
+            parameterFile.Extension = this.extension;
+            parameterFile.Update();
+        }
+        /// <summary>
+        /// Modify software from controller and parameterFile
+        /// </summary>
+        /// <param name="software">Process you want to check if is running bettewen saves</param>
+        public void ModifySoftware(string software)
+        {
+            this.software = software;
+            parameterFile.Software = this.software;
+            parameterFile.Update();
         }
     }
 }
