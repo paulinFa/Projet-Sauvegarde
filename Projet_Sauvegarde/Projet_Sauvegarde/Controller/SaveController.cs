@@ -12,9 +12,9 @@ namespace Projet_Sauvegarde.Controller
     public class SaveController
     {
         public List<SaveTask> ListSave { get; set; }
+        public string Extension { get; set; }
+        public string Software { get; set; }
         private ParameterFile parameterFile = new ParameterFile();
-        private string extension;
-        private string software;
         private MainWindow window;
         public SaveController(MainWindow mainWindow)
         {
@@ -22,8 +22,8 @@ namespace Projet_Sauvegarde.Controller
             parameterFile.GetAllInformation();
             parameterFile.Update();
             this.ListSave = parameterFile.SaveTasksList;
-            this.extension = parameterFile.Extension;
-            this.software = parameterFile.Software;
+            this.Extension = parameterFile.Extension;
+            this.Software = parameterFile.Software;
         }
         /// <summary>
         /// Add One save to List 
@@ -73,17 +73,17 @@ namespace Projet_Sauvegarde.Controller
         {
             if (TestProcess())
             {
-                window.PopupErrorProcess("Error process " + software + " is running " + "save(s) are stop");
+                window.PopupErrorProcess("Error process " + Software + " is running " + "save(s) are stop");
             }
             else if (saveTask.Type == "differential")
             {
                 DifferentialSave diff = new DifferentialSave();
-                diff.CopyFolder(saveTask, extension);
+                diff.CopyFolder(saveTask, Extension);
             }
             else if (saveTask.Type == "complete")
             {
                 CompleteSave complete = new CompleteSave();
-                complete.CopyFolder(saveTask, extension);
+                complete.CopyFolder(saveTask, Extension);
             }
         }
         /// <summary>
@@ -95,17 +95,17 @@ namespace Projet_Sauvegarde.Controller
             {
                 if (TestProcess())
                 {
-                    window.PopupErrorProcess("Error process " + software + " is running " + "save(s) are stop");
+                    window.PopupErrorProcess("Error process " + Software + " is running " + "save(s) are stop");
                 }
                 else if (saveTask.Type == "differential")
                 {
                     DifferentialSave diff = new DifferentialSave();
-                    diff.CopyFolder(saveTask, extension);
+                    diff.CopyFolder(saveTask, Extension);
                 }
                 else if (saveTask.Type == "complete")
                 {
                     CompleteSave complete = new CompleteSave();
-                    complete.CopyFolder(saveTask, extension);
+                    complete.CopyFolder(saveTask, Extension);
                 }
             }
         }
@@ -119,17 +119,17 @@ namespace Projet_Sauvegarde.Controller
             {
                 if (TestProcess())
                 {
-                    window.PopupErrorProcess("Error process " + software + " is running " + "save(s) are stop");
+                    window.PopupErrorProcess("Error process " + Software + " is running " + "save(s) are stop");
                 }
                 else if (saveTask.Type == "differential")
                 {
                     DifferentialSave diff = new DifferentialSave();
-                    diff.CopyFolder(saveTask, extension);
+                    diff.CopyFolder(saveTask, Extension);
                 }
                 else if (saveTask.Type == "complete")
                 {
                     CompleteSave complete = new CompleteSave();
-                    complete.CopyFolder(saveTask, extension);
+                    complete.CopyFolder(saveTask, Extension);
                 }
             }
         }
@@ -139,7 +139,7 @@ namespace Projet_Sauvegarde.Controller
         /// <returns>Return false if software is not running</returns>
         public bool TestProcess()
         {
-            Process[] pname = Process.GetProcessesByName(software);
+            Process[] pname = Process.GetProcessesByName(Software);
             if (pname.Length == 0)
                 return false;
             else
@@ -151,8 +151,8 @@ namespace Projet_Sauvegarde.Controller
         /// <param name="extension">Extension of file you want to crypt</param>
         public void ModifyExtension(string extension)
         {
-            this.extension = extension;
-            parameterFile.Extension = this.extension;
+            this.Extension = extension;
+            parameterFile.Extension = this.Extension;
             parameterFile.Update();
         }
         /// <summary>
@@ -161,8 +161,8 @@ namespace Projet_Sauvegarde.Controller
         /// <param name="software">Process you want to check if is running bettewen saves</param>
         public void ModifySoftware(string software)
         {
-            this.software = software;
-            parameterFile.Software = this.software;
+            this.Software = software;
+            parameterFile.Software = this.Software;
             parameterFile.Update();
         }
     }
