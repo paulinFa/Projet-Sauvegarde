@@ -177,5 +177,14 @@ namespace Projet_Sauvegarde
 
         }
 
+        private void EnglishButton_Click(object sender, RoutedEventArgs e) //Method who change the language in English
+        {
+
+        }
+
+        private void FranchButton_Click(object sender, RoutedEventArgs e) //Method who change the language in French
+        {
+
+        }
     }
 }

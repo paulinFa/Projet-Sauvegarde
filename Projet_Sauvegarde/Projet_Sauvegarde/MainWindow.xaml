@@ -7,11 +7,11 @@
         x:Name="rootWindows"
         mc:Ignorable="d"
         ResizeMode="NoResize"
-        Title="MainWindow" Height="497" Width="1309">
+        Title="MainWindow" Height="585" Width="1364">
     <Grid Margin="0,0,10,8">
         <RadioButton x:Name="CompleteRadio" Content="Complete" HorizontalAlignment="Left" Margin="40,29,0,0" VerticalAlignment="Top" Checked="CompleteRadioButton_Checked"/>
         <RadioButton x:Name="DiffRadio" Content="Differential" HorizontalAlignment="Left" Margin="152,29,0,0" VerticalAlignment="Top" Checked="DiffRadioButton_Checked_1"/>
-        <Button x:Name="QuitAppButton" Content="Quit" HorizontalAlignment="Left" Margin="26,372,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.232,0.616" Width="38" Click="QuitAppButton_Click"/>
+        <Button x:Name="QuitAppButton" Content="Quit" HorizontalAlignment="Left" Margin="24,517,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.232,0.616" Width="38" Click="QuitAppButton_Click"/>
         <TextBox x:Name="TextNameOfSave" HorizontalAlignment="Left" Margin="40,114,0,0" TextWrapping="NoWrap" VerticalAlignment="Top" Width="151" Height="22"/>
         <TextBox x:Name="TextSourcePath" HorizontalAlignment="Left" Margin="40,172,0,0" TextWrapping="NoWrap" VerticalAlignment="Top" Width="151" Height="22"/>
         <Label Content="Enter Name of Backup : " HorizontalAlignment="Left" Margin="40,88,0,0" VerticalAlignment="Top"/>
@@ -19,17 +19,17 @@
         <Label Content="Enter Destination Path : " HorizontalAlignment="Left" Margin="40,199,0,0" VerticalAlignment="Top"/>
         <TextBox x:Name="TextDestinationPath" HorizontalAlignment="Left" Margin="40,230,0,0" TextWrapping="NoWrap" VerticalAlignment="Top" Width="151" Height="23"/>
         <Button x:Name="AddBackupButton" Content="Add Backup" HorizontalAlignment="Left" Margin="40,327,0,0" VerticalAlignment="Top" Width="90" Click="AddBackupButton_Click"/>
-        <Button x:Name="StartSaveButton" Content="Start " HorizontalAlignment="Left" Margin="1196,412,0,0" VerticalAlignment="Top" Width="39" Click="StartSaveButton_Click" Background="#FF88E41A"/>
+        <Button x:Name="StartSaveButton" Content="Start " HorizontalAlignment="Left" Margin="1214,517,0,0" VerticalAlignment="Top" Width="39" Click="StartSaveButton_Click" Background="#FF88E41A"/>
 
-        <Button x:Name="DeleteConfigButton" Content="Delete Config" HorizontalAlignment="Left" Margin="372,412,0,0" VerticalAlignment="Top" Click="DeleteConfigButton_Click" Background="#FFE82A2A"/>
+        <Button x:Name="DeleteConfigButton" Content="Delete Config" HorizontalAlignment="Left" Margin="372,400,0,0" VerticalAlignment="Top" Click="DeleteConfigButton_Click" Background="#FFE82A2A"/>
         <Label Content="If Differential, Enter Name of Complete Backup :" HorizontalAlignment="Left" Margin="40,258,0,0" VerticalAlignment="Top"/>
         <TextBox x:Name="TextLastComplete" HorizontalAlignment="Left" Margin="40,289,0,0" TextWrapping="NoWrap" VerticalAlignment="Top" Width="151" Height="23"/>
         <Label Content="Type Of Save : " HorizontalAlignment="Left" Margin="14,0,0,0" VerticalAlignment="Top" FontWeight="Bold" FontSize="14"/>
         <Label Content="Backup Info :" HorizontalAlignment="Left" Margin="14,68,0,0" VerticalAlignment="Top" FontWeight="Bold" FontSize="14"/>
         <Label Content="All Config Backup : " HorizontalAlignment="Left" Margin="350,10,0,0" VerticalAlignment="Top" FontWeight="Bold"/>
         <Label Content="Backup to be Launched :" HorizontalAlignment="Left" Margin="821,14,0,0" VerticalAlignment="Top" FontWeight="Bold"/>
-        <Button x:Name="TakeConfigButton" Content="Take Config" HorizontalAlignment="Left" Margin="675,412,0,0" VerticalAlignment="Top" Click="TakeConfigButton_Click" Background="#FFF5E32E"/>
-        <ScrollViewer Margin="348,41,486,81" Width="450" Height="350">
+        <Button x:Name="TakeConfigButton" Content="Take Config" HorizontalAlignment="Left" Margin="674,400,0,0" VerticalAlignment="Top" Click="TakeConfigButton_Click" Background="#FFF5E32E"/>
+        <ScrollViewer Margin="334,41,550,170" Height="350">
             <DataGrid  x:Name="AllConfigList" AutoGenerateColumns="False" IsReadOnly="True" ItemsSource="{Binding Path=AllConfigBackup}">
                 <DataGrid.Columns>
                     <DataGridTextColumn Binding="{Binding Type}"  Header="Type" Width="70"/>
@@ -40,7 +40,7 @@
                 </DataGrid.Columns>
             </DataGrid>
         </ScrollViewer>
-        <ScrollViewer x:Name="BackupLaunch" Margin="821,42,28,81" Width="450" Height="350">
+        <ScrollViewer x:Name="BackupLaunch" Margin="824,41,71,170" Height="350">
             <DataGrid  x:Name="BackupListLaunch" AutoGenerateColumns="False" IsReadOnly="True" ItemsSource="{Binding AllBackupLaunch}">
                 <DataGrid.Columns>
                     <DataGridTextColumn Binding="{Binding Type}"  Header="Type" Width="70"/>
@@ -51,7 +51,18 @@
                 </DataGrid.Columns>
             </DataGrid>
         </ScrollViewer>
-        <Button x:Name="DeleteQueueButton" Content="Delete Queue" HorizontalAlignment="Left" Margin="895,412,0,0" VerticalAlignment="Top" Click="DeleteQueueButton_Click" Background="#FFCF0F0F"/>
+        <Button x:Name="DeleteQueueButton" Content="Delete Queue" HorizontalAlignment="Left" Margin="835,400,0,0" VerticalAlignment="Top" Click="DeleteQueueButton_Click" Background="#FFCF0F0F"/>
+        <Button x:Name="EnglishButton" HorizontalAlignment="Left" Margin="85,521,0,0" VerticalAlignment="Top" Width="19" Click="EnglishButton_Click" Height="12" RenderTransformOrigin="0.561,0.559">
+            <Image Source="Pictures\engflag.jpg" Stretch="Uniform" />
+        </Button>
+
+        <Button x:Name="FranchButton"  HorizontalAlignment="Left" Margin="130,521,0,0" VerticalAlignment="Top" Width="19" Height="12" Click="FranchButton_Click">
+            <Image Source="Pictures\frflag.jpg" Stretch="Uniform"/>
+        </Button>
+        <Label Content="Enter an extension to be encrypted (ex: txt, docx) : " HorizontalAlignment="Left" Margin="821,425,0,0" VerticalAlignment="Top"/>
+        <TextBox x:Name="TextExtEncrypt" HorizontalAlignment="Left" Margin="835,451,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
+        <Label Content="Enter a business software that will stop the backups when it is running (ex: calc.exe) :  " HorizontalAlignment="Left" Margin="821,469,0,0" VerticalAlignment="Top"/>
+        <TextBox x:Name="ExecutableText" HorizontalAlignment="Left" Margin="835,495,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
 
     </Grid>
 </Window>
