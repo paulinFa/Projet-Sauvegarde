@@ -42,17 +42,17 @@ namespace Projet_Sauvegarde
                 }
             }
         }
-        public event PropertyChangedEventHandler PropertyChanged;
-        public void OnPropertyChanged(string propertyName = null)
+        public event PropertyChangedEventHandler PropertyChanged; //Contains the data of an event
+        public void OnPropertyChanged(string propertyName = null) //Method that will make the change during an event
         {
             if (PropertyChanged != null)
             {
-                PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+                PropertyChanged(this, new PropertyChangedEventArgs(propertyName)); //Provides the data of an event
             }
 
         }
         private string _processSave;
-        public string ProcessSave
+        public string ProcessSave 
         {
             get { return _processSave; }
             set
@@ -222,26 +222,26 @@ namespace Projet_Sauvegarde
 
         }
 
-        private void SaveExtension_Click(object sender, RoutedEventArgs e)
+        private void SaveExtension_Click(object sender, RoutedEventArgs e) //Method that sends the extensions to be encrypted
         {
             saveController.ModifyExtension(TextExtEncrypt.Text);
             UpdateExtension();
             TextExtEncrypt.Clear();
         }
-        public void UpdateExtension ()
+        public void UpdateExtension () //Method that updates the extension display
         {
             ExtensionSave = "";
             ExtensionSave = saveController.Extension;
             
         }
 
-        private void SaveProcess_Click(object sender, RoutedEventArgs e)
+        private void SaveProcess_Click(object sender, RoutedEventArgs e) //Method that sends the business software that will stop the backups
         {
             saveController.ModifySoftware(ExecutableText.Text);
             UpdateProcess();
             ExecutableText.Clear();
         }
-        public void UpdateProcess()
+        public void UpdateProcess()  // Method that updates the business software display
         {
             ProcessSave = "";
             ProcessSave = saveController.Software;

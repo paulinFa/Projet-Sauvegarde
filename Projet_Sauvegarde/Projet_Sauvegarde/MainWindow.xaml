@@ -7,7 +7,7 @@
         x:Name="rootWindows"
         mc:Ignorable="d"
         ResizeMode="NoResize"
-        Title="MainWindow" Height="585" Width="1316">
+        Title="MainWindow" Height="585" Width="1337">
     <Grid Margin="0,0,10,8">
         <RadioButton x:Name="CompleteRadio" Content="Complete" HorizontalAlignment="Left" Margin="40,29,0,0" VerticalAlignment="Top" Checked="CompleteRadioButton_Checked"/>
         <RadioButton x:Name="DiffRadio" Content="Differential" HorizontalAlignment="Left" Margin="152,29,0,0" VerticalAlignment="Top" Checked="DiffRadioButton_Checked_1"/>
@@ -83,7 +83,7 @@
         <Button x:Name="FranchButton"  HorizontalAlignment="Left" Margin="130,521,0,0" VerticalAlignment="Top" Width="19" Height="12" Click="FranchButton_Click">
             <Image Source="Pictures\frflag.jpg" Stretch="Uniform"/>
         </Button>
-        <Label Content="Enter an extension to be encrypted (ex: txt, docx) : " HorizontalAlignment="Left" Margin="821,425,0,0" VerticalAlignment="Top"/>
+        <Label Content="Enter an extension to be encrypted (ex: .txt, .docx) : " HorizontalAlignment="Left" Margin="821,425,0,0" VerticalAlignment="Top"/>
         <TextBox x:Name="TextExtEncrypt" HorizontalAlignment="Left" Margin="835,451,0,0" TextWrapping="NoWrap" VerticalAlignment="Top" Width="120"/>
         <Label Content="Enter a business software that will stop the backups when it is running (ex: calc, notepad) :  " HorizontalAlignment="Left" Margin="821,469,0,0" VerticalAlignment="Top"/>
         <TextBox x:Name="ExecutableText" HorizontalAlignment="Left" Margin="835,495,0,0" TextWrapping="NoWrap" VerticalAlignment="Top" Width="120"/>
