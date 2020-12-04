@@ -19,6 +19,7 @@ using System.Windows.Shapes;
 using System.Linq;
 using System.IO;
 using System.ComponentModel;
+using System.Resources;
 
 namespace Projet_Sauvegarde
 {
@@ -28,6 +29,7 @@ namespace Projet_Sauvegarde
     
     public partial class MainWindow : INotifyPropertyChanged //Method who initialize components
     {
+        private ResourceManager rm;
         SaveController saveController;
         private string _extensionSave;
         public string ExtensionSave
