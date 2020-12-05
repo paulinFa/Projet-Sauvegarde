@@ -12,6 +12,23 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Page Remove="i18N\en-US.xaml" />
+    <Page Remove="i18N\fr-FR.xaml" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Include="i18N\en-US.xaml">
+      <XamlRuntime>$(DefaultXamlRuntime)</XamlRuntime>
+      <SubType>Designer</SubType>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="i18N\fr-FR.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+  </ItemGroup>
+
+  <ItemGroup>
     <PackageReference Include="Newtonsoft.Json" Version="12.0.3" />
   </ItemGroup>
 

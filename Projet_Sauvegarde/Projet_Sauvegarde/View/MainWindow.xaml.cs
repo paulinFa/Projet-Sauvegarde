@@ -20,6 +20,7 @@ using System.Linq;
 using System.IO;
 using System.ComponentModel;
 using System.Resources;
+using Projet_Sauvegarde.Utils;
 
 namespace Projet_Sauvegarde
 {
@@ -29,7 +30,6 @@ namespace Projet_Sauvegarde
     
     public partial class MainWindow : INotifyPropertyChanged //Method who initialize components
     {
-        private ResourceManager rm;
         SaveController saveController;
         private string _extensionSave;
         public string ExtensionSave
@@ -81,6 +81,10 @@ namespace Projet_Sauvegarde
             
            
             InitializeComponent();
+
+            LangUtil.SetupLang();
+
+
             UpdateListBackup();
             UpdateExtension();
             UpdateProcess();
@@ -208,20 +212,16 @@ namespace Projet_Sauvegarde
                 AllConfigBackup.Add(backup);
             }
 
-        }
-        
-        
-
-
+        }      
 
         private void EnglishButton_Click(object sender, RoutedEventArgs e) //Method who change the language in English
         {
-
+            LangUtil.SetLang("en-US");
         }
 
         private void FranchButton_Click(object sender, RoutedEventArgs e) //Method who change the language in French
         {
-
+            LangUtil.SetLang("fr-FR");
         }
 
         private void SaveExtension_Click(object sender, RoutedEventArgs e)
@@ -233,8 +233,7 @@ namespace Projet_Sauvegarde
         public void UpdateExtension ()
         {
             ExtensionSave = "";
-            ExtensionSave = saveController.Extension;
-            
+            ExtensionSave = saveController.Extension;            
         }
 
         private void SaveProcess_Click(object sender, RoutedEventArgs e)

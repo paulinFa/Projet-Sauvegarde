@@ -22,7 +22,7 @@
         <Label Content="Enter Source Path :" HorizontalAlignment="Left" Margin="40,141,0,0" VerticalAlignment="Top"/>
         <Label Content="Enter Destination Path : " HorizontalAlignment="Left" Margin="40,199,0,0" VerticalAlignment="Top"/>
         <TextBox x:Name="TextDestinationPath" HorizontalAlignment="Left" Margin="40,230,0,0" TextWrapping="NoWrap" VerticalAlignment="Top" Width="151" Height="23"/>
-        <Button x:Name="AddBackupButton" Content="Add Backup" HorizontalAlignment="Left" Margin="40,327,0,0" VerticalAlignment="Top" Width="90" Click="AddBackupButton_Click">
+        <Button x:Name="AddBackupButton" Content="Add Backup" HorizontalAlignment="Left" Margin="40,327,0,0" VerticalAlignment="Top" Width="90" Click="AddBackupButton_Click" Background="White">
             <Button.Effect>
                 <DropShadowEffect/>
             </Button.Effect>
@@ -33,18 +33,18 @@
             </Button.Effect>
         </Button>
 
-        <Button x:Name="DeleteConfigButton" Content="Delete Config" HorizontalAlignment="Left" Margin="372,400,0,0" VerticalAlignment="Top" Click="DeleteConfigButton_Click" Background="#FFE82A2A">
+        <Button x:Name="DeleteConfigButton" Content="Delete Config" HorizontalAlignment="Left" Margin="372,400,0,0" VerticalAlignment="Top" Click="DeleteConfigButton_Click" Background="White">
             <Button.Effect>
                 <DropShadowEffect/>
             </Button.Effect>
         </Button>
         <Label Content="If Differential, Enter Name of Complete Backup :" HorizontalAlignment="Left" Margin="40,258,0,0" VerticalAlignment="Top"/>
         <TextBox x:Name="TextLastComplete" HorizontalAlignment="Left" Margin="40,289,0,0" TextWrapping="NoWrap" VerticalAlignment="Top" Width="151" Height="23"/>
-        <Label Content="Type Of Save : " HorizontalAlignment="Left" Margin="14,0,0,0" VerticalAlignment="Top" FontWeight="Bold" FontSize="14"/>
+        <Label Content="{DynamicResource ResourceKey=typeSave}" HorizontalAlignment="Left" Margin="14,0,0,0" VerticalAlignment="Top" FontWeight="Bold" FontSize="14"/>
         <Label Content="Backup Info :" HorizontalAlignment="Left" Margin="14,68,0,0" VerticalAlignment="Top" FontWeight="Bold" FontSize="14"/>
         <Label Content="All Config Backup : " HorizontalAlignment="Left" Margin="334,9,0,0" VerticalAlignment="Top" FontWeight="Bold"/>
         <Label Content="Backup to be Launched :" HorizontalAlignment="Left" Margin="821,14,0,0" VerticalAlignment="Top" FontWeight="Bold"/>
-        <Button x:Name="TakeConfigButton" Content="Take Config" HorizontalAlignment="Left" Margin="674,400,0,0" VerticalAlignment="Top" Click="TakeConfigButton_Click" Background="#FFF5E32E">
+        <Button x:Name="TakeConfigButton" Content="Take Config" HorizontalAlignment="Left" Margin="674,400,0,0" VerticalAlignment="Top" Click="TakeConfigButton_Click" Background="White">
             <Button.Effect>
                 <DropShadowEffect/>
             </Button.Effect>
@@ -71,17 +71,17 @@
                 </DataGrid.Columns>
             </DataGrid>
         </ScrollViewer>
-        <Button x:Name="DeleteQueueButton" Content="Delete Queue" HorizontalAlignment="Left" Margin="835,400,0,0" VerticalAlignment="Top" Click="DeleteQueueButton_Click" Background="#FFCF0F0F" BorderBrush="White" Foreground="Black">
+        <Button x:Name="DeleteQueueButton" Content="Delete Queue" HorizontalAlignment="Left" Margin="835,400,0,0" VerticalAlignment="Top" Click="DeleteQueueButton_Click" Background="White" BorderBrush="White" Foreground="Black">
             <Button.Effect>
                 <DropShadowEffect/>
             </Button.Effect>
         </Button>
-        <Button x:Name="EnglishButton" HorizontalAlignment="Left" Margin="85,521,0,0" VerticalAlignment="Top" Width="19" Click="EnglishButton_Click" Height="12" RenderTransformOrigin="0.561,0.559">
-            <Image Source="Pictures\engflag.jpg" Stretch="Uniform" />
+        <Button x:Name="EnglishButton" HorizontalAlignment="Left" Margin="85,521,0,0" VerticalAlignment="Top" Width="19" Click="EnglishButton_Click" Height="12" RenderTransformOrigin="0.561,0.559" Background="#FFDDDDDD">
+            <Image Source="/Pictures/engflag.jpg" Stretch="Uniform" />
         </Button>
 
         <Button x:Name="FranchButton"  HorizontalAlignment="Left" Margin="130,521,0,0" VerticalAlignment="Top" Width="19" Height="12" Click="FranchButton_Click">
-            <Image Source="Pictures\frflag.jpg" Stretch="Uniform"/>
+            <Image Source="/Pictures/frflag.jpg" Stretch="Uniform"/>
         </Button>
         <Label Content="Enter an extension to be encrypted (ex: txt, docx) : " HorizontalAlignment="Left" Margin="821,425,0,0" VerticalAlignment="Top"/>
         <TextBox x:Name="TextExtEncrypt" HorizontalAlignment="Left" Margin="835,451,0,0" TextWrapping="NoWrap" VerticalAlignment="Top" Width="120"/>
@@ -99,9 +99,8 @@
         </Button>
         <Label Content="Extension Active :" HorizontalAlignment="Left" Margin="1008,448,0,0" VerticalAlignment="Top"/>
         <Label Content="Process Active : " HorizontalAlignment="Left" Margin="1008,491,0,0" VerticalAlignment="Top"/>
-        <TextBox x:Name="ActiveExt" Text="{Binding Path=ExtensionSave, Mode=TwoWay}" HorizontalAlignment="Left" Margin="1115,451,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="39" IsReadOnly="True" FontWeight="Bold" Background="#FFF7E5E5"/>
-        <TextBox x:Name="ActivePro" Text="{Binding Path=ProcessSave, Mode=TwoWay}" HorizontalAlignment="Left" Margin="1103,495,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="63" IsReadOnly="True" FontWeight="Bold" Background="#FFF7E5E5"/>
-
+        <Label Content="{Binding ExtensionSave}" HorizontalAlignment="Left" Margin="1110,448,0,0" VerticalAlignment="Top"/>
+        <Label Content="{Binding ProcessSave}" HorizontalAlignment="Left" Margin="1110,491,0,0" VerticalAlignment="Top"/>
 
     </Grid>
 </Window>

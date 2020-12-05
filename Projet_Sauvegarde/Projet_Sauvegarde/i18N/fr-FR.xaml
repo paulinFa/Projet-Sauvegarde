@@ -1,0 +1,7 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:sys="clr-namespace:System;assembly=mscorlib">
+    <sys:String x:Key="RessourceDictionnaryName">Loc-fr-FR</sys:String>
+    <sys:String x:Key="loadMain">Demarrer app</sys:String>
+    <sys:String x:Key="typeSave">Type de sauvegarde :</sys:String>
+</ResourceDictionary>
