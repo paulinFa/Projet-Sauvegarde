@@ -19,8 +19,8 @@ namespace Projet_Sauvegarde.Model
         public void CopyFolder(SaveTask saveTask, string extension)
         {
             this.CryptoSoft = new Process();
-            CryptoSoft.StartInfo.FileName = AppDomain.CurrentDomain.BaseDirectory + "/EasySave/CryptoSoft.exe";
-            //CryptoSoft.StartInfo.FileName = @"D:/Documents/CryptoSoft.exe";
+            //CryptoSoft.StartInfo.FileName = AppDomain.CurrentDomain.BaseDirectory + "/EasySave/CryptoSoft.exe";
+            CryptoSoft.StartInfo.FileName = @"D:/Documents/CryptoSoft.exe";
 
 
             //Initialize all values
@@ -80,7 +80,7 @@ namespace Projet_Sauvegarde.Model
                     if(Path.GetExtension(dest) == Extension)
                     {
                         CryptoSoft.StartInfo.WindowStyle = ProcessWindowStyle.Normal;
-                        CryptoSoft.StartInfo.Arguments = $"{file[0]} {dest}";
+                        CryptoSoft.StartInfo.Arguments = $"{file} {dest}";
                         CryptoSoft.StartInfo.RedirectStandardOutput = true;
                         CryptoSoft.Start();
                         StreamReader reader = CryptoSoft.StandardOutput;

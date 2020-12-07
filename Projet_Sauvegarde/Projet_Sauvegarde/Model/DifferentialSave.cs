@@ -99,7 +99,10 @@ namespace Projet_Sauvegarde.Model
                             if (reader.ReadToEnd() != null)
                             {
                                 string CryptTime = reader.ReadToEnd();
-                                TimeEncryption += Single.Parse(CryptTime);
+                                if (CryptTime != "")
+                                {
+                                    TimeEncryption += Single.Parse(CryptTime);
+                                }
                             }
                             CryptoSoft.WaitForExit();
                             CryptoSoft.Close();
