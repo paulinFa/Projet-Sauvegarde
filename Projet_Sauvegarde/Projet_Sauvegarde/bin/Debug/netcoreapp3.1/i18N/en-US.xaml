@@ -36,9 +36,9 @@
     <sys:String x:Key="popupErrorSaveSourceMessage">The Source Path does not exist</sys:String>
     <sys:String x:Key="popupErrorSaveNameMessage">Enter a Valid Name</sys:String>
     <sys:String x:Key="popupErrorSaveDestinationMessage">The Destination Path does not exist</sys:String>
-    <sys:String x:Key="popupErrorSaveCompleteMessage">The Complete Backup has been added to the list</sys:String>
+    <sys:String x:Key="popupErrorSaveCompleteMessage">The Complete Backup does not exist</sys:String>
     <sys:String x:Key="popupErrorSaveTypeMessage">Select Type Of Backup</sys:String>
-    <sys:String x:Key="popupSuccesSaveCompleteMessage">Supprimer Config</sys:String>
+    <sys:String x:Key="popupSuccesSaveCompleteMessage">The Complete Backup has been added to the list</sys:String>
     <sys:String x:Key="popupSuccesSaveDifferentialMessage">The Differential Backup has been added to the list</sys:String>
     <sys:String x:Key="popupSuccesSaveTitle">Sucess</sys:String>
     <sys:String x:Key="popupErrorProcessMessage1">Error process </sys:String>

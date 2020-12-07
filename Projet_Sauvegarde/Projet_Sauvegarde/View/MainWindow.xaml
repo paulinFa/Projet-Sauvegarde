@@ -83,7 +83,7 @@
         <Button x:Name="FranchButton"  HorizontalAlignment="Left" Margin="165,521,0,0" VerticalAlignment="Top" Width="19" Height="12" Click="FranchButton_Click">
             <Image Source="/Pictures/frflag.jpg" Stretch="Uniform"/>
         </Button>
-        <Label Content="{DynamicResource ResourceKey=enterDestinationBackup}" HorizontalAlignment="Left" Margin="821,425,0,0" VerticalAlignment="Top"/>
+        <Label Content="{DynamicResource ResourceKey=enterExtension}" HorizontalAlignment="Left" Margin="821,425,0,0" VerticalAlignment="Top"/>
         <TextBox x:Name="TextExtEncrypt" HorizontalAlignment="Left" Margin="835,451,0,0" TextWrapping="NoWrap" VerticalAlignment="Top" Width="120"/>
         <Label Content="{DynamicResource ResourceKey=enterSoftware}" HorizontalAlignment="Left" Margin="821,469,0,0" VerticalAlignment="Top"/>
         <TextBox x:Name="ExecutableText" HorizontalAlignment="Left" Margin="835,495,0,0" TextWrapping="NoWrap" VerticalAlignment="Top" Width="120"/>
