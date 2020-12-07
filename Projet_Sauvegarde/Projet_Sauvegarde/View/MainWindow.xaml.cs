@@ -236,7 +236,7 @@ namespace Projet_Sauvegarde
             ExtensionSave = saveController.Extension;            
         }
 
-        private void SaveProcess_Click(object sender, RoutedEventArgs e) //Method that saves the metering process
+        private void SaveProcess_Click(object sender, RoutedEventArgs e)  //Method that saves the metering process
         {
             saveController.ModifySoftware(ExecutableText.Text);
             UpdateProcess();
