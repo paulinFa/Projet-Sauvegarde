@@ -1,0 +1,95 @@
+D:\Bureau\2.0 bis\Projet_Sauvegarde\Projet_Sauvegarde\bin\Debug\netcoreapp3.1\Projet_Sauvegarde.exe
+D:\Bureau\2.0 bis\Projet_Sauvegarde\Projet_Sauvegarde\bin\Debug\netcoreapp3.1\Projet_Sauvegarde.deps.json
+D:\Bureau\2.0 bis\Projet_Sauvegarde\Projet_Sauvegarde\bin\Debug\netcoreapp3.1\Projet_Sauvegarde.runtimeconfig.json
+D:\Bureau\2.0 bis\Projet_Sauvegarde\Projet_Sauvegarde\bin\Debug\netcoreapp3.1\Projet_Sauvegarde.runtimeconfig.dev.json
+D:\Bureau\2.0 bis\Projet_Sauvegarde\Projet_Sauvegarde\bin\Debug\netcoreapp3.1\Projet_Sauvegarde.dll
+D:\Bureau\2.0 bis\Projet_Sauvegarde\Projet_Sauvegarde\bin\Debug\netcoreapp3.1\Projet_Sauvegarde.pdb
+D:\Bureau\2.0 bis\Projet_Sauvegarde\Projet_Sauvegarde\obj\Debug\netcoreapp3.1\Projet_Sauvegarde.csprojAssemblyReference.cache
+D:\Bureau\2.0 bis\Projet_Sauvegarde\Projet_Sauvegarde\obj\Debug\netcoreapp3.1\MainWindow.g.cs
+D:\Bureau\2.0 bis\Projet_Sauvegarde\Projet_Sauvegarde\obj\Debug\netcoreapp3.1\App.g.cs
+D:\Bureau\2.0 bis\Projet_Sauvegarde\Projet_Sauvegarde\obj\Debug\netcoreapp3.1\Projet_Sauvegarde_MarkupCompile.cache
+D:\Bureau\2.0 bis\Projet_Sauvegarde\Projet_Sauvegarde\obj\Debug\netcoreapp3.1\Projet_Sauvegarde_MarkupCompile.lref
+D:\Bureau\2.0 bis\Projet_Sauvegarde\Projet_Sauvegarde\obj\Debug\netcoreapp3.1\MainWindow.baml
+D:\Bureau\2.0 bis\Projet_Sauvegarde\Projet_Sauvegarde\obj\Debug\netcoreapp3.1\Projet_Sauvegarde.g.resources
+D:\Bureau\2.0 bis\Projet_Sauvegarde\Projet_Sauvegarde\obj\Debug\netcoreapp3.1\Projet_Sauvegarde.AssemblyInfoInputs.cache
+D:\Bureau\2.0 bis\Projet_Sauvegarde\Projet_Sauvegarde\obj\Debug\netcoreapp3.1\Projet_Sauvegarde.AssemblyInfo.cs
+D:\Bureau\2.0 bis\Projet_Sauvegarde\Projet_Sauvegarde\obj\Debug\netcoreapp3.1\Projet_Sauvegarde.csproj.CoreCompileInputs.cache
+D:\Bureau\2.0 bis\Projet_Sauvegarde\Projet_Sauvegarde\obj\Debug\netcoreapp3.1\Projet_Sauvegarde.dll
+D:\Bureau\2.0 bis\Projet_Sauvegarde\Projet_Sauvegarde\obj\Debug\netcoreapp3.1\Projet_Sauvegarde.pdb
+D:\Bureau\2.0 bis\Projet_Sauvegarde\Projet_Sauvegarde\obj\Debug\netcoreapp3.1\Projet_Sauvegarde.genruntimeconfig.cache
+C:\Users\flori\source\repos\paulinFa\Projet-Sauvegarde\Projet_Sauvegarde\Projet_Sauvegarde\obj\Debug\netcoreapp3.1\Projet_Sauvegarde.csprojAssemblyReference.cache
+C:\Users\flori\source\repos\paulinFa\Projet-Sauvegarde\Projet_Sauvegarde\Projet_Sauvegarde\obj\Debug\netcoreapp3.1\App.g.cs
+C:\Users\flori\source\repos\paulinFa\Projet-Sauvegarde\Projet_Sauvegarde\Projet_Sauvegarde\obj\Debug\netcoreapp3.1\Projet_Sauvegarde_MarkupCompile.cache
+C:\Users\flori\source\repos\paulinFa\Projet-Sauvegarde\Projet_Sauvegarde\Projet_Sauvegarde\obj\Debug\netcoreapp3.1\Projet_Sauvegarde.dll
+C:\Users\flori\source\repos\paulinFa\Projet-Sauvegarde\Projet_Sauvegarde\Projet_Sauvegarde\obj\Debug\netcoreapp3.1\Projet_Sauvegarde.pdb
+C:\Users\flori\source\repos\paulinFa\Projet-Sauvegarde\Projet_Sauvegarde\Projet_Sauvegarde\bin\Debug\netcoreapp3.1\Projet_Sauvegarde.exe
+C:\Users\flori\source\repos\paulinFa\Projet-Sauvegarde\Projet_Sauvegarde\Projet_Sauvegarde\bin\Debug\netcoreapp3.1\Projet_Sauvegarde.deps.json
+C:\Users\flori\source\repos\paulinFa\Projet-Sauvegarde\Projet_Sauvegarde\Projet_Sauvegarde\bin\Debug\netcoreapp3.1\Projet_Sauvegarde.runtimeconfig.json
+C:\Users\flori\source\repos\paulinFa\Projet-Sauvegarde\Projet_Sauvegarde\Projet_Sauvegarde\bin\Debug\netcoreapp3.1\Projet_Sauvegarde.runtimeconfig.dev.json
+C:\Users\flori\source\repos\paulinFa\Projet-Sauvegarde\Projet_Sauvegarde\Projet_Sauvegarde\bin\Debug\netcoreapp3.1\Projet_Sauvegarde.dll
+C:\Users\flori\source\repos\paulinFa\Projet-Sauvegarde\Projet_Sauvegarde\Projet_Sauvegarde\bin\Debug\netcoreapp3.1\Projet_Sauvegarde.pdb
+C:\Users\flori\source\repos\paulinFa\Projet-Sauvegarde\Projet_Sauvegarde\Projet_Sauvegarde\bin\Debug\netcoreapp3.1\Newtonsoft.Json.dll
+C:\Users\flori\source\repos\paulinFa\Projet-Sauvegarde\Projet_Sauvegarde\Projet_Sauvegarde\obj\Debug\netcoreapp3.1\Projet_Sauvegarde.g.resources
+C:\Users\flori\source\repos\paulinFa\Projet-Sauvegarde\Projet_Sauvegarde\Projet_Sauvegarde\obj\Debug\netcoreapp3.1\Projet_Sauvegarde.AssemblyInfoInputs.cache
+C:\Users\flori\source\repos\paulinFa\Projet-Sauvegarde\Projet_Sauvegarde\Projet_Sauvegarde\obj\Debug\netcoreapp3.1\Projet_Sauvegarde.AssemblyInfo.cs
+C:\Users\flori\source\repos\paulinFa\Projet-Sauvegarde\Projet_Sauvegarde\Projet_Sauvegarde\obj\Debug\netcoreapp3.1\Projet_Sauvegarde.csproj.CoreCompileInputs.cache
+C:\Users\flori\source\repos\paulinFa\Projet-Sauvegarde\Projet_Sauvegarde\Projet_Sauvegarde\obj\Debug\netcoreapp3.1\Projet_Sauvegarde.csproj.CopyComplete
+C:\Users\flori\source\repos\paulinFa\Projet-Sauvegarde\Projet_Sauvegarde\Projet_Sauvegarde\obj\Debug\netcoreapp3.1\Projet_Sauvegarde.genruntimeconfig.cache
+D:\Bureau\Projet C#\Projet-Sauvegarde\Projet_Sauvegarde\Projet_Sauvegarde\bin\Debug\netcoreapp3.1\Projet_Sauvegarde.exe
+D:\Bureau\Projet C#\Projet-Sauvegarde\Projet_Sauvegarde\Projet_Sauvegarde\bin\Debug\netcoreapp3.1\Projet_Sauvegarde.deps.json
+D:\Bureau\Projet C#\Projet-Sauvegarde\Projet_Sauvegarde\Projet_Sauvegarde\bin\Debug\netcoreapp3.1\Projet_Sauvegarde.runtimeconfig.json
+D:\Bureau\Projet C#\Projet-Sauvegarde\Projet_Sauvegarde\Projet_Sauvegarde\bin\Debug\netcoreapp3.1\Projet_Sauvegarde.runtimeconfig.dev.json
+D:\Bureau\Projet C#\Projet-Sauvegarde\Projet_Sauvegarde\Projet_Sauvegarde\bin\Debug\netcoreapp3.1\Projet_Sauvegarde.dll
+D:\Bureau\Projet C#\Projet-Sauvegarde\Projet_Sauvegarde\Projet_Sauvegarde\bin\Debug\netcoreapp3.1\Projet_Sauvegarde.pdb
+D:\Bureau\Projet C#\Projet-Sauvegarde\Projet_Sauvegarde\Projet_Sauvegarde\bin\Debug\netcoreapp3.1\Newtonsoft.Json.dll
+D:\Bureau\Projet C#\Projet-Sauvegarde\Projet_Sauvegarde\Projet_Sauvegarde\obj\Debug\netcoreapp3.1\Projet_Sauvegarde.csprojAssemblyReference.cache
+D:\Bureau\Projet C#\Projet-Sauvegarde\Projet_Sauvegarde\Projet_Sauvegarde\obj\Debug\netcoreapp3.1\App.g.cs
+D:\Bureau\Projet C#\Projet-Sauvegarde\Projet_Sauvegarde\Projet_Sauvegarde\obj\Debug\netcoreapp3.1\Projet_Sauvegarde_MarkupCompile.cache
+D:\Bureau\Projet C#\Projet-Sauvegarde\Projet_Sauvegarde\Projet_Sauvegarde\obj\Debug\netcoreapp3.1\Projet_Sauvegarde_MarkupCompile.lref
+D:\Bureau\Projet C#\Projet-Sauvegarde\Projet_Sauvegarde\Projet_Sauvegarde\obj\Debug\netcoreapp3.1\Projet_Sauvegarde.g.resources
+D:\Bureau\Projet C#\Projet-Sauvegarde\Projet_Sauvegarde\Projet_Sauvegarde\obj\Debug\netcoreapp3.1\Projet_Sauvegarde.AssemblyInfoInputs.cache
+D:\Bureau\Projet C#\Projet-Sauvegarde\Projet_Sauvegarde\Projet_Sauvegarde\obj\Debug\netcoreapp3.1\Projet_Sauvegarde.AssemblyInfo.cs
+D:\Bureau\Projet C#\Projet-Sauvegarde\Projet_Sauvegarde\Projet_Sauvegarde\obj\Debug\netcoreapp3.1\Projet_Sauvegarde.csproj.CoreCompileInputs.cache
+D:\Bureau\Projet C#\Projet-Sauvegarde\Projet_Sauvegarde\Projet_Sauvegarde\obj\Debug\netcoreapp3.1\Projet_Sauvegarde.csproj.CopyComplete
+D:\Bureau\Projet C#\Projet-Sauvegarde\Projet_Sauvegarde\Projet_Sauvegarde\obj\Debug\netcoreapp3.1\Projet_Sauvegarde.dll
+D:\Bureau\Projet C#\Projet-Sauvegarde\Projet_Sauvegarde\Projet_Sauvegarde\obj\Debug\netcoreapp3.1\Projet_Sauvegarde.pdb
+D:\Bureau\Projet C#\Projet-Sauvegarde\Projet_Sauvegarde\Projet_Sauvegarde\obj\Debug\netcoreapp3.1\Projet_Sauvegarde.genruntimeconfig.cache
+C:\Users\flori\source\repos\paulinFa\Projet-Sauvegarde\Projet_Sauvegarde\Projet_Sauvegarde\obj\Debug\netcoreapp3.1\Projet_Sauvegarde_MarkupCompile.lref
+C:\Users\flori\source\repos\paulinFa\Projet-Sauvegarde\Projet_Sauvegarde\Projet_Sauvegarde\obj\Debug\netcoreapp3.1\View\MainWindow.g.cs
+C:\Users\flori\source\repos\paulinFa\Projet-Sauvegarde\Projet_Sauvegarde\Projet_Sauvegarde\obj\Debug\netcoreapp3.1\View\MainWindow.baml
+D:\Bureau\Projet C#\Projet-Sauvegarde\Projet_Sauvegarde\Projet_Sauvegarde\obj\Debug\netcoreapp3.1\View\MainWindow.g.cs
+D:\Bureau\Projet C#\Projet-Sauvegarde\Projet_Sauvegarde\Projet_Sauvegarde\obj\Debug\netcoreapp3.1\View\MainWindow.baml
+D:\Bureau\Projet C#\Projet-Sauvegarde\Projet_Sauvegarde\Projet_Sauvegarde\obj\Debug\netcoreapp3.1\Projet_Sauvegarde_Content.g.cs
+D:\Bureau\Projet C#\Projet-Sauvegarde\Projet_Sauvegarde\Projet_Sauvegarde\bin\Debug\netcoreapp3.1\i18N\en-US.xaml
+D:\Bureau\Projet C#\Projet-Sauvegarde\Projet_Sauvegarde\Projet_Sauvegarde\bin\Debug\netcoreapp3.1\i18N\fr-FR.xaml
+D:\Bureau\Projet C#\Projet-Sauvegarde\Projet_Sauvegarde\Projet_Sauvegarde\obj\Debug\netcoreapp3.1\App.baml
+D:\Bureau\Projet C#\Projet-Sauvegarde\Projet_Sauvegarde\Projet_Sauvegarde\bin\Debug\netcoreapp3.1\EasySave\EncryptionCode.exe
+D:\Bureau\Projet C#\Projet-Sauvegarde\Projet_Sauvegarde\Projet_Sauvegarde\bin\Debug\netcoreapp3.1\Grpc.Core.dll
+D:\Bureau\Projet C#\Projet-Sauvegarde\Projet_Sauvegarde\Projet_Sauvegarde\bin\Debug\netcoreapp3.1\Grpc.Core.Api.dll
+D:\Bureau\Projet C#\Projet-Sauvegarde\Projet_Sauvegarde\Projet_Sauvegarde\bin\Debug\netcoreapp3.1\runtimes\linux-x64\native\libgrpc_csharp_ext.x64.so
+D:\Bureau\Projet C#\Projet-Sauvegarde\Projet_Sauvegarde\Projet_Sauvegarde\bin\Debug\netcoreapp3.1\runtimes\osx-x64\native\libgrpc_csharp_ext.x64.dylib
+D:\Bureau\Projet C#\Projet-Sauvegarde\Projet_Sauvegarde\Projet_Sauvegarde\bin\Debug\netcoreapp3.1\runtimes\win-x64\native\grpc_csharp_ext.x64.dll
+D:\Bureau\Projet C#\Projet-Sauvegarde\Projet_Sauvegarde\Projet_Sauvegarde\bin\Debug\netcoreapp3.1\runtimes\win-x86\native\grpc_csharp_ext.x86.dll
+D:\Bureau\Projet C#\Projet-Sauvegarde\Projet_Sauvegarde\Projet_Sauvegarde\bin\Debug\netcoreapp3.1\EasySave\EncryptionCode.deps.json
+D:\Bureau\Projet C#\Projet-Sauvegarde\Projet_Sauvegarde\Projet_Sauvegarde\bin\Debug\netcoreapp3.1\EasySave\EncryptionCode.dll
+D:\Bureau\Projet C#\Projet-Sauvegarde\Projet_Sauvegarde\Projet_Sauvegarde\bin\Debug\netcoreapp3.1\EasySave\EncryptionCode.pdb
+D:\Bureau\Projet C#\Projet-Sauvegarde\Projet_Sauvegarde\Projet_Sauvegarde\bin\Debug\netcoreapp3.1\EasySave\EncryptionCode.runtimeconfig.dev.json
+D:\Bureau\Projet C#\Projet-Sauvegarde\Projet_Sauvegarde\Projet_Sauvegarde\bin\Debug\netcoreapp3.1\EasySave\EncryptionCode.runtimeconfig.json
+D:\Bureau\Projet C#\Projet-Sauvegarde\Projet_Sauvegarde\Projet_Sauvegarde\bin\Debug\netcoreapp3.1\EasySave\CryptoSoft.exe
+C:\Users\flori\source\repos\paulinFa\Projet-Sauvegarde\Projet_Sauvegarde\Projet_Sauvegarde\bin\Debug\netcoreapp3.1\EasySave\CryptoSoft.exe
+C:\Users\flori\source\repos\paulinFa\Projet-Sauvegarde\Projet_Sauvegarde\Projet_Sauvegarde\bin\Debug\netcoreapp3.1\EasySave\EncryptionCode.deps.json
+C:\Users\flori\source\repos\paulinFa\Projet-Sauvegarde\Projet_Sauvegarde\Projet_Sauvegarde\bin\Debug\netcoreapp3.1\EasySave\EncryptionCode.dll
+C:\Users\flori\source\repos\paulinFa\Projet-Sauvegarde\Projet_Sauvegarde\Projet_Sauvegarde\bin\Debug\netcoreapp3.1\EasySave\EncryptionCode.exe
+C:\Users\flori\source\repos\paulinFa\Projet-Sauvegarde\Projet_Sauvegarde\Projet_Sauvegarde\bin\Debug\netcoreapp3.1\EasySave\EncryptionCode.pdb
+C:\Users\flori\source\repos\paulinFa\Projet-Sauvegarde\Projet_Sauvegarde\Projet_Sauvegarde\bin\Debug\netcoreapp3.1\EasySave\EncryptionCode.runtimeconfig.dev.json
+C:\Users\flori\source\repos\paulinFa\Projet-Sauvegarde\Projet_Sauvegarde\Projet_Sauvegarde\bin\Debug\netcoreapp3.1\EasySave\EncryptionCode.runtimeconfig.json
+C:\Users\flori\source\repos\paulinFa\Projet-Sauvegarde\Projet_Sauvegarde\Projet_Sauvegarde\bin\Debug\netcoreapp3.1\i18N\en-US.xaml
+C:\Users\flori\source\repos\paulinFa\Projet-Sauvegarde\Projet_Sauvegarde\Projet_Sauvegarde\bin\Debug\netcoreapp3.1\i18N\fr-FR.xaml
+C:\Users\flori\source\repos\paulinFa\Projet-Sauvegarde\Projet_Sauvegarde\Projet_Sauvegarde\bin\Debug\netcoreapp3.1\Grpc.Core.dll
+C:\Users\flori\source\repos\paulinFa\Projet-Sauvegarde\Projet_Sauvegarde\Projet_Sauvegarde\bin\Debug\netcoreapp3.1\Grpc.Core.Api.dll
+C:\Users\flori\source\repos\paulinFa\Projet-Sauvegarde\Projet_Sauvegarde\Projet_Sauvegarde\bin\Debug\netcoreapp3.1\runtimes\linux-x64\native\libgrpc_csharp_ext.x64.so
+C:\Users\flori\source\repos\paulinFa\Projet-Sauvegarde\Projet_Sauvegarde\Projet_Sauvegarde\bin\Debug\netcoreapp3.1\runtimes\osx-x64\native\libgrpc_csharp_ext.x64.dylib
+C:\Users\flori\source\repos\paulinFa\Projet-Sauvegarde\Projet_Sauvegarde\Projet_Sauvegarde\bin\Debug\netcoreapp3.1\runtimes\win-x64\native\grpc_csharp_ext.x64.dll
+C:\Users\flori\source\repos\paulinFa\Projet-Sauvegarde\Projet_Sauvegarde\Projet_Sauvegarde\bin\Debug\netcoreapp3.1\runtimes\win-x86\native\grpc_csharp_ext.x86.dll
+C:\Users\flori\source\repos\paulinFa\Projet-Sauvegarde\Projet_Sauvegarde\Projet_Sauvegarde\obj\Debug\netcoreapp3.1\Projet_Sauvegarde_Content.g.cs
+C:\Users\flori\source\repos\paulinFa\Projet-Sauvegarde\Projet_Sauvegarde\Projet_Sauvegarde\obj\Debug\netcoreapp3.1\App.baml

@@ -1,0 +1,54 @@
+{
+  "runtimeTarget": {
+    "name": ".NETCoreApp,Version=v3.1",
+    "signature": ""
+  },
+  "compilationOptions": {},
+  "targets": {
+    ".NETCoreApp,Version=v3.1": {
+      "Grpc.Core/2.34.0": {
+        "dependencies": {
+          "Grpc.Core.Api": "2.34.0",
+          "System.Memory": "4.5.3"
+        }
+      },
+      "Grpc.Core.Api/2.34.0": {
+        "dependencies": {
+          "System.Memory": "4.5.3"
+        }
+      },
+      "Newtonsoft.Json/12.0.3": {},
+      "System.Memory/4.5.3": {}
+    }
+  },
+  "libraries": {
+    "Grpc.Core/2.34.0": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-A8QoX4TkOi9XcNUb70+ogPdGwH/BTSKZr1SoR64tABa+AGOWaVGirXPt8oU0OaPcwBHbKQ76rDJtXrWClE9MHw==",
+      "path": "grpc.core/2.34.0",
+      "hashPath": "grpc.core.2.34.0.nupkg.sha512"
+    },
+    "Grpc.Core.Api/2.34.0": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-TfxhML3GDy9Lo7Qk5Nax1ySGXNwxZQ3znVeV2n5SRHZC6EVoRSRy0foPAKrSgmyvrGlCdfsH4E2EmaLvCkNI2w==",
+      "path": "grpc.core.api/2.34.0",
+      "hashPath": "grpc.core.api.2.34.0.nupkg.sha512"
+    },
+    "Newtonsoft.Json/12.0.3": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-6mgjfnRB4jKMlzHSl+VD+oUc1IebOZabkbyWj2RiTgWwYPPuaK1H97G1sHqGwPlS5npiF5Q0OrxN1wni2n5QWg==",
+      "path": "newtonsoft.json/12.0.3",
+      "hashPath": "newtonsoft.json.12.0.3.nupkg.sha512"
+    },
+    "System.Memory/4.5.3": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-3oDzvc/zzetpTKWMShs1AADwZjQ/36HnsufHRPcOjyRAAMLDlu2iD33MBI2opxnezcVUtXyqDXXjoFMOU9c7SA==",
+      "path": "system.memory/4.5.3",
+      "hashPath": "system.memory.4.5.3.nupkg.sha512"
+    }
+  }
+}

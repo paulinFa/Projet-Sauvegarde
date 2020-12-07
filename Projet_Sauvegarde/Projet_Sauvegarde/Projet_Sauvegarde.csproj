@@ -1,0 +1,69 @@
+﻿<Project Sdk="Microsoft.NET.Sdk.WindowsDesktop">
+
+  <PropertyGroup>
+    <OutputType>WinExe</OutputType>
+    <TargetFramework>netcoreapp3.1</TargetFramework>
+    <UseWPF>true</UseWPF>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <None Remove="EasySave\CryptoSoft.exe" />
+    <None Remove="EasySave\EncryptionCode.deps.json" />
+    <None Remove="EasySave\EncryptionCode.dll" />
+    <None Remove="EasySave\EncryptionCode.exe" />
+    <None Remove="EasySave\EncryptionCode.pdb" />
+    <None Remove="EasySave\EncryptionCode.runtimeconfig.dev.json" />
+    <None Remove="EasySave\EncryptionCode.runtimeconfig.json" />
+    <None Remove="Pictures\engflag.jpg" />
+    <None Remove="Pictures\frflag.jpg" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Page Remove="i18N\en-US.xaml" />
+    <Page Remove="i18N\fr-FR.xaml" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Include="EasySave\CryptoSoft.exe">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="EasySave\EncryptionCode.deps.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="EasySave\EncryptionCode.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="EasySave\EncryptionCode.exe">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="EasySave\EncryptionCode.pdb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="EasySave\EncryptionCode.runtimeconfig.dev.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="EasySave\EncryptionCode.runtimeconfig.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="i18N\en-US.xaml">
+      <XamlRuntime>$(DefaultXamlRuntime)</XamlRuntime>
+      <SubType>Designer</SubType>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="i18N\fr-FR.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Grpc.Core" Version="2.34.0" />
+    <PackageReference Include="Newtonsoft.Json" Version="12.0.3" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Resource Include="Pictures\engflag.jpg" />
+    <Resource Include="Pictures\frflag.jpg" />
+  </ItemGroup>
+
+</Project>
