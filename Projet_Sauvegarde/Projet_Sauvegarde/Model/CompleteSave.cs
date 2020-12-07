@@ -14,7 +14,7 @@ namespace Projet_Sauvegarde.Model
         /// <summary>
         /// Method to initialized complete save
         /// </summary>
-        /// <param name="saveTask">All information for save</param>
+        /// <param name="saveTask">All informations for save</param>
         /// <param name="extension">Extension file to crypt</param>
         public void CopyFolder(SaveTask saveTask, string extension)
         {
