@@ -28,11 +28,11 @@ namespace Projet_Sauvegarde
     /// Interaction logic for MainWindow.xaml
     /// </summary>
     
-    public partial class MainWindow : INotifyPropertyChanged 
+    public partial class MainWindow : INotifyPropertyChanged //Method who initialize components
     {
         SaveController saveController;
         private string _extensionSave;
-        public string ExtensionSave //Getter and setter for Event (Extension)
+        public string ExtensionSave
         {
             get { return _extensionSave; }
             set
@@ -44,8 +44,8 @@ namespace Projet_Sauvegarde
                 }
             }
         }
-        public event PropertyChangedEventHandler PropertyChanged; //Implementing change notification to update the display
-        public void OnPropertyChanged(string propertyName = null)  
+        public event PropertyChangedEventHandler PropertyChanged;
+        public void OnPropertyChanged(string propertyName = null)
         {
             if (PropertyChanged != null)
             {
@@ -53,8 +53,8 @@ namespace Projet_Sauvegarde
             }
 
         }
-        private string _processSave; 
-        public string ProcessSave //Getter and setter for Event (Extension)
+        private string _processSave;
+        public string ProcessSave
         {
             get { return _processSave; }
             set
@@ -70,7 +70,7 @@ namespace Projet_Sauvegarde
         public ObservableCollection<SaveTask> AllConfigBackup { get; set; }
         public ObservableCollection<SaveTask> AllBackupLaunch { get; set; }
 
-        public MainWindow() //Method that initializes new objects 
+        public MainWindow()
         {
             
             DataContext = this;
@@ -224,7 +224,7 @@ namespace Projet_Sauvegarde
             LangUtil.SetLang("fr-FR");
         }
 
-        private void SaveExtension_Click(object sender, RoutedEventArgs e) //Method that saves the extension to be encrypted
+        private void SaveExtension_Click(object sender, RoutedEventArgs e)
         {
             saveController.ModifyExtension(TextExtEncrypt.Text);
             UpdateExtension();
@@ -236,7 +236,7 @@ namespace Projet_Sauvegarde
             ExtensionSave = saveController.Extension;            
         }
 
-        private void SaveProcess_Click(object sender, RoutedEventArgs e) //Method that saves the metering process
+        private void SaveProcess_Click(object sender, RoutedEventArgs e)
         {
             saveController.ModifySoftware(ExecutableText.Text);
             UpdateProcess();
