@@ -6,15 +6,5 @@
       <SubType>Designer</SubType>
     </ApplicationDefinition>
   </ItemGroup>
-  <ItemGroup>
-    <Content Update="i18N\en-US.xaml">
-      <SubType>Designer</SubType>
-    </Content>
-    <Content Update="i18N\fr-FR.xaml">
-      <SubType>Designer</SubType>
-    </Content>
-    <Page Update="View\MainWindow.xaml">
-      <SubType>Designer</SubType>
-    </Page>
-  </ItemGroup>
+  <ItemGroup />
 </Project>
