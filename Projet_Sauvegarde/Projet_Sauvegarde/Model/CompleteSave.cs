@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Grpc.Core;
+using System;
 using System.Diagnostics;
 using System.IO;
 using SearchOption = System.IO.SearchOption;
@@ -17,6 +18,11 @@ namespace Projet_Sauvegarde.Model
         /// <param name="extension">Extension file to crypt</param>
         public void CopyFolder(SaveTask saveTask, string extension)
         {
+            this.CryptoSoft = new Process();
+            CryptoSoft.StartInfo.FileName = AppDomain.CurrentDomain.BaseDirectory + "/EasySave/CryptoSoft.exe";
+            //CryptoSoft.StartInfo.FileName = @"D:/Documents/CryptoSoft.exe";
+
+
             //Initialize all values
             DateTime firstDate = DateTime.Now;
             this.SourcePath = saveTask.SourcePath;
@@ -73,13 +79,24 @@ namespace Projet_Sauvegarde.Model
                 {
                     if(Path.GetExtension(dest) == Extension)
                     {
-                        Trace.WriteLine(Extension + " is detected");
-
-                        ///TODO TimeEncryption = 
+                        CryptoSoft.StartInfo.WindowStyle = ProcessWindowStyle.Normal;
+                        CryptoSoft.StartInfo.Arguments = $"{file[0]} {dest}";
+                        CryptoSoft.StartInfo.RedirectStandardOutput = true;
+                        CryptoSoft.Start();
+                        StreamReader reader = CryptoSoft.StandardOutput;
+                        if(reader.ReadToEnd() != null)
+                        {
+                            string CryptTime = reader.ReadToEnd();
+                            if(CryptTime != "")
+                            {
+                                TimeEncryption += Single.Parse(CryptTime);
+                            }
+                        }
+                        CryptoSoft.WaitForExit();
+                        CryptoSoft.Close();
                     }
                     else
                     {
-                        TimeEncryption = "0";
                         File.Copy(file, dest);
                     }
                     var fi1 = new FileInfo(file);

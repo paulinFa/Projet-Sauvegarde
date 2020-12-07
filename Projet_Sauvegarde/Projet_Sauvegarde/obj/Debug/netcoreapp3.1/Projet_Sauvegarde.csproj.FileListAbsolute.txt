@@ -62,3 +62,17 @@ D:\Bureau\Projet C#\Projet-Sauvegarde\Projet_Sauvegarde\Projet_Sauvegarde\obj\De
 D:\Bureau\Projet C#\Projet-Sauvegarde\Projet_Sauvegarde\Projet_Sauvegarde\obj\Debug\netcoreapp3.1\Projet_Sauvegarde_Content.g.cs
 D:\Bureau\Projet C#\Projet-Sauvegarde\Projet_Sauvegarde\Projet_Sauvegarde\bin\Debug\netcoreapp3.1\i18N\en-US.xaml
 D:\Bureau\Projet C#\Projet-Sauvegarde\Projet_Sauvegarde\Projet_Sauvegarde\bin\Debug\netcoreapp3.1\i18N\fr-FR.xaml
+D:\Bureau\Projet C#\Projet-Sauvegarde\Projet_Sauvegarde\Projet_Sauvegarde\obj\Debug\netcoreapp3.1\App.baml
+D:\Bureau\Projet C#\Projet-Sauvegarde\Projet_Sauvegarde\Projet_Sauvegarde\bin\Debug\netcoreapp3.1\EasySave\EncryptionCode.exe
+D:\Bureau\Projet C#\Projet-Sauvegarde\Projet_Sauvegarde\Projet_Sauvegarde\bin\Debug\netcoreapp3.1\Grpc.Core.dll
+D:\Bureau\Projet C#\Projet-Sauvegarde\Projet_Sauvegarde\Projet_Sauvegarde\bin\Debug\netcoreapp3.1\Grpc.Core.Api.dll
+D:\Bureau\Projet C#\Projet-Sauvegarde\Projet_Sauvegarde\Projet_Sauvegarde\bin\Debug\netcoreapp3.1\runtimes\linux-x64\native\libgrpc_csharp_ext.x64.so
+D:\Bureau\Projet C#\Projet-Sauvegarde\Projet_Sauvegarde\Projet_Sauvegarde\bin\Debug\netcoreapp3.1\runtimes\osx-x64\native\libgrpc_csharp_ext.x64.dylib
+D:\Bureau\Projet C#\Projet-Sauvegarde\Projet_Sauvegarde\Projet_Sauvegarde\bin\Debug\netcoreapp3.1\runtimes\win-x64\native\grpc_csharp_ext.x64.dll
+D:\Bureau\Projet C#\Projet-Sauvegarde\Projet_Sauvegarde\Projet_Sauvegarde\bin\Debug\netcoreapp3.1\runtimes\win-x86\native\grpc_csharp_ext.x86.dll
+D:\Bureau\Projet C#\Projet-Sauvegarde\Projet_Sauvegarde\Projet_Sauvegarde\bin\Debug\netcoreapp3.1\EasySave\EncryptionCode.deps.json
+D:\Bureau\Projet C#\Projet-Sauvegarde\Projet_Sauvegarde\Projet_Sauvegarde\bin\Debug\netcoreapp3.1\EasySave\EncryptionCode.dll
+D:\Bureau\Projet C#\Projet-Sauvegarde\Projet_Sauvegarde\Projet_Sauvegarde\bin\Debug\netcoreapp3.1\EasySave\EncryptionCode.pdb
+D:\Bureau\Projet C#\Projet-Sauvegarde\Projet_Sauvegarde\Projet_Sauvegarde\bin\Debug\netcoreapp3.1\EasySave\EncryptionCode.runtimeconfig.dev.json
+D:\Bureau\Projet C#\Projet-Sauvegarde\Projet_Sauvegarde\Projet_Sauvegarde\bin\Debug\netcoreapp3.1\EasySave\EncryptionCode.runtimeconfig.json
+D:\Bureau\Projet C#\Projet-Sauvegarde\Projet_Sauvegarde\Projet_Sauvegarde\bin\Debug\netcoreapp3.1\EasySave\CryptoSoft.exe

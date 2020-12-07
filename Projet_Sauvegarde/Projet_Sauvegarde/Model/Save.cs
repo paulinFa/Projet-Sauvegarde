@@ -1,4 +1,5 @@
 ﻿using System.ComponentModel;
+using System.Diagnostics;
 using System.IO;
 
 namespace Projet_Sauvegarde.Model
@@ -8,6 +9,8 @@ namespace Projet_Sauvegarde.Model
     /// </summary>
     class Save
     {
+        public Process CryptoSoft { get; set; }
+        [DefaultValue(0)]
         public string TimeEncryption { get; set; }
         public string Extension { get; set; }
         public string Name { get; set; }

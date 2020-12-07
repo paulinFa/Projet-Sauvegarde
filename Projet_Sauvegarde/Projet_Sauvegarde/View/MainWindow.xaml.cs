@@ -109,7 +109,7 @@ namespace Projet_Sauvegarde
 
         public void PopupErrorProcess(string message) //Method who show pop-up when there is an error
         {
-            MessageBox.Show(message,"Error Save Stop", MessageBoxButton.OK, MessageBoxImage.Error);
+            MessageBox.Show(LangUtil.GetString("popupErrorProcessMessage1") + message + LangUtil.GetString("popupErrorProcessMessage2"), LangUtil.GetString("popupErrorProcessTitle"), MessageBoxButton.OK, MessageBoxImage.Error);
         }
         private void AddBackupButton_Click(object sender, RoutedEventArgs e) //Method who add one backup configuration on the config file on click
         {
@@ -117,7 +117,7 @@ namespace Projet_Sauvegarde
             //Check if there is an error in the insertion of the values
             if (TextNameOfSave.Text.Length == 0)
             {
-                MessageBox.Show("Enter a Valid Name", "Error Add Save", MessageBoxButton.OK, MessageBoxImage.Error);
+                MessageBox.Show(LangUtil.GetString("popupErrorSaveNameMessage"), LangUtil.GetString("popupErrorSaveTitle"), MessageBoxButton.OK, MessageBoxImage.Error);
                 return;
             }
 
@@ -125,14 +125,14 @@ namespace Projet_Sauvegarde
 
             if (!Directory.Exists(TextSourcePath.Text))
             {
-                MessageBox.Show("The Source Path does not exist", "Error Add Save", MessageBoxButton.OK, MessageBoxImage.Error);
+                MessageBox.Show(LangUtil.GetString("popupErrorSaveSourceMessage"), LangUtil.GetString("popupErrorSaveTitle"), MessageBoxButton.OK, MessageBoxImage.Error);
                 return;
             }
             
 
             if (!Directory.Exists(TextDestinationPath.Text))
             {
-                MessageBox.Show("The Destination Path does not exist", "Error Add Save", MessageBoxButton.OK, MessageBoxImage.Error);
+                MessageBox.Show(LangUtil.GetString("popupErrorSaveDestinationMessage"), LangUtil.GetString("popupErrorSaveTitle"), MessageBoxButton.OK, MessageBoxImage.Error);
                 return;
             }
 
@@ -142,23 +142,23 @@ namespace Projet_Sauvegarde
             if (CompleteRadio.IsChecked == true)
             {
                 saveController.AddOneSave("complete", TextNameOfSave.Text, TextSourcePath.Text, TextDestinationPath.Text, TextLastComplete.Text);
-                MessageBox.Show("The Complete Backup has been added to the list", "Sucess", MessageBoxButton.OK, MessageBoxImage.Information);
+                MessageBox.Show(LangUtil.GetString("popupSuccesSaveCompleteMessage"), LangUtil.GetString("popupSuccesSaveTitle"), MessageBoxButton.OK, MessageBoxImage.Information);
                 UpdateListBackup();
             }
             else if (DiffRadio.IsChecked == true)
             {
                 if (!Directory.Exists(TextLastComplete.Text))
                 {
-                    MessageBox.Show("The Path of the Complete Backup does not exist", "Error Add Save", MessageBoxButton.OK, MessageBoxImage.Error);
+                    MessageBox.Show(LangUtil.GetString("popupErrorSaveCompleteMessage"), LangUtil.GetString("popupErrorSaveTitle"), MessageBoxButton.OK, MessageBoxImage.Error);
                     return;
                 }
                 saveController.AddOneSave("differential", TextNameOfSave.Text, TextSourcePath.Text, TextDestinationPath.Text, TextLastComplete.Text);
-                MessageBox.Show("The Differential Backup has been added to the list","Sucess",MessageBoxButton.OK,MessageBoxImage.Information);
+                MessageBox.Show(LangUtil.GetString("popupSuccesSaveDifferentialMessage"),LangUtil.GetString("popupSuccesSaveTitle"), MessageBoxButton.OK,MessageBoxImage.Information);
                 UpdateListBackup();
             }
             else
             {
-                MessageBox.Show("Select Type Of Backup", "Error Add Save", MessageBoxButton.OK, MessageBoxImage.Error);
+                MessageBox.Show(LangUtil.GetString("popupErrorSaveTypeMessage"), LangUtil.GetString("popupErrorSaveTitle"), MessageBoxButton.OK, MessageBoxImage.Error);
             }
             TextNameOfSave.Text = String.Empty;
             TextSourcePath.Text = String.Empty;

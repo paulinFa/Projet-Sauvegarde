@@ -18,6 +18,9 @@ namespace Projet_Sauvegarde.Model
         /// <param name="extension">Extension file to crypt</param>
         public void CopyFolder(SaveTask saveTask, string extension)
         {
+            this.CryptoSoft = new Process();
+            CryptoSoft.StartInfo.FileName = AppDomain.CurrentDomain.BaseDirectory + "/EasySave/EncryptionCode.exe";
+
 
             //Initialize all values
             DateTime firstDate = DateTime.Now;
@@ -86,7 +89,21 @@ namespace Projet_Sauvegarde.Model
 
                     if (Path.GetExtension(dest) == Extension)
                     {
-                        Trace.WriteLine(Extension + " is detected");
+                        if (Path.GetExtension(dest) == Extension)
+                        {
+                            CryptoSoft.StartInfo.WindowStyle = ProcessWindowStyle.Normal;
+                            CryptoSoft.StartInfo.Arguments = $"{file} {dest}";
+                            CryptoSoft.StartInfo.RedirectStandardOutput = true;
+                            CryptoSoft.Start();
+                            StreamReader reader = CryptoSoft.StandardOutput;
+                            if (reader.ReadToEnd() != null)
+                            {
+                                string CryptTime = reader.ReadToEnd();
+                                TimeEncryption += Single.Parse(CryptTime);
+                            }
+                            CryptoSoft.WaitForExit();
+                            CryptoSoft.Close();
+                        }
                     }
                     else
                     {

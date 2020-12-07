@@ -9,42 +9,42 @@
         ResizeMode="NoResize"
         Title="MainWindow" Height="585" Width="1316">
     <Grid Margin="0,0,10,8">
-        <RadioButton x:Name="CompleteRadio" Content="Complete" HorizontalAlignment="Left" Margin="40,29,0,0" VerticalAlignment="Top" Checked="CompleteRadioButton_Checked"/>
-        <RadioButton x:Name="DiffRadio" Content="Differential" HorizontalAlignment="Left" Margin="152,29,0,0" VerticalAlignment="Top" Checked="DiffRadioButton_Checked_1"/>
-        <Button x:Name="QuitAppButton" Content="Quit" HorizontalAlignment="Left" Margin="24,517,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.232,0.616" Width="38" Click="QuitAppButton_Click">
+        <RadioButton x:Name="CompleteRadio" Content="{DynamicResource ResourceKey=complete}" HorizontalAlignment="Left" Margin="40,29,0,0" VerticalAlignment="Top" Checked="CompleteRadioButton_Checked"/>
+        <RadioButton x:Name="DiffRadio" Content="{DynamicResource ResourceKey=differential}" HorizontalAlignment="Left" Margin="152,29,0,0" VerticalAlignment="Top" Checked="DiffRadioButton_Checked_1"/>
+        <Button x:Name="QuitAppButton" Content="{DynamicResource ResourceKey=quit}" HorizontalAlignment="Left" Margin="24,517,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.232,0.616" Width="50" Click="QuitAppButton_Click">
             <Button.Effect>
                 <DropShadowEffect/>
             </Button.Effect>
         </Button>
         <TextBox x:Name="TextNameOfSave" HorizontalAlignment="Left" Margin="40,114,0,0" TextWrapping="NoWrap" VerticalAlignment="Top" Width="151" Height="22"/>
         <TextBox x:Name="TextSourcePath" HorizontalAlignment="Left" Margin="40,172,0,0" TextWrapping="NoWrap" VerticalAlignment="Top" Width="151" Height="22"/>
-        <Label Content="Enter Name of Backup : " HorizontalAlignment="Left" Margin="40,88,0,0" VerticalAlignment="Top"/>
-        <Label Content="Enter Source Path :" HorizontalAlignment="Left" Margin="40,141,0,0" VerticalAlignment="Top"/>
-        <Label Content="Enter Destination Path : " HorizontalAlignment="Left" Margin="40,199,0,0" VerticalAlignment="Top"/>
+        <Label Content="{DynamicResource ResourceKey=enterNameBackup}" HorizontalAlignment="Left" Margin="19,90,0,0" VerticalAlignment="Top"/>
+        <Label Content="{DynamicResource ResourceKey=enterSourceBackup}" HorizontalAlignment="Left" Margin="19,144,0,0" VerticalAlignment="Top"/>
+        <Label Content="{DynamicResource ResourceKey=enterDestinationBackup}" HorizontalAlignment="Left" Margin="19,200,0,0" VerticalAlignment="Top"/>
         <TextBox x:Name="TextDestinationPath" HorizontalAlignment="Left" Margin="40,230,0,0" TextWrapping="NoWrap" VerticalAlignment="Top" Width="151" Height="23"/>
-        <Button x:Name="AddBackupButton" Content="Add Backup" HorizontalAlignment="Left" Margin="40,327,0,0" VerticalAlignment="Top" Width="90" Click="AddBackupButton_Click" Background="White">
+        <Button x:Name="AddBackupButton" Content="{DynamicResource ResourceKey=addBackup}" HorizontalAlignment="Left" Margin="40,327,0,0" VerticalAlignment="Top" Width="113" Click="AddBackupButton_Click" Background="White">
             <Button.Effect>
                 <DropShadowEffect/>
             </Button.Effect>
         </Button>
-        <Button x:Name="StartSaveButton" Content="Start " HorizontalAlignment="Left" Margin="1214,517,0,0" VerticalAlignment="Top" Width="39" Click="StartSaveButton_Click" Background="#FF88E41A">
+        <Button x:Name="StartSaveButton" Content="{DynamicResource ResourceKey=buttonStart}" HorizontalAlignment="Left" Margin="1214,517,0,0" VerticalAlignment="Top" Click="StartSaveButton_Click" Background="#FF88E41A">
             <Button.Effect>
                 <DropShadowEffect/>
             </Button.Effect>
         </Button>
 
-        <Button x:Name="DeleteConfigButton" Content="Delete Config" HorizontalAlignment="Left" Margin="372,400,0,0" VerticalAlignment="Top" Click="DeleteConfigButton_Click" Background="White">
+        <Button x:Name="DeleteConfigButton" Content="{DynamicResource ResourceKey=deleteConfig}" HorizontalAlignment="Left" Margin="372,400,0,0" VerticalAlignment="Top" Click="DeleteConfigButton_Click" Background="White">
             <Button.Effect>
                 <DropShadowEffect/>
             </Button.Effect>
         </Button>
-        <Label Content="If Differential, Enter Name of Complete Backup :" HorizontalAlignment="Left" Margin="40,258,0,0" VerticalAlignment="Top"/>
+        <Label Content="{DynamicResource ResourceKey=pathCompleteBackup}" HorizontalAlignment="Left" Margin="14,260,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.6,0.352"/>
         <TextBox x:Name="TextLastComplete" HorizontalAlignment="Left" Margin="40,289,0,0" TextWrapping="NoWrap" VerticalAlignment="Top" Width="151" Height="23"/>
         <Label Content="{DynamicResource ResourceKey=typeSave}" HorizontalAlignment="Left" Margin="14,0,0,0" VerticalAlignment="Top" FontWeight="Bold" FontSize="14"/>
-        <Label Content="Backup Info :" HorizontalAlignment="Left" Margin="14,68,0,0" VerticalAlignment="Top" FontWeight="Bold" FontSize="14"/>
-        <Label Content="All Config Backup : " HorizontalAlignment="Left" Margin="334,9,0,0" VerticalAlignment="Top" FontWeight="Bold"/>
-        <Label Content="Backup to be Launched :" HorizontalAlignment="Left" Margin="821,14,0,0" VerticalAlignment="Top" FontWeight="Bold"/>
-        <Button x:Name="TakeConfigButton" Content="Take Config" HorizontalAlignment="Left" Margin="674,400,0,0" VerticalAlignment="Top" Click="TakeConfigButton_Click" Background="White">
+        <Label Content="{DynamicResource ResourceKey=backupInfo}" HorizontalAlignment="Left" Margin="14,68,0,0" VerticalAlignment="Top" FontWeight="Bold" FontSize="14"/>
+        <Label Content="{DynamicResource ResourceKey=allConfigBackup}" HorizontalAlignment="Left" Margin="334,9,0,0" VerticalAlignment="Top" FontWeight="Bold"/>
+        <Label Content="{DynamicResource ResourceKey=backupToBeLaunched}" HorizontalAlignment="Left" Margin="821,14,0,0" VerticalAlignment="Top" FontWeight="Bold"/>
+        <Button x:Name="TakeConfigButton" Content="{DynamicResource ResourceKey=takeConfigButton}" HorizontalAlignment="Left" Margin="674,400,0,0" VerticalAlignment="Top" Click="TakeConfigButton_Click" Background="White">
             <Button.Effect>
                 <DropShadowEffect/>
             </Button.Effect>
@@ -54,9 +54,9 @@
                 <DataGrid.Columns>
                     <DataGridTextColumn Binding="{Binding Type}"  Header="Type" Width="70"/>
                     <DataGridTextColumn Binding="{Binding Name}"  Header="Name" Width="*"/>
-                    <DataGridTextColumn Binding="{Binding SourcePath}" Header="SourcePath" Width="2*"/>
-                    <DataGridTextColumn Binding="{Binding DestinationPath}" Header="DestinationPath" Width="2*"/>
-                    <DataGridTextColumn Binding="{Binding CompleteSavePath}" Header="LastComplete" Width="*"/>
+                    <DataGridTextColumn Binding="{Binding SourcePath}" Header="Source" Width="2*"/>
+                    <DataGridTextColumn Binding="{Binding DestinationPath}" Header="Destination" Width="2*"/>
+                    <DataGridTextColumn Binding="{Binding CompleteSavePath}" Header="Complete" Width="*"/>
                 </DataGrid.Columns>
             </DataGrid>
         </ScrollViewer>
@@ -65,42 +65,42 @@
                 <DataGrid.Columns>
                     <DataGridTextColumn Binding="{Binding Type}"  Header="Type" Width="70"/>
                     <DataGridTextColumn Binding="{Binding Name}"  Header="Name" Width="*"/>
-                    <DataGridTextColumn Binding="{Binding SourcePath}" Header="SourcePath" Width="2*"/>
-                    <DataGridTextColumn Binding="{Binding DestinationPath}" Header="DestinationPath" Width="2*"/>
-                    <DataGridTextColumn Binding="{Binding CompleteSavePath}" Header="LastComplete" Width="*"/>
+                    <DataGridTextColumn Binding="{Binding SourcePath}" Header="Source" Width="2*"/>
+                    <DataGridTextColumn Binding="{Binding DestinationPath}" Header="Destination" Width="2*"/>
+                    <DataGridTextColumn Binding="{Binding CompleteSavePath}" Header="Complete" Width="*"/>
                 </DataGrid.Columns>
             </DataGrid>
         </ScrollViewer>
-        <Button x:Name="DeleteQueueButton" Content="Delete Queue" HorizontalAlignment="Left" Margin="835,400,0,0" VerticalAlignment="Top" Click="DeleteQueueButton_Click" Background="White" BorderBrush="White" Foreground="Black">
+        <Button x:Name="DeleteQueueButton" Content="{DynamicResource ResourceKey=deleteQueueButton}" HorizontalAlignment="Left" Margin="835,400,0,0" VerticalAlignment="Top" Click="DeleteQueueButton_Click" Background="White" BorderBrush="White" Foreground="Black">
             <Button.Effect>
                 <DropShadowEffect/>
             </Button.Effect>
         </Button>
-        <Button x:Name="EnglishButton" HorizontalAlignment="Left" Margin="85,521,0,0" VerticalAlignment="Top" Width="19" Click="EnglishButton_Click" Height="12" RenderTransformOrigin="0.561,0.559" Background="#FFDDDDDD">
+        <Button x:Name="EnglishButton" HorizontalAlignment="Left" Margin="116,521,0,0" VerticalAlignment="Top" Width="18" Click="EnglishButton_Click" Height="12" RenderTransformOrigin="0.561,0.559" Background="#FFDDDDDD">
             <Image Source="/Pictures/engflag.jpg" Stretch="Uniform" />
         </Button>
 
-        <Button x:Name="FranchButton"  HorizontalAlignment="Left" Margin="130,521,0,0" VerticalAlignment="Top" Width="19" Height="12" Click="FranchButton_Click">
+        <Button x:Name="FranchButton"  HorizontalAlignment="Left" Margin="165,521,0,0" VerticalAlignment="Top" Width="19" Height="12" Click="FranchButton_Click">
             <Image Source="/Pictures/frflag.jpg" Stretch="Uniform"/>
         </Button>
-        <Label Content="Enter an extension to be encrypted (ex: txt, docx) : " HorizontalAlignment="Left" Margin="821,425,0,0" VerticalAlignment="Top"/>
+        <Label Content="{DynamicResource ResourceKey=enterDestinationBackup}" HorizontalAlignment="Left" Margin="821,425,0,0" VerticalAlignment="Top"/>
         <TextBox x:Name="TextExtEncrypt" HorizontalAlignment="Left" Margin="835,451,0,0" TextWrapping="NoWrap" VerticalAlignment="Top" Width="120"/>
-        <Label Content="Enter a business software that will stop the backups when it is running (ex: calc, notepad) :  " HorizontalAlignment="Left" Margin="821,469,0,0" VerticalAlignment="Top"/>
+        <Label Content="{DynamicResource ResourceKey=enterSoftware}" HorizontalAlignment="Left" Margin="821,469,0,0" VerticalAlignment="Top"/>
         <TextBox x:Name="ExecutableText" HorizontalAlignment="Left" Margin="835,495,0,0" TextWrapping="NoWrap" VerticalAlignment="Top" Width="120"/>
-        <Button x:Name="SaveExtension" Content="Save" HorizontalAlignment="Left" Margin="974,451,0,0" VerticalAlignment="Top" Click="SaveExtension_Click">
+        <Button x:Name="SaveExtension" Content="{DynamicResource ResourceKey=save}" HorizontalAlignment="Left" Margin="974,451,0,0" VerticalAlignment="Top" Click="SaveExtension_Click">
             <Button.Effect>
                 <DropShadowEffect/>
             </Button.Effect>
         </Button>
-        <Button x:Name="SaveProcess" Content="Save" HorizontalAlignment="Left" Margin="974,495,0,0" VerticalAlignment="Top" Click="SaveProcess_Click">
+        <Button x:Name="SaveProcess" Content="{DynamicResource ResourceKey=save}" HorizontalAlignment="Left" Margin="974,495,0,0" VerticalAlignment="Top" Click="SaveProcess_Click">
             <Button.Effect>
                 <DropShadowEffect/>
             </Button.Effect>
         </Button>
-        <Label Content="Extension Active :" HorizontalAlignment="Left" Margin="1008,448,0,0" VerticalAlignment="Top"/>
-        <Label Content="Process Active : " HorizontalAlignment="Left" Margin="1008,491,0,0" VerticalAlignment="Top"/>
-        <Label Content="{Binding ExtensionSave}" HorizontalAlignment="Left" Margin="1110,448,0,0" VerticalAlignment="Top"/>
-        <Label Content="{Binding ProcessSave}" HorizontalAlignment="Left" Margin="1110,491,0,0" VerticalAlignment="Top"/>
+        <Label Content="{DynamicResource ResourceKey=extensionActive}" HorizontalAlignment="Left" Margin="1050,448,0,0" VerticalAlignment="Top"/>
+        <Label Content="{DynamicResource ResourceKey=processActive}" HorizontalAlignment="Left" Margin="1050,491,0,0" VerticalAlignment="Top"/>
+        <Label Content="{Binding ExtensionSave}" HorizontalAlignment="Left" Margin="1150,448,0,0" VerticalAlignment="Top"/>
+        <Label Content="{Binding ProcessSave}" HorizontalAlignment="Left" Margin="1150,491,0,0" VerticalAlignment="Top"/>
 
     </Grid>
 </Window>

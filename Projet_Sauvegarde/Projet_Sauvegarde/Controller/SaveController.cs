@@ -73,7 +73,7 @@ namespace Projet_Sauvegarde.Controller
         {
             if (TestProcess())
             {
-                window.PopupErrorProcess("Error process " + Software + " is running " + "save(s) are stop");
+                window.PopupErrorProcess(Software);
             }
             else if (saveTask.Type == "differential")
             {
@@ -95,7 +95,7 @@ namespace Projet_Sauvegarde.Controller
             {
                 if (TestProcess())
                 {
-                    window.PopupErrorProcess("Error process " + Software + " is running " + "save(s) are stop");
+                    window.PopupErrorProcess(Software);
                 }
                 else if (saveTask.Type == "differential")
                 {
@@ -119,7 +119,7 @@ namespace Projet_Sauvegarde.Controller
             {
                 if (TestProcess())
                 {
-                    window.PopupErrorProcess("Error process " + Software + " is running " + "save(s) are stop");
+                    window.PopupErrorProcess(Software);
                 }
                 else if (saveTask.Type == "differential")
                 {
