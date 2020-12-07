@@ -18,11 +18,6 @@ namespace Projet_Sauvegarde.Model
         /// <param name="extension">Extension file to crypt</param>
         public void CopyFolder(SaveTask saveTask, string extension)
         {
-            this.CryptoSoft = new Process();
-            //CryptoSoft.StartInfo.FileName = AppDomain.CurrentDomain.BaseDirectory + "/EasySave/CryptoSoft.exe";
-            CryptoSoft.StartInfo.FileName = @"D:/Documents/CryptoSoft.exe";
-
-
             //Initialize all values
             DateTime firstDate = DateTime.Now;
             this.SourcePath = saveTask.SourcePath;
@@ -79,21 +74,25 @@ namespace Projet_Sauvegarde.Model
                 {
                     if(Path.GetExtension(dest) == Extension)
                     {
+                        Process CryptoSoft = new Process();
+                        CryptoSoft.StartInfo.FileName = AppDomain.CurrentDomain.BaseDirectory + "/EasySave/CryptoSoft.exe";
                         CryptoSoft.StartInfo.WindowStyle = ProcessWindowStyle.Normal;
                         CryptoSoft.StartInfo.Arguments = $"{file} {dest}";
                         CryptoSoft.StartInfo.RedirectStandardOutput = true;
                         CryptoSoft.Start();
                         StreamReader reader = CryptoSoft.StandardOutput;
-                        if(reader.ReadToEnd() != null)
+                        string CryptTime = reader.ReadToEnd();
+                        if (CryptTime == "ERROR" || CryptTime == null || CryptTime == "")
                         {
-                            string CryptTime = reader.ReadToEnd();
-                            if(CryptTime != "")
-                            {
-                                TimeEncryption += Single.Parse(CryptTime);
-                            }
+                            Trace.WriteLine("LE CRYPTAGE A ECHOUE");
                         }
-                        CryptoSoft.WaitForExit();
-                        CryptoSoft.Close();
+
+                        else
+                        {
+                            TimeEncryption += float.Parse(CryptTime);
+                            Trace.WriteLine(CryptTime);
+                            CryptoSoft.WaitForExit();
+                        }
                     }
                     else
                     {
@@ -122,4 +121,5 @@ namespace Projet_Sauvegarde.Model
             }
         }
     }
+
 }

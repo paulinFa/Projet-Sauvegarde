@@ -9,9 +9,8 @@ namespace Projet_Sauvegarde.Model
     /// </summary>
     class Save
     {
-        public Process CryptoSoft { get; set; }
         [DefaultValue(0)]
-        public string TimeEncryption { get; set; }
+        public float TimeEncryption { get; set; }
         public string Extension { get; set; }
         public string Name { get; set; }
         public int TotalNumberFile { get; set; }

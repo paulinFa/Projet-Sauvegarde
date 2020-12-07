@@ -24,7 +24,7 @@ namespace Projet_Sauvegarde.Model
         /// <param name="sizeSave"></param>
         /// <param name="transfertTime"></param>
         /// <param name="timeEncryptionTransfert"></param>
-        public LogFile(string timestamp, string nameOfSave, string sourcePath, string destinationPath, int sizeSave, string transfertTime,string timeEncryptionTransfert) //Method where objetcs are used into parameters, then create the LogFile and insert the parameters in it.
+        public LogFile(string timestamp, string nameOfSave, string sourcePath, string destinationPath, int sizeSave, string transfertTime,float timeEncryptionTransfert) //Method where objetcs are used into parameters, then create the LogFile and insert the parameters in it.
         {
 
 
@@ -78,7 +78,7 @@ namespace Projet_Sauvegarde.Model
         public string DestinationPath { get; set; }
         public int SizeOfSave { get; set; }
         public string TransfertTime { get; set; }
-        public string TimeEncryptionTransfert { get; set; }
+        public float TimeEncryptionTransfert { get; set; }
 
     } //end class JsonFileState
 
