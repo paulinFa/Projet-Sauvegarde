@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\Paulin\\Source\\Repos\\paulinFa\\Projet-Sauvegarde\\Projet_Sauvegarde\\Projet_Sauvegarde\\Projet_Sauvegarde.csproj": {}
+    "C:\\Users\\Paulin\\source\\repos\\paulinFa\\Projet-Sauvegarde\\Projet_Sauvegarde\\Client_EasySave\\Client_EasySave\\Client_EasySave.csproj": {}
   },
   "projects": {
-    "C:\\Users\\Paulin\\Source\\Repos\\paulinFa\\Projet-Sauvegarde\\Projet_Sauvegarde\\Projet_Sauvegarde\\Projet_Sauvegarde.csproj": {
+    "C:\\Users\\Paulin\\source\\repos\\paulinFa\\Projet-Sauvegarde\\Projet_Sauvegarde\\Client_EasySave\\Client_EasySave\\Client_EasySave.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Paulin\\Source\\Repos\\paulinFa\\Projet-Sauvegarde\\Projet_Sauvegarde\\Projet_Sauvegarde\\Projet_Sauvegarde.csproj",
-        "projectName": "Projet_Sauvegarde",
-        "projectPath": "C:\\Users\\Paulin\\Source\\Repos\\paulinFa\\Projet-Sauvegarde\\Projet_Sauvegarde\\Projet_Sauvegarde\\Projet_Sauvegarde.csproj",
+        "projectUniqueName": "C:\\Users\\Paulin\\source\\repos\\paulinFa\\Projet-Sauvegarde\\Projet_Sauvegarde\\Client_EasySave\\Client_EasySave\\Client_EasySave.csproj",
+        "projectName": "Client_EasySave",
+        "projectPath": "C:\\Users\\Paulin\\source\\repos\\paulinFa\\Projet-Sauvegarde\\Projet_Sauvegarde\\Client_EasySave\\Client_EasySave\\Client_EasySave.csproj",
         "packagesPath": "C:\\Users\\Paulin\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Paulin\\Source\\Repos\\paulinFa\\Projet-Sauvegarde\\Projet_Sauvegarde\\Projet_Sauvegarde\\obj\\",
+        "outputPath": "C:\\Users\\Paulin\\source\\repos\\paulinFa\\Projet-Sauvegarde\\Projet_Sauvegarde\\Client_EasySave\\Client_EasySave\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
@@ -42,16 +42,6 @@
       "frameworks": {
         "netcoreapp3.1": {
           "targetAlias": "netcoreapp3.1",
-          "dependencies": {
-            "Grpc.Core": {
-              "target": "Package",
-              "version": "[2.34.0, )"
-            },
-            "Newtonsoft.Json": {
-              "target": "Package",
-              "version": "[12.0.3, )"
-            }
-          },
           "imports": [
             "net461",
             "net462",
