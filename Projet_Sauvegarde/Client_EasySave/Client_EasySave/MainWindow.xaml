@@ -7,6 +7,22 @@
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800">
     <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="31*"/>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
+        <ScrollViewer Margin="20,23,303,61" Height="350">
+            <DataGrid  x:Name="ConfigBackupList" AutoGenerateColumns="False" IsReadOnly="True" ItemsSource="{Binding AllConfigBackup}">
+                <DataGrid.Columns>
+                    <DataGridTextColumn Binding="{Binding Type}"  Header="Type" Width="70"/>
+                    <DataGridTextColumn Binding="{Binding Name}"  Header="Name" Width="*"/>
+                    <DataGridTextColumn Binding="{Binding SourcePath}" Header="Source" Width="2*"/>
+                    <DataGridTextColumn Binding="{Binding DestinationPath}" Header="Destination" Width="2*"/>
+                    <DataGridTextColumn Binding="{Binding CompleteSavePath}" Header="Complete" Width="*"/>
+                </DataGrid.Columns>
+            </DataGrid>
+        </ScrollViewer>
+        <TextBox x:Name="RecieveTestText" HorizontalAlignment="Left" Margin="520,110,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="221" Height="176"/>
 
     </Grid>
 </Window>

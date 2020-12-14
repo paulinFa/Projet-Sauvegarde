@@ -1,0 +1,23 @@
+{
+  "runtimeTarget": {
+    "name": ".NETCoreApp,Version=v3.1",
+    "signature": ""
+  },
+  "compilationOptions": {},
+  "targets": {
+    ".NETCoreApp,Version=v3.1": {
+      "Client_EasySave/1.0.0": {
+        "runtime": {
+          "Client_EasySave.dll": {}
+        }
+      }
+    }
+  },
+  "libraries": {
+    "Client_EasySave/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    }
+  }
+}

@@ -93,3 +93,6 @@ C:\Users\flori\source\repos\paulinFa\Projet-Sauvegarde\Projet_Sauvegarde\Projet_
 C:\Users\flori\source\repos\paulinFa\Projet-Sauvegarde\Projet_Sauvegarde\Projet_Sauvegarde\bin\Debug\netcoreapp3.1\runtimes\win-x86\native\grpc_csharp_ext.x86.dll
 C:\Users\flori\source\repos\paulinFa\Projet-Sauvegarde\Projet_Sauvegarde\Projet_Sauvegarde\obj\Debug\netcoreapp3.1\Projet_Sauvegarde_Content.g.cs
 C:\Users\flori\source\repos\paulinFa\Projet-Sauvegarde\Projet_Sauvegarde\Projet_Sauvegarde\obj\Debug\netcoreapp3.1\App.baml
+C:\Users\flori\source\repos\paulinFa\Projet-Sauvegarde\Projet_Sauvegarde\Projet_Sauvegarde\obj\Debug\netcoreapp3.1\Projet_Sauvegarde.View.en.resources
+C:\Users\flori\source\repos\paulinFa\Projet-Sauvegarde\Projet_Sauvegarde\Projet_Sauvegarde\obj\Debug\netcoreapp3.1\Projet_Sauvegarde.View.fr.resources
+C:\Users\flori\source\repos\paulinFa\Projet-Sauvegarde\Projet_Sauvegarde\Projet_Sauvegarde\obj\Debug\netcoreapp3.1\Projet_Sauvegarde.csproj.GenerateResource.cache

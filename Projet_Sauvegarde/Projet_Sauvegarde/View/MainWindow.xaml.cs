@@ -21,6 +21,7 @@ using System.IO;
 using System.ComponentModel;
 using System.Resources;
 using Projet_Sauvegarde.Utils;
+using Projet_Sauvegarde.View;
 
 namespace Projet_Sauvegarde
 {
@@ -30,7 +31,9 @@ namespace Projet_Sauvegarde
     
     public partial class MainWindow : INotifyPropertyChanged 
     {
+        
         SaveController saveController;
+        ServeurController serveurController;
         private string _extensionSave;
         public string ExtensionSave //Getter and setter for Event (Extension)
         {
@@ -73,15 +76,17 @@ namespace Projet_Sauvegarde
         public MainWindow() //Method that initializes new objects 
         {
             
+            
             DataContext = this;
             saveController = new SaveController(this);
+            serveurController = new ServeurController(this, saveController.ListSave);
             AllConfigBackup = new ObservableCollection<SaveTask>();
             AllBackupLaunch = new ObservableCollection<SaveTask>();
             
             
            
             InitializeComponent();
-
+           
             LangUtil.SetupLang();
 
 
@@ -210,7 +215,9 @@ namespace Projet_Sauvegarde
             {
                
                 AllConfigBackup.Add(backup);
+
             }
+            serveurController.UpdateListShare(saveController.ListSave);
 
         }      
 
