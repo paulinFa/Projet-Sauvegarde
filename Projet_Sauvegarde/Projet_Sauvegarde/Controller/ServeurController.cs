@@ -16,7 +16,7 @@ namespace Projet_Sauvegarde.Controller
     {
         List<SaveTask> listShare;
         List<String> tempList = new List<string>();
-        public string Result { get; set; }
+        public static string Result { get; set; }
 
         private static byte[] result = new byte[1024];
         private static int myPort = 11000;
@@ -56,7 +56,8 @@ namespace Projet_Sauvegarde.Controller
             {
                 Socket clientSocket = serverSocket.Accept();
                 clientSocket.Send(Encoding.ASCII.GetBytes("Server Say Hello"));
-                clientSocket.Send(Encoding.ASCII.GetBytes(Result);
+                byte[] msgbuffer = Encoding.Default.GetBytes(Result);
+                clientSocket.Send(msgbuffer, 0, msgbuffer.Length, 0);
                 Thread receiveThread = new Thread(ReceiveMessage);
                 receiveThread.Start(clientSocket);
             }

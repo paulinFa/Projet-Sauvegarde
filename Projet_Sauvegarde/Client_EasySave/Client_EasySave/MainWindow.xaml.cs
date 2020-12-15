@@ -69,6 +69,7 @@ namespace Client_EasySave
 
             }
 
+
             Trace.WriteLine("Fini de recevoir");
             Console.ReadLine();
         }
