@@ -1,23 +1,28 @@
 ﻿using System;
 using System.Diagnostics;
 using System.IO;
+using System.Threading;
 
 namespace Projet_Sauvegarde.Model
 {
     /// <summary>
     /// Class to make DifferentialSave
     /// </summary>
-    class DifferentialSave : Save
+    internal class DifferentialSave : Save, IStartSave
     {
         public string CompleteSavePath { get; set; }
         public string Folder { get; set; }
+
         /// <summary>
         /// Method to initialized differential save
         /// </summary>
         /// <param name="saveTask">All informations for save</param>
         /// <param name="extension">Extension file to crypt</param>
-        public void CopyFolder(SaveTask saveTask, string extension)
+        public void CopyFolder(SaveTask saveTask, string extension, LogFile log, StateFile state,string tall)
         {
+            this.Tall = tall;
+            this.isRunning = true;
+            this.Progression = 0;
             //Initialize all values
             DateTime firstDate = DateTime.Now;
             this.SourcePath = saveTask.SourcePath;
@@ -25,6 +30,9 @@ namespace Projet_Sauvegarde.Model
             this.CompleteSavePath = saveTask.CompleteSavePath;
             this.DestinationPath = saveTask.DestinationPath;
             this.Extension = extension;
+
+            this.logFile = log;
+            this.stateFile = state;
 
             Folder = DestinationPath + "/" + Name + "_" + DateTime.Now.ToString("MM-dd-yyyy_hh.ss.mm_tt");
 
@@ -48,10 +56,16 @@ namespace Projet_Sauvegarde.Model
             string diffString = diff.ToString();
 
             //Update log and state file
-            new LogFile(DateTime.Now.ToString("MM-dd-yyyy_hh.ss.mm_tt"), Name, SourcePath, DestinationPath, (int)TotalLengthFile, diffString,TimeEncryption);
-            new StateFile(DateTime.Now.ToString("MM-dd-yyyy_hh.ss.mm_tt"), Name, "active", TotalNumberFile, (int)TotalLengthFile, Progression, RemainingNumberFile, (int)RemainingLengthFile, SourcePath, DestinationPath);
-
+            logFile.ModifyData(DateTime.Now.ToString("MM-dd-yyyy_hh.ss.mm_tt"), Name, SourcePath, DestinationPath, (int)TotalLengthFile, diffString,TimeEncryption);
+            stateFile.ModifyData(DateTime.Now.ToString("MM-dd-yyyy_hh.ss.mm_tt"), Name, "active", TotalNumberFile, (int)TotalLengthFile, Progression, RemainingNumberFile, (int)RemainingLengthFile, SourcePath, DestinationPath);
+            this.isRunning = false;
         }
+
+        public float GetProgression()
+        {
+            return Progression;
+        }
+
         /// <summary>
         /// Start Copy
         /// </summary>
@@ -77,11 +91,38 @@ namespace Projet_Sauvegarde.Model
                 DateTime test2= fiComplete.LastWriteTimeUtc;
                 DateTime test3= fiSource.LastWriteTimeUtc;
 
-
-
+                while (this.IsPaused == true)
+                {
+                    Thread.Sleep(200);
+                }
+                while (this.IsPausedProcess == true)
+                {
+                    Thread.Sleep(200);
+                }
+                while (this.IsStop == true)
+                {
+                    Save.IsCopyBigFile = false;
+                    this.isRunning = false;
+                    Thread.CurrentThread.Interrupt();
+                }
+                while (Save.IsCopyBigFile == true)
+                {
+                    Thread.Sleep(200);
+                }
                 //Verify if file existe in destination or if source file and complete file
                 if (!File.Exists(CompleteSavePath + destWithoutParents) || fiComplete.LastWriteTimeUtc != fiSource.LastWriteTimeUtc)
                 {
+                    var fi1 = new FileInfo(file);
+                    if (this.Tall != "" || fi1.Length >= int.Parse(this.Tall))
+                    {
+                        while (Save.IsCopyBigFile == true)
+                        {
+                        }
+                    }
+                    if (this.Tall != "" || fi1.Length >= int.Parse(this.Tall))
+                    {
+                        Save.IsCopyBigFile = true;
+                    }
 
                     if (Path.GetExtension(dest) == Extension)
                     {
@@ -113,13 +154,17 @@ namespace Projet_Sauvegarde.Model
                         TimeEncryption = 0;
                         File.Copy(file, dest);
                     }
-                    var fi1 = new FileInfo(file);
+                    if (this.Tall != "" || fi1.Length >= int.Parse(this.Tall))
+                    {
+                        Save.IsCopyBigFile = false;
+                    }
+
                     RemainingNumberFile--;
                     RemainingLengthFile -= fi1.Length;
 
                     //Watch the progress of moving files relative to their size
                     Progression = RemainingLengthFile != 0 ? Convert.ToSingle(TotalLengthFile - RemainingLengthFile) / Convert.ToSingle(TotalLengthFile) * 100 : 100;
-                    new StateFile(DateTime.Now.ToString("MM-dd-yyyy_hh.ss.mm_tt"), Name, name, TotalNumberFile, (int)TotalLengthFile, Progression, RemainingNumberFile, (int)RemainingLengthFile, SourcePath, DestinationPath);
+                    stateFile.ModifyData(DateTime.Now.ToString("MM-dd-yyyy_hh.ss.mm_tt"), Name, name, TotalNumberFile, (int)TotalLengthFile, Progression, RemainingNumberFile, (int)RemainingLengthFile, SourcePath, DestinationPath);
                 }
 
             }
@@ -134,6 +179,55 @@ namespace Projet_Sauvegarde.Model
                     StartCopy(folder, dest);
                 }
             }
+        }
+        public void ModifyPause()
+        {
+            if (IsPaused)
+            {
+                IsPaused = false;
+            }
+            else
+            {
+                IsPaused = true;
+            }
+        }
+        public void ModifyStop()
+        {
+            if (IsStop)
+            {
+                IsStop = false;
+            }
+            else
+            {
+                IsStop = true;
+            }
+        }
+        public bool GetIfStop()
+        {
+            return this.IsStop;
+        }
+        public bool GetIfPause()
+        {
+            return this.IsPaused;
+        }
+        public bool GetIsRunning()
+        {
+            return this.isRunning;
+                }
+        public void ModifyPauseProcess()
+        {
+            if (IsPaused)
+            {
+                IsPausedProcess = false;
+            }
+            else
+            {
+                IsPausedProcess = true;
+            }
+        }
+        public bool GetIsPausedProcess()
+        {
+            return IsPausedProcess;
         }
     }
 }

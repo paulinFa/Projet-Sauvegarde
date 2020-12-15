@@ -3,6 +3,7 @@ using System.Collections;
 using System.Linq;
 using System.Collections.Generic;
 using System.Diagnostics;
+using System.Threading;
 
 namespace Projet_Sauvegarde.Controller
 {
@@ -13,9 +14,12 @@ namespace Projet_Sauvegarde.Controller
     {
         public List<SaveTask> ListSave { get; set; }
         public string Extension { get; set; }
-        public string Software { get; set; }
+        public string Tall { get; set; }
+        public volatile string Software;
         private ParameterFile parameterFile = new ParameterFile();
         private MainWindow window;
+        private LogFile logFile;
+        private StateFile stateFile;
         public SaveController(MainWindow mainWindow)
         {
             this.window = mainWindow;
@@ -24,6 +28,18 @@ namespace Projet_Sauvegarde.Controller
             this.ListSave = parameterFile.SaveTasksList;
             this.Extension = parameterFile.Extension;
             this.Software = parameterFile.Software;
+            this.Tall = parameterFile.TallMax;
+            this.logFile = new LogFile();
+            this.stateFile = new StateFile();
+            new Thread(() =>
+            {
+                while(true)
+                {
+                    Thread.Sleep(200);                    
+                    TestProcess();
+                }
+            }).Start();
+
         }
         /// <summary>
         /// Add One save to List 
@@ -35,7 +51,7 @@ namespace Projet_Sauvegarde.Controller
         /// <param name="completeSavePath">If is differential save</param>
         public void AddOneSave(string type, string name, string sourcePath, string destinationPath, string completeSavePath = "")
         {
-            SaveTask saveTask = new SaveTask(type, name, sourcePath, destinationPath, completeSavePath);
+            SaveTask saveTask = new SaveTask(type, name, sourcePath, destinationPath,completeSavePath);
             ListSave.Add(saveTask);
             parameterFile.SaveTasksList = this.ListSave;
             parameterFile.Update();
@@ -71,19 +87,9 @@ namespace Projet_Sauvegarde.Controller
         /// <param name="saveTask">Save to launch</param>
         public void StartOneSave(SaveTask saveTask)
         {
-            if (TestProcess())
+            if(!this.ListSave.Find((a) => a.Name == saveTask.Name).GetIsRunning())
             {
-                window.PopupErrorProcess(Software);
-            }
-            else if (saveTask.Type == "differential")
-            {
-                DifferentialSave diff = new DifferentialSave();
-                diff.CopyFolder(saveTask, Extension);
-            }
-            else if (saveTask.Type == "complete")
-            {
-                CompleteSave complete = new CompleteSave();
-                complete.CopyFolder(saveTask, Extension);
+                this.ListSave.Find((a) => a.Name == saveTask.Name).LaunchThread(this.Extension, logFile, stateFile, this.Tall);
             }
         }
         /// <summary>
@@ -93,20 +99,10 @@ namespace Projet_Sauvegarde.Controller
         {
             foreach (SaveTask saveTask in ListSave)
             {
-                if (TestProcess())
-                {
-                    window.PopupErrorProcess(Software);
-                }
-                else if (saveTask.Type == "differential")
-                {
-                    DifferentialSave diff = new DifferentialSave();
-                    diff.CopyFolder(saveTask, Extension);
-                }
-                else if (saveTask.Type == "complete")
-                {
-                    CompleteSave complete = new CompleteSave();
-                    complete.CopyFolder(saveTask, Extension);
-                }
+                    if (!this.ListSave.Find((a) => a.Name == saveTask.Name).GetIsRunning())
+                    {
+                        this.ListSave.Find((a) => a.Name == saveTask.Name).LaunchThread(this.Extension, logFile, stateFile, this.Tall);
+                    }
             }
         }
         /// <summary>
@@ -115,35 +111,14 @@ namespace Projet_Sauvegarde.Controller
         /// <param name="saveTasks">List of save to launch</param>
         public void StartMultipleSaves(List<SaveTask> saveTasks)
         {
+            System.Console.WriteLine("multiple " + saveTasks.Count);
             foreach (SaveTask saveTask in saveTasks)
             {
-                if (TestProcess())
+                if (!this.ListSave.Find((a) => a.Name == saveTask.Name).GetIsRunning())
                 {
-                    window.PopupErrorProcess(Software);
-                }
-                else if (saveTask.Type == "differential")
-                {
-                    DifferentialSave diff = new DifferentialSave();
-                    diff.CopyFolder(saveTask, Extension);
-                }
-                else if (saveTask.Type == "complete")
-                {
-                    CompleteSave complete = new CompleteSave();
-                    complete.CopyFolder(saveTask, Extension);
+                    this.ListSave.Find((a) => a.Name == saveTask.Name).LaunchThread(this.Extension, logFile, stateFile, this.Tall);
                 }
             }
-        }
-        /// <summary>
-        /// Verify if software is launch
-        /// </summary>
-        /// <returns>Return false if software is not running</returns>
-        public bool TestProcess()
-        {
-            Process[] pname = Process.GetProcessesByName(Software);
-            if (pname.Length == 0)
-                return false;
-            else
-                return true;
         }
         /// <summary>
         /// Modify extension from controller and parameterFile
@@ -156,6 +131,16 @@ namespace Projet_Sauvegarde.Controller
             parameterFile.Update();
         }
         /// <summary>
+        /// Modify extension from controller and parameterFile
+        /// </summary>
+        /// <param name="extension">Extension of file you want to crypt</param>
+        public void ModifyTall(string tall)
+        {
+            this.Tall = tall;
+            parameterFile.TallMax = this.Tall;
+            parameterFile.Update();
+        }
+        /// <summary>
         /// Modify software from controller and parameterFile
         /// </summary>
         /// <param name="software">Process you want to check if is running bettewen saves</param>
@@ -164,6 +149,42 @@ namespace Projet_Sauvegarde.Controller
             this.Software = software;
             parameterFile.Software = this.Software;
             parameterFile.Update();
+        }
+
+        public float GetProgression(SaveTask saveTask)
+        {
+            return this.ListSave.Find((a) => a.Name == saveTask.Name).Progression;
+        }
+        public void TestProcess()
+        {
+            if(VerifyProcess() == true)
+            {
+                foreach(SaveTask saveTask in ListSave)
+                {
+                    if(saveTask.GetIfPauseProcess()==false)
+                    {
+                        saveTask.PauseProcess();
+                    }
+                }
+            }
+            else
+            {
+                foreach (SaveTask saveTask in ListSave)
+                {
+                    if (saveTask.GetIfPauseProcess() == true)
+                    {
+                        saveTask.PauseProcess();
+                    }
+                }
+            }
+        }
+        public bool VerifyProcess()
+        {
+            Process[] pname = Process.GetProcessesByName(Software);
+            if (pname.Length == 0)
+                return false;
+            else
+                return true;
         }
     }
 }

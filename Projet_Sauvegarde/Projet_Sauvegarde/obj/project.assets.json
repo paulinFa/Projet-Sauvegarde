@@ -171,19 +171,23 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\flori\\.nuget\\packages\\": {}
+    "C:\\Users\\Paulin\\.nuget\\packages\\": {},
+    "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\flori\\source\\repos\\paulinFa\\Projet-Sauvegarde\\Projet_Sauvegarde\\Projet_Sauvegarde\\Projet_Sauvegarde.csproj",
+      "projectUniqueName": "C:\\Users\\Paulin\\Desktop\\Projet-Sauvegarde\\Projet_Sauvegarde\\Projet_Sauvegarde\\Projet_Sauvegarde.csproj",
       "projectName": "Projet_Sauvegarde",
-      "projectPath": "C:\\Users\\flori\\source\\repos\\paulinFa\\Projet-Sauvegarde\\Projet_Sauvegarde\\Projet_Sauvegarde\\Projet_Sauvegarde.csproj",
-      "packagesPath": "C:\\Users\\flori\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\flori\\source\\repos\\paulinFa\\Projet-Sauvegarde\\Projet_Sauvegarde\\Projet_Sauvegarde\\obj\\",
+      "projectPath": "C:\\Users\\Paulin\\Desktop\\Projet-Sauvegarde\\Projet_Sauvegarde\\Projet_Sauvegarde\\Projet_Sauvegarde.csproj",
+      "packagesPath": "C:\\Users\\Paulin\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\Paulin\\Desktop\\Projet-Sauvegarde\\Projet_Sauvegarde\\Projet_Sauvegarde\\obj\\",
       "projectStyle": "PackageReference",
+      "fallbackFolders": [
+        "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
+      ],
       "configFilePaths": [
-        "C:\\Users\\flori\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\Paulin\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [

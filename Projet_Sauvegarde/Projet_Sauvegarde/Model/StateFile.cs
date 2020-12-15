@@ -1,6 +1,6 @@
 ﻿using Newtonsoft.Json;
 using System.IO;
-
+using System.Threading;
 
 namespace Projet_Sauvegarde.Model
 {
@@ -10,6 +10,8 @@ namespace Projet_Sauvegarde.Model
     public class StateFile : FileModel
     {
         JsonFileState dataJsonState = new JsonFileState();
+        private readonly object _lockObject = new object();
+
         /// <summary>
         /// Constructor
         /// </summary>
@@ -23,10 +25,13 @@ namespace Projet_Sauvegarde.Model
         /// <param name="sizeOfRemainingFile">Size in byte of file remaining</param>
         /// <param name="sourcePath"></param>
         /// <param name="destinationPath"></param>
-        public StateFile(string timestamp, string nameOfSave, string state, int eligibleFile, int transfertSize, float progression, int remainingFile, int sizeOfRemainingFile, string sourcePath, string destinationPath) //Method where objetcs are used into parameters, then create the StateFile and insert the parameters in it.
+        public StateFile() //Method where objetcs are used into parameters, then create the StateFile and insert the parameters in it.
         {
             CreateFolderStatus();
+        }
+        public void ModifyData(string timestamp, string nameOfSave, string state, int eligibleFile, int transfertSize, float progression, int remainingFile, int sizeOfRemainingFile, string sourcePath, string destinationPath) //Method where objetcs are used into parameters, then create the StateFile and insert the parameters in it.
 
+        {
             dataJsonState.Timestamp = timestamp;
             dataJsonState.NameOfSave = nameOfSave;
             dataJsonState.State = state;
@@ -39,17 +44,9 @@ namespace Projet_Sauvegarde.Model
             dataJsonState.DestinationPath = destinationPath;
 
             PathStateFile = @"D:\EasySave\Status\StatusBackup" + "_" + nameOfSave + ".json"; //Definition path of StateFile + json format
-
-            if (File.Exists(PathStateFile)) //Verification if PathStateFile is already create
-            {
-                TransformToJsonState(); //insert parameters
-            }
-
-            else if (!File.Exists(PathStateFile))  //create and insert parameters
-            {
-                TransformToJsonState();
-            }
+            new Thread(() => TransformToJsonState());
         }
+
         /// <summary>
         /// Tranfsorm JsonFileState in json and write in file
         /// </summary>
@@ -57,12 +54,17 @@ namespace Projet_Sauvegarde.Model
         {
 
             string WroteJson = JsonConvert.SerializeObject(dataJsonState, Formatting.Indented); //object to add parameters into the JSON file
-
-            using (var tw = new StreamWriter(PathStateFile, true))
+            lock (_lockObject)
             {
-                tw.WriteLine(WroteJson.ToString());  //We write the object WroteJson into the file
-                tw.Close();
-            }
+                FileStream fs = new FileStream(PathStateFile, FileMode.OpenOrCreate);
+                StreamWriter str = new StreamWriter(fs);
+                str.BaseStream.Seek(0, SeekOrigin.End);
+                str.WriteLine(WroteJson.ToString());
+                str.Flush();
+                str.Close();
+                fs.Close();
+            }    
+
         }
     }
     /// <summary>

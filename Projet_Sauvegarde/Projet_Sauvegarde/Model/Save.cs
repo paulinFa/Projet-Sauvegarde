@@ -9,6 +9,18 @@ namespace Projet_Sauvegarde.Model
     /// </summary>
     class Save
     {
+        [DefaultValue("")]
+        internal volatile string Tall;
+        [DefaultValue(false)]
+        internal static volatile bool IsCopyBigFile;
+        [DefaultValue(false)]
+        internal volatile bool IsPausedProcess;
+        [DefaultValue(false)]
+        internal volatile bool isRunning;
+        [DefaultValue(false)]
+        internal volatile bool IsStop;
+        [DefaultValue(false)]
+        internal volatile bool IsPaused;
         [DefaultValue(0)]
         public float TimeEncryption { get; set; }
         public string Extension { get; set; }
@@ -17,7 +29,7 @@ namespace Projet_Sauvegarde.Model
         public long TotalLengthFile { get; set; }
 
         [DefaultValue(0)]
-        public float Progression { get; set; }
+        public volatile float Progression;
 
         [DefaultValue(0)]
         public long RemainingLengthFile { get; set; }
@@ -27,6 +39,9 @@ namespace Projet_Sauvegarde.Model
 
         public string SourcePath { get; set; }
         public string DestinationPath { get; set; }
+        internal LogFile logFile;
+        internal StateFile stateFile;
+
         /// <summary>
         /// Méthod to take the size of directory
         /// </summary>
@@ -50,5 +65,7 @@ namespace Projet_Sauvegarde.Model
             }
             return size;
         }
+
+
     }
 }

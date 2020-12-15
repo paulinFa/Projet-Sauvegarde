@@ -21,14 +21,15 @@ using System.IO;
 using System.ComponentModel;
 using System.Resources;
 using Projet_Sauvegarde.Utils;
+using System.Diagnostics;
 
 namespace Projet_Sauvegarde
 {
     /// <summary>
     /// Interaction logic for MainWindow.xaml
     /// </summary>
-    
-    public partial class MainWindow : INotifyPropertyChanged 
+
+    public partial class MainWindow : INotifyPropertyChanged
     {
         SaveController saveController;
         private string _extensionSave;
@@ -45,7 +46,7 @@ namespace Projet_Sauvegarde
             }
         }
         public event PropertyChangedEventHandler PropertyChanged; //Implementing change notification to update the display
-        public void OnPropertyChanged(string propertyName = null)  
+        public void OnPropertyChanged(string propertyName = null)
         {
             if (PropertyChanged != null)
             {
@@ -53,7 +54,7 @@ namespace Projet_Sauvegarde
             }
 
         }
-        private string _processSave; 
+        private string _processSave;
         public string ProcessSave //Getter and setter for Event (Extension)
         {
             get { return _processSave; }
@@ -66,21 +67,44 @@ namespace Projet_Sauvegarde
                 }
             }
         }
+        private string _tallSave;
+        public string TallSave //Getter and setter for Event (Extension)
+        {
+            get { return _tallSave; }
+            set
+            {
+                if (_tallSave != value)
+                {
+                    _tallSave = value;
+                    OnPropertyChanged("TallSave");
+                }
+            }
+        }
 
         public ObservableCollection<SaveTask> AllConfigBackup { get; set; }
         public ObservableCollection<SaveTask> AllBackupLaunch { get; set; }
 
         public MainWindow() //Method that initializes new objects 
         {
-            
+
             DataContext = this;
             saveController = new SaveController(this);
             AllConfigBackup = new ObservableCollection<SaveTask>();
             AllBackupLaunch = new ObservableCollection<SaveTask>();
-            
-            
-           
+
+
+
+
+
             InitializeComponent();
+
+            new Thread(() => {
+                while (true)
+                {
+                    UpdateListBackup();
+                }
+            });
+            
 
             LangUtil.SetupLang();
 
@@ -88,18 +112,19 @@ namespace Projet_Sauvegarde
             UpdateListBackup();
             UpdateExtension();
             UpdateProcess();
-            
+            UpdateTall();
+
         }
 
-       
+
         private void CompleteRadioButton_Checked(object sender, RoutedEventArgs e)
         {
-          
+
         }
 
         private void DiffRadioButton_Checked_1(object sender, RoutedEventArgs e)
         {
-           
+
         }
 
         private void QuitAppButton_Click(object sender, RoutedEventArgs e) //Method who shutdown the app on click
@@ -120,15 +145,20 @@ namespace Projet_Sauvegarde
                 MessageBox.Show(LangUtil.GetString("popupErrorSaveNameMessage"), LangUtil.GetString("popupErrorSaveTitle"), MessageBoxButton.OK, MessageBoxImage.Error);
                 return;
             }
+            if (nameAlreadyExist(TextNameOfSave.Text))
+            {
+                MessageBox.Show(LangUtil.GetString("popupErrorSaveNameMessageExist"), LangUtil.GetString("popupErrorSaveTitle"), MessageBoxButton.OK, MessageBoxImage.Error);
+                return;
+            }
 
-            
+
 
             if (!Directory.Exists(TextSourcePath.Text))
             {
                 MessageBox.Show(LangUtil.GetString("popupErrorSaveSourceMessage"), LangUtil.GetString("popupErrorSaveTitle"), MessageBoxButton.OK, MessageBoxImage.Error);
                 return;
             }
-            
+
 
             if (!Directory.Exists(TextDestinationPath.Text))
             {
@@ -153,7 +183,7 @@ namespace Projet_Sauvegarde
                     return;
                 }
                 saveController.AddOneSave("differential", TextNameOfSave.Text, TextSourcePath.Text, TextDestinationPath.Text, TextLastComplete.Text);
-                MessageBox.Show(LangUtil.GetString("popupSuccesSaveDifferentialMessage"),LangUtil.GetString("popupSuccesSaveTitle"), MessageBoxButton.OK,MessageBoxImage.Information);
+                MessageBox.Show(LangUtil.GetString("popupSuccesSaveDifferentialMessage"), LangUtil.GetString("popupSuccesSaveTitle"), MessageBoxButton.OK, MessageBoxImage.Information);
                 UpdateListBackup();
             }
             else
@@ -166,13 +196,57 @@ namespace Projet_Sauvegarde
             TextLastComplete.Text = String.Empty;
         }
 
-        private void StartSaveButton_Click(object sender, RoutedEventArgs e) //Method who start all the backup on click
+        private bool nameAlreadyExist(string name)
         {
-
-            saveController.StartMultipleSaves(AllBackupLaunch.ToList());
-            AllBackupLaunch.Clear();
+            return saveController.ListSave.Count(save => (save.Name == name)) > 0;
         }
 
+        private void StartSaveButton_Click(object sender, RoutedEventArgs e) //Method who start all the backup on click
+        {
+            saveController.StartMultipleSaves(AllBackupLaunch.ToList());
+            (new Thread(() =>
+            {
+                Thread.Sleep(20);
+                while (!everithingIsFinish(AllBackupLaunch))
+                {
+                    Thread.Sleep(400);
+                    foreach (SaveTask saveTask in AllBackupLaunch)
+                    {
+                            Trace.WriteLine(saveController.GetProgression(saveTask));
+                    }
+                }
+            })).Start();
+
+            /*ObservableCollection<SaveTask> AllBackupLaunchTemp = AllBackupLaunch;
+            while (!everithingIsFinish(AllBackupLaunchTemp))
+            {
+
+                foreach (SaveTask save in AllBackupLaunchTemp)
+                {
+                    save.Progression = saveController.ListSave.Find((a) => a.Name == save.Name).Progression;
+                }
+                AllBackupLaunch.Clear();
+                AllBackupLaunch = AllBackupLaunchTemp;
+            }*/
+
+        }
+
+        private bool everithingIsFinish(ObservableCollection<SaveTask> allBackupLaunchTemp)
+        {
+            return !(allBackupLaunchTemp.ToList().Count((a) => a.Progression != 100.0 && a.GetIfStop() == false) > 0);
+        }
+
+
+
+        /*private void takeProgression()
+        {
+            float progression = 0;
+            while(progression != 100.0)
+            {
+                progression = this.saveController.ListSave.Find((a) => (a.Name == "a")).GetProgression();
+            }
+            progression = 0;
+        }*/
       
 
         private void DeleteConfigButton_Click(object sender, RoutedEventArgs e) //Method who Delete one backup configuration on click
@@ -187,13 +261,19 @@ namespace Projet_Sauvegarde
             UpdateListBackup();
         }
 
+        
+
 
         private void TakeConfigButton_Click(object sender, RoutedEventArgs e) //Method who transmits a backup configuration to be executed on click
         {
             
-            foreach(SaveTask LaunchBackup in AllConfigList.SelectedItems)
+            foreach(SaveTask saveTask in AllConfigList.SelectedItems)
             {
-                AllBackupLaunch.Add(LaunchBackup);
+                if(!AllBackupLaunch.Contains(saveTask))
+                {
+                    AllBackupLaunch.Add(saveTask);
+                }
+
             }
         }
 
@@ -248,5 +328,32 @@ namespace Projet_Sauvegarde
             ProcessSave = saveController.Software;
         }
 
+        private void Pause_Click(object sender, RoutedEventArgs e)
+        {
+            foreach (SaveTask saveTask in BackupListLaunch.SelectedItems)
+            {
+                saveController.ListSave.Find((a) => a.Name == saveTask.Name)?.Pause();
+            }
+        }
+
+        private void Stop_Click(object sender, RoutedEventArgs e)
+        {
+            foreach (SaveTask saveTask in BackupListLaunch.SelectedItems)
+            {
+                saveController.ListSave.Find((a) => (a.Name == saveTask.Name && a.GetIfStop() == false))?.Stop();
+            }
+        }
+
+        private void SaveTall_Click(object sender, RoutedEventArgs e)
+        {
+            saveController.ModifyTall(TallText.Text);
+            UpdateTall();
+            TallText.Clear();
+        }
+        public void UpdateTall()
+        {
+            TallSave = "";
+            TallSave = saveController.Tall;
+        }
     }
 }
