@@ -48,32 +48,14 @@ namespace Client_EasySave
                 return;
             }
 
-            //int receiveLength = clientSocket.Receive(result);
-            //Trace.WriteLine("Recu client：{0}", Encoding.ASCII.GetString(result, 0, receiveLength));
-        
+            
             byte[] msgbuffer = new byte[8192];
             int receiveMsg = clientSocket.Receive(msgbuffer, 0, msgbuffer.Length, 0);
             Array.Resize(ref msgbuffer, receiveMsg);
             GoodResult = Encoding.Default.GetString(msgbuffer);
             ChangeAff();
 
-            /*for (int i = 0; i < 10; i++)
-            {
-                try
-                {
-                    Thread.Sleep(1000);
-                    string sendMessage = "client send Message Hello" + DateTime.Now;
-                    clientSocket.Send(Encoding.ASCII.GetBytes(sendMessage));
-                    Trace.WriteLine("a envoyé ：" + sendMessage);
-                }
-                catch
-                {
-                    clientSocket.Shutdown(SocketShutdown.Both);
-                    clientSocket.Close();
-                    break;
-                }
-
-            }*/
+           
 
 
             Trace.WriteLine("Fini de recevoir");
@@ -100,6 +82,7 @@ namespace Client_EasySave
                 sah += 1;
                 up += 5;
                 
+
             }
             ConfigBackupList.ItemsSource = listBack;
         }

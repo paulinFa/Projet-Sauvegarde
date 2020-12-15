@@ -58,6 +58,7 @@ namespace Projet_Sauvegarde.Controller
                 
                 byte[] msgbuffer = Encoding.Default.GetBytes(Result);
                 clientSocket.Send(msgbuffer, 0, msgbuffer.Length, 0);
+                Trace.WriteLine("list envouyé");
                 Thread receiveThread = new Thread(ReceiveMessage);
                 receiveThread.Start(clientSocket);
             }
