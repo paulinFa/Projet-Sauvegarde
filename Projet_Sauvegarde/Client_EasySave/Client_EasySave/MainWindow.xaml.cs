@@ -40,7 +40,11 @@ namespace Client_EasySave
             try
             {
                 clientSocket.Connect(new IPEndPoint(ip, 11000));
-                Trace.WriteLine("Connecté");
+
+                string message = "Connecte";
+                byte[] msgbuffer = Encoding.Default.GetBytes(message);
+                clientSocket.Send(msgbuffer, 0, msgbuffer.Length, 0);
+
                 Thread listen = new Thread(new ThreadStart(Listen));
                 listen.Start();
                 Trace.WriteLine("ListenThread");
@@ -59,8 +63,7 @@ namespace Client_EasySave
            
 
 
-            Trace.WriteLine("Fini de recevoir");
-            Console.ReadLine();
+           
         }
 
 
@@ -85,6 +88,7 @@ namespace Client_EasySave
             Sending = "prtouy";
             byte[] msgbuffer = Encoding.Default.GetBytes(Sending);
             clientSocket.Send(msgbuffer, 0, msgbuffer.Length, 0);
+
         }
         public void UpdateScreen()
         {
