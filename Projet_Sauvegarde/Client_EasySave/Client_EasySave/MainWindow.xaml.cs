@@ -16,6 +16,7 @@ using System.Windows.Navigation;
 using System.Windows.Shapes;
 using System.Runtime.Serialization.Formatters.Binary;
 using System.Diagnostics;
+using System.Threading;
 
 namespace Client_EasySave
 {
@@ -25,54 +26,51 @@ namespace Client_EasySave
     /// </summary>
     public partial class MainWindow : Window
     {
-        public string GoodResult { get; set; }
+        
+
+        private static byte[] result = new byte[1024];
         public MainWindow()
         {
             InitializeComponent();
-            var connect = Connecting();
-            Trace.WriteLine("Cornichon");
-            //SendMessage(connect);
-            ListenNetwork(connect);
-           
+            IPAddress ip = IPAddress.Parse("192.168.1.13");
+            Socket clientSocket = new Socket(AddressFamily.InterNetwork, SocketType.Stream, ProtocolType.Tcp);
 
-        }
-        private Socket Connecting()
-        {
-            IPAddress ipAddress = IPAddress.Parse("192.168.1.13");
-            IPEndPoint remoteEP = new IPEndPoint(ipAddress, 11000);
+            try
+            {
+                clientSocket.Connect(new IPEndPoint(ip, 11000));
+                Trace.WriteLine("Connecté");
 
-            // Create a TCP/IP  socket.  
-            Socket socket = new Socket(ipAddress.AddressFamily, SocketType.Stream, ProtocolType.Tcp);
-            socket.Connect(remoteEP);
-            return socket;
-        }
-        private void ListenNetwork(Socket client)
-        {
-            Trace.WriteLine("prems");
-            byte[] msgbuffer = new byte[8192];
-            Trace.WriteLine("fini1");
-            int recieveMsg = client.Receive(msgbuffer, 0, msgbuffer.Length, 0);
-            Trace.WriteLine("fini2");
-            Array.Resize(ref msgbuffer, recieveMsg);
-            Trace.WriteLine("fini3");
-            GoodResult = Encoding.Default.GetString(msgbuffer);
-            UpdateScreen();
-            Trace.WriteLine("fini4");
-            Trace.WriteLine(GoodResult);
-            
-        }
-        private void SendMessage(Socket client)
-        {
-           
-            string msg = Console.ReadLine();
-            byte[] msgbuffer = Encoding.Default.GetBytes(msg);
-            client.Send(msgbuffer, 0, msgbuffer.Length, 0);
-        }
 
-        public void UpdateScreen()
-        {
-            RecieveTestText.Text = String.Empty;
-            RecieveTestText.Text = GoodResult;
+            }
+            catch
+            {
+                Trace.WriteLine("Echec de la connexion");
+                return;
+            }
+
+            int receiveLength = clientSocket.Receive(result);
+            Trace.WriteLine("Recu client：{0}", Encoding.ASCII.GetString(result, 0, receiveLength));
+
+            for (int i = 0; i < 10; i++)
+            {
+                try
+                {
+                    Thread.Sleep(1000);
+                    string sendMessage = "client send Message Hello" + DateTime.Now;
+                    clientSocket.Send(Encoding.ASCII.GetBytes(sendMessage));
+                    Trace.WriteLine("a envoyé ：" + sendMessage);
+                }
+                catch
+                {
+                    clientSocket.Shutdown(SocketShutdown.Both);
+                    clientSocket.Close();
+                    break;
+                }
+
+            }
+
+            Trace.WriteLine("Fini de recevoir");
+            Console.ReadLine();
         }
     }
 }
