@@ -55,7 +55,7 @@ namespace Projet_Sauvegarde.Controller
             while (true)
             {
                 Socket clientSocket = serverSocket.Accept();
-                clientSocket.Send(Encoding.ASCII.GetBytes("Server Say Hello"));
+                
                 byte[] msgbuffer = Encoding.Default.GetBytes(Result);
                 clientSocket.Send(msgbuffer, 0, msgbuffer.Length, 0);
                 Thread receiveThread = new Thread(ReceiveMessage);
@@ -74,8 +74,8 @@ namespace Projet_Sauvegarde.Controller
                 try
                 {
                     
-                    int receiveNumber = myClientSocket.Receive(result);
-                    Trace.WriteLine("Recu server :{1}", Encoding.ASCII.GetString(result, 0, receiveNumber));
+                    //int receiveNumber = myClientSocket.Receive(result);
+                    //Trace.WriteLine("Recu server :{1}", Encoding.ASCII.GetString(result, 0, receiveNumber));
 
                 }
                 catch (Exception ex)
