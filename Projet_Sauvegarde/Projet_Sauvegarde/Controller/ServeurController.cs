@@ -10,9 +10,9 @@ using System.Threading;
 
 
 
-namespace Projet_Sauvegarde.Controller 
+namespace Projet_Sauvegarde.Controller
 {
-    class ServeurController 
+    class ServeurController
     {
         List<SaveTask> listShare;
         List<String> tempList = new List<string>();
@@ -20,13 +20,13 @@ namespace Projet_Sauvegarde.Controller
 
         private static byte[] result = new byte[1024];
         private static int myPort = 11000;
-        static Socket serverSocket;
-
+        Socket serverSocket;
+        Socket clientSocket;
         public ServeurController(MainWindow mainWindow, List<SaveTask> listConfig)
         {
-            
+
             listShare = listConfig;
-            
+
             foreach (SaveTask backup in listShare)
             {
                 tempList.Add(backup.Type);
@@ -42,31 +42,35 @@ namespace Projet_Sauvegarde.Controller
             serverSocket.Bind(new IPEndPoint(ip, myPort));
             serverSocket.Listen(10);
             Trace.WriteLine("connecte toi", serverSocket.LocalEndPoint.ToString());
-           
-            Thread myThread = new Thread(ListenClientConnect);
-            myThread.Start();
+
+            new Thread(ListenClientConnect).Start();
+
             Console.ReadLine();
 
         }
-
-        
-        private static void ListenClientConnect()
+        public void Connecting()
         {
-            while (true)
-            {
-                Socket clientSocket = serverSocket.Accept();
-                
-                byte[] msgbuffer = Encoding.Default.GetBytes(Result);
-                clientSocket.Send(msgbuffer, 0, msgbuffer.Length, 0);
-                Trace.WriteLine("list envouyé");
-                Thread receiveThread = new Thread(ReceiveMessage);
-                receiveThread.Start(clientSocket);
-            }
+            clientSocket = serverSocket.Accept();
 
         }
 
-        
-        
+        private void ListenClientConnect()
+        {
+            while (clientSocket == null)
+            {
+
+            }
+            byte[] msgbuffer = Encoding.Default.GetBytes(Result);
+            clientSocket.Send(msgbuffer, 0, msgbuffer.Length, 0);
+
+            Thread receiveThread = new Thread(ReceiveMessage);
+            receiveThread.Start(clientSocket);
+            Trace.WriteLine("Envoie lancé");
+
+        }
+
+
+
         private static void ReceiveMessage(object clientSocket)
         {
             Socket myClientSocket = (Socket)clientSocket;
@@ -74,9 +78,10 @@ namespace Projet_Sauvegarde.Controller
             {
                 try
                 {
-                    
-                    //int receiveNumber = myClientSocket.Receive(result);
-                    //Trace.WriteLine("Recu server :{1}", Encoding.ASCII.GetString(result, 0, receiveNumber));
+                    byte[] msgbuffer = new byte[8192];
+                    int receiveNumber = myClientSocket.Receive(msgbuffer, 0, msgbuffer.Length, 0);
+                    Array.Resize(ref msgbuffer, receiveNumber);
+                    Trace.WriteLine("Recu server :{1}", Encoding.ASCII.GetString(result, 0, receiveNumber));
 
                 }
                 catch (Exception ex)
@@ -91,10 +96,11 @@ namespace Projet_Sauvegarde.Controller
 
         }
 
-        public void UpdateListShare (List<SaveTask> listQuelq)
+        public void UpdateListShare(List<SaveTask> listQuelq)
         {
             listShare = listQuelq;
-            
+            new Thread(ListenClientConnect).Start();
+
         }
     }
 }

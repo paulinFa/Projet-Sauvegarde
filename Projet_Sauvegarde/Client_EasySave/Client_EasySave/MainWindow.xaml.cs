@@ -28,18 +28,22 @@ namespace Client_EasySave
     {
         
         public string GoodResult { get; set; }
+        public string Sending { get; set; }
         private static byte[] result = new byte[1024];
+        Socket clientSocket;
         public MainWindow()
         {
             InitializeComponent();
             IPAddress ip = IPAddress.Parse("192.168.1.13");
-            Socket clientSocket = new Socket(AddressFamily.InterNetwork, SocketType.Stream, ProtocolType.Tcp);
+            clientSocket = new Socket(AddressFamily.InterNetwork, SocketType.Stream, ProtocolType.Tcp);
 
             try
             {
                 clientSocket.Connect(new IPEndPoint(ip, 11000));
                 Trace.WriteLine("Connecté");
-
+                Thread listen = new Thread(new ThreadStart(Listen));
+                listen.Start();
+                Trace.WriteLine("ListenThread");
 
             }
             catch
@@ -48,18 +52,39 @@ namespace Client_EasySave
                 return;
             }
 
+
             
-            byte[] msgbuffer = new byte[8192];
-            int receiveMsg = clientSocket.Receive(msgbuffer, 0, msgbuffer.Length, 0);
-            Array.Resize(ref msgbuffer, receiveMsg);
-            GoodResult = Encoding.Default.GetString(msgbuffer);
-            ChangeAff();
+            
 
            
 
 
             Trace.WriteLine("Fini de recevoir");
             Console.ReadLine();
+        }
+
+
+        public void Listen()
+        {
+            while(true)
+            {
+                Trace.WriteLine("Lancé ecoute");
+                byte[] msgbuffer = new byte[8192];
+                int receiveMsg = clientSocket.Receive(msgbuffer, 0, msgbuffer.Length, 0);
+                Array.Resize(ref msgbuffer, receiveMsg);
+                GoodResult = Encoding.Default.GetString(msgbuffer);
+                ChangeAff();
+                Thread send = new Thread(new ThreadStart(SendMessage));
+                send.Start();
+            }
+          
+        }
+
+        public void SendMessage()
+        {
+            Sending = "prtouy";
+            byte[] msgbuffer = Encoding.Default.GetBytes(Sending);
+            clientSocket.Send(msgbuffer, 0, msgbuffer.Length, 0);
         }
         public void UpdateScreen()
         {
