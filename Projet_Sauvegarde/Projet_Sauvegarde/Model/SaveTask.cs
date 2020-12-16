@@ -1,15 +1,18 @@
 ﻿using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel;
+using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading;
+using Projet_Sauvegarde.Annotations;
 
 namespace Projet_Sauvegarde.Model
 {
     /// <summary>
     /// Class with Save information
     /// </summary>
-    public class SaveTask
+    public class SaveTask : INotifyPropertyChanged
     {
         [JsonIgnore]
         public string Tall { get; set; }
@@ -18,12 +21,24 @@ namespace Projet_Sauvegarde.Model
         public string SourcePath { get; set; }
         public string DestinationPath { get; set; }
         public string CompleteSavePath { get; set; }
+        private float _progression;
         [JsonIgnore]
-        public float Progression { get; set; }
+        public float Progression
+        {
+            get { return _progression; }
+            set
+            {
+                _progression = value;
+                OnPropertyChanged("Progression");
+            }
+        }
+
+
         private IStartSave StartSave { get; set; }
         private string extension;
         private LogFile logFile;
         private StateFile stateFile;
+
 
 
         /// <summary>
@@ -81,6 +96,7 @@ namespace Projet_Sauvegarde.Model
                 while (progression != 100.0)
                 {
                     progression = this.StartSave.GetProgression();
+                    
                     this.Progression = progression;
 
                 }
@@ -113,6 +129,14 @@ namespace Projet_Sauvegarde.Model
         public bool GetIfPauseProcess()
         {
             return this.StartSave.GetIsPausedProcess();
+        }
+
+        public event PropertyChangedEventHandler PropertyChanged;
+
+        [NotifyPropertyChangedInvocator]
+        protected virtual void OnPropertyChanged([CallerMemberName] string propertyName = null)
+        {
+            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
         }
     }
 }

@@ -85,11 +85,9 @@ namespace Projet_Sauvegarde.Model
                 string dest = Path.Combine(destinationPath, name);
                 while (this.IsPaused == true)
                 {
-                    Thread.Sleep(200);
                 }
                 while (this.IsPausedProcess == true)
                 {
-                    Thread.Sleep(200);
                 }
                 while (this.IsStop == true)
                 {
@@ -119,6 +117,7 @@ namespace Projet_Sauvegarde.Model
                         CryptoSoft.StartInfo.WindowStyle = ProcessWindowStyle.Normal;
                         CryptoSoft.StartInfo.Arguments = $"{file} {dest}";
                         CryptoSoft.StartInfo.RedirectStandardOutput = true;
+                        CryptoSoft.StartInfo.CreateNoWindow = true;
                         CryptoSoft.Start();
                         StreamReader reader = CryptoSoft.StandardOutput;
                         string CryptTime = reader.ReadToEnd();
@@ -131,7 +130,6 @@ namespace Projet_Sauvegarde.Model
                         {
                             TimeEncryption += float.Parse(CryptTime);
                             Trace.WriteLine(CryptTime);
-                            CryptoSoft.WaitForExit();
                         }
                     }
                     else
@@ -145,9 +143,10 @@ namespace Projet_Sauvegarde.Model
 
                     RemainingNumberFile--;
                     RemainingLengthFile -= fi1.Length;
-
+                    
                     //Watch the progress of moving files relative to their size
                     Progression = RemainingLengthFile != 0 ? Convert.ToSingle(TotalLengthFile - RemainingLengthFile) / Convert.ToSingle(TotalLengthFile) * 100 : 100;
+                    Trace.WriteLine("real"+Progression);
                     stateFile.ModifyData(DateTime.Now.ToString("MM-dd-yyyy_hh.ss.mm_tt"), Name, name, TotalNumberFile, (int)TotalLengthFile, Progression, RemainingNumberFile, (int)RemainingLengthFile, SourcePath, DestinationPath);
                    }
 

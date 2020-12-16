@@ -211,6 +211,9 @@ namespace Projet_Sauvegarde
         private void StartSaveButton_Click(object sender, RoutedEventArgs e) //Method who start all the backup on click
         {
             saveController.StartMultipleSaves(AllBackupLaunch.ToList());
+            
+
+
             (new Thread(() =>
             {
                 Thread.Sleep(20);
@@ -219,7 +222,15 @@ namespace Projet_Sauvegarde
                     Thread.Sleep(400);
                     foreach (SaveTask saveTask in AllBackupLaunch)
                     {
+                            saveTask.Progression = saveController.GetProgression(saveTask);
+
                             Trace.WriteLine(saveController.GetProgression(saveTask));
+                            
+                            OnPropertyChanged("AllBackupLaunch");
+                            this.Dispatcher.Invoke(() =>
+                            {
+                                BackupListLaunch.Items.Refresh();
+                            });
                     }
                 }
             })).Start();
