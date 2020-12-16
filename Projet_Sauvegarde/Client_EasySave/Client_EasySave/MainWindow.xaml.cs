@@ -28,6 +28,7 @@ namespace Client_EasySave
     /// </summary>
     public partial class MainWindow : Window
     {
+        public List<ConfBackup> FocusSave;
         public ObservableCollection<ConfBackup> AllNeedSave { get; set; }
         public string GoodResult { get; set; }
         public string Progression { get; set; }
@@ -36,6 +37,7 @@ namespace Client_EasySave
         Socket clientSocket;
         public MainWindow()
         {
+            FocusSave = new List<ConfBackup>();
             AllNeedSave = new ObservableCollection<ConfBackup>();
             DataContext = this;
             InitializeComponent();
@@ -53,7 +55,6 @@ namespace Client_EasySave
 
                 Thread listen = new Thread(Listen);
                 listen.Start(clientSocket);
-                Trace.WriteLine("ListenThread");
 
             }
             catch
@@ -80,7 +81,6 @@ namespace Client_EasySave
                         Thread.Sleep(100);
                         if (GoodResult.StartsWith("complete") || GoodResult.StartsWith("differential"))
                         {
-                            Trace.WriteLine(GoodResult);
                             ChangeAff();
                            
                             string argo = "argowitch";
@@ -91,7 +91,6 @@ namespace Client_EasySave
                         }
                         if (GoodResult.StartsWith("progression"))
                         {
-                            Trace.WriteLine(GoodResult);
                             ChangeProgression();
 
                             string argo = "progression";
@@ -99,30 +98,6 @@ namespace Client_EasySave
 
                             Thread.Sleep(100);
 
-                        }
-                        /*else if (GoodResult == "saveinprogress")
-                        {
-                            
-                            SendMessage("continuesave");
-                            Thread.Sleep(200);
-                        }*/
-                        else if (GoodResult == "STOP1")
-                        {
-                            Trace.WriteLine("STOP");
-
-                            Thread.Sleep(200);
-                        }
-                        else if (GoodResult == "Pause")
-                        {
-                            Trace.WriteLine("Save is in Pause");
-
-                            Thread.Sleep(200);
-                        }
-                        else if (GoodResult == "StartAll")
-                        {
-                            Trace.WriteLine("All Saves are laucnh");
-
-                            Thread.Sleep(200);
                         }
 
                     }
@@ -169,6 +144,7 @@ namespace Client_EasySave
             int sah = 0;
             
             string[] configs = GoodResult.Split("*");
+
             int large = configs.Length;
             Dispatcher.Invoke(() => AllNeedSave.Clear());
             while (sah < large / 6)
@@ -180,79 +156,78 @@ namespace Client_EasySave
                 sah += 1;
                 up += 6;
             }
-            
-            //Dispatcher.Invoke(() => ConfigBackupList.Items.Refresh());
-            Trace.WriteLine("passé");
-        }
-        public ConfBackup nameOfBackup;
-        private void Button_Click(object sender, RoutedEventArgs e)
+                    }
+        private void Start_Click(object sender, RoutedEventArgs e)
         {
-            if (ConfigBackupList.SelectedItems.Count > 0)
+            if (FocusSave.Count > 0)
             {
-                nameOfBackup = (ConfBackup)ConfigBackupList.SelectedItems[0];
-                Thread.Sleep(200);
-                Thread sendStart = new Thread(SendStart);
-                sendStart.Start();
-                Trace.WriteLine("Start*" + nameOfBackup.Name);
-            }
+                foreach (ConfBackup confBackup in FocusSave)
+                {
+                    Thread.Sleep(200);
+                    Thread sendStart = new Thread(SendStart);
+                    sendStart.Start(confBackup.Name);
+                }
 
-            
+            }
+            FocusSave.Clear();
+
         }
 
 
-        public void SendStart()
+        public void SendStart(object obj)
         {
             Thread.Sleep(200);
-            string startMsg = "Start*" + nameOfBackup.Name;
+            string startMsg = "Start*" + (string)obj;
             byte[] hopla = Encoding.Default.GetBytes(startMsg);
             clientSocket.Send(hopla, 0, hopla.Length, 0);
-            Trace.WriteLine("AppelStart");
 
 
         }
 
-        public ConfBackup stopBackup;
         private void StopButton_Click(object sender, RoutedEventArgs e)
         {
-            if (ConfigBackupList.SelectedItems.Count > 0)
-            {
-                stopBackup = (ConfBackup) ConfigBackupList.SelectedItems[0];
-                Thread.Sleep(200);
-                Thread sendStop = new Thread(SendStop);
-                sendStop.Start();
-                Trace.WriteLine("Stop*" + stopBackup.Name);
-            }
 
+            if (FocusSave.Count > 0)
+            {
+                foreach (ConfBackup confBackup in FocusSave)
+                {
+                    Thread.Sleep(200);
+                    Thread sendStart = new Thread(SendStop);
+                    sendStart.Start(confBackup.Name);
+                }
+
+            }
+            FocusSave.Clear();
         }
-        public void SendStop()
+        public void SendStop(object obj)
         {
             Thread.Sleep(200);
-            string stopMsg = "Stop*" + stopBackup.Name;
-            byte[] hopli = Encoding.Default.GetBytes(stopMsg);
-            clientSocket.Send(hopli, 0, hopli.Length, 0);
-            Trace.WriteLine(stopMsg);
+            string stopMsg = "Stop*" + (string)obj;
+            byte[] hopla = Encoding.Default.GetBytes(stopMsg);
+            clientSocket.Send(hopla, 0, hopla.Length, 0);
         }
 
-        public ConfBackup pauseBackup;
         private void PauseButton_Click(object sender, RoutedEventArgs e)
         {
-            if (ConfigBackupList.SelectedItems.Count > 0)
+            if (FocusSave.Count > 0)
             {
-                pauseBackup = (ConfBackup) ConfigBackupList.SelectedItems[0];
-                Thread.Sleep(200);
-                Thread sendPause = new Thread(SendPause);
-                sendPause.Start();
-                Trace.WriteLine("Pause*" + pauseBackup.Name);
+                foreach (ConfBackup confBackup in FocusSave)
+                {
+                    Thread.Sleep(200);
+                    Thread sendStart = new Thread(SendPause);
+                    sendStart.Start(confBackup.Name);
+                }
+
             }
+            FocusSave.Clear();
 
         }
-        public void SendPause()
+        public void SendPause(object obj)
         {
             Thread.Sleep(200);
-            string pauseMsg = "Pause*" + pauseBackup.Name;
-            byte[] hoplo = Encoding.Default.GetBytes(pauseMsg);
-            clientSocket.Send(hoplo, 0, hoplo.Length, 0);
-            Trace.WriteLine(pauseMsg);
+            string pauseMsg = "Pause*" + (string)obj;
+            byte[] hopla = Encoding.Default.GetBytes(pauseMsg);
+            clientSocket.Send(hopla, 0, hopla.Length, 0);
         }
         public ConfBackup startAllBackup;
         List<String> allSaves = new List<string>();
@@ -274,13 +249,22 @@ namespace Client_EasySave
         {
             Thread.Sleep(200);
             string startallMsg = String.Join("*", allSaves);
-            Trace.WriteLine(startallMsg);
             byte[] hopli = Encoding.Default.GetBytes(startallMsg);
             clientSocket.Send(hopli, 0, hopli.Length, 0);
-            Trace.WriteLine(startallMsg);
         }
 
-        
+        private void UIElement_OnMouseUp(object sender, MouseButtonEventArgs e)
+        {
+            DataGrid data = (DataGrid) sender;
+            FocusSave.Clear();
+            if (data.SelectedItems.Count > 0)
+            {
+                foreach (ConfBackup confBackup in data.SelectedItems)
+                {
+                    FocusSave.Add(confBackup);
+                }
+            }
+        }
     }
     public class ConfBackup
     {

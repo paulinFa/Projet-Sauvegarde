@@ -32,7 +32,7 @@ namespace Projet_Sauvegarde
 
     public partial class MainWindow : INotifyPropertyChanged
     {
-        
+        public volatile bool isUpdate = false;
         public SaveController saveController;
         ServeurController serveurController;
         private string _extensionSave;
@@ -94,6 +94,8 @@ namespace Projet_Sauvegarde
 
             DataContext = this;
             saveController = new SaveController(this);
+
+
             serveurController = new ServeurController(this, saveController.ListSave);
             AllConfigBackup = new ObservableCollection<SaveTask>();
             AllBackupLaunch = new ObservableCollection<SaveTask>();
@@ -234,7 +236,11 @@ namespace Projet_Sauvegarde
         {
             this.Dispatcher.Invoke(() =>
             {
-                AllBackupLaunch.Add(saveTask);
+                if (!AllBackupLaunch.ToList().Contains(saveTask))
+                {
+                    AllBackupLaunch.Add(saveTask);
+                }
+
             });
             this.Dispatcher.Invoke(() =>
             {
@@ -245,36 +251,47 @@ namespace Projet_Sauvegarde
 
         public void UpdateProgression()
         {
-            (new Thread(() =>
+            if (!isUpdate)
             {
-                Thread.Sleep(20);
-                while (!everithingIsFinish(AllBackupLaunch))
+                (new Thread(() =>
                 {
-                    Thread.Sleep(400);
-                    serveurController.UpdateListShare(saveController.ListSave);
-                    foreach (SaveTask saveTask in AllBackupLaunch)
+                    isUpdate = true;
+                    Thread.Sleep(20);
+                    while (!everythingIsFinish(AllBackupLaunch) && !everythingIsPaused(AllBackupLaunch))
                     {
-                        saveTask.Progression = saveController.GetProgression(saveTask);
-
-                        Trace.WriteLine(saveController.GetProgression(saveTask));
-
-                        OnPropertyChanged("AllBackupLaunch");
-                        this.Dispatcher.Invoke(() =>
+                        bool a = !everythingIsFinish(AllBackupLaunch) || !everythingIsPaused(AllBackupLaunch);
+                        Thread.Sleep(400);
+                        serveurController.UpdateListShare(saveController.ListSave);
+                        foreach (SaveTask saveTask in AllBackupLaunch)
                         {
-                            BackupListLaunch.Items.Refresh();
-                        });
+                            saveTask.Progression = saveController.GetProgression(saveTask);
+
+                            Trace.WriteLine(saveTask.Name + " progression : " + saveController.GetProgression(saveTask));
+
+                            OnPropertyChanged("AllBackupLaunch");
+                            this.Dispatcher.Invoke(() =>
+                            {
+                                BackupListLaunch.Items.Refresh();
+                            });
+                        }
+
                     }
-                    
-                }
-                serveurController.UpdateListShare(saveController.ListSave);
-            })).Start();
+                    serveurController.UpdateListShare(saveController.ListSave);
+                    isUpdate = false;
+                })).Start();
+            }
+
         }
 
-        private bool everithingIsFinish(ObservableCollection<SaveTask> allBackupLaunchTemp)
+        private bool everythingIsFinish(ObservableCollection<SaveTask> allBackupLaunchTemp)
         {
             return !(allBackupLaunchTemp.ToList().Count((a) => a.Progression != 100.0 && a.GetIfStop() == false) > 0);
         }
 
+        private bool everythingIsPaused(ObservableCollection<SaveTask> allBackupLaunchTemp)
+        {
+            return (allBackupLaunchTemp.ToList().Count((a) => a.GetIsRunning() == true && a.GetIfPause() == true) > 0);
+        }
 
         /*private void takeProgression()
         {
@@ -293,7 +310,11 @@ namespace Projet_Sauvegarde
             List<SaveTask> listSaveTask = new List<SaveTask>();
             foreach (SaveTask save in allConfig)
             {
-                listSaveTask.Add(save);
+                if (!save.GetIsRunning())
+                {
+                    listSaveTask.Add(save); 
+                    AllBackupLaunch.Remove(save);
+                }
             }
             saveController.DeleteSaves(listSaveTask);
             UpdateListBackup();
@@ -373,7 +394,9 @@ namespace Projet_Sauvegarde
             foreach (SaveTask saveTask in BackupListLaunch.SelectedItems)
             {
                 saveController.ListSave.Find((a) => a.Name == saveTask.Name)?.Pause();
+                
             }
+            this.UpdateProgression();
         }
 
         private void Stop_Click(object sender, RoutedEventArgs e)

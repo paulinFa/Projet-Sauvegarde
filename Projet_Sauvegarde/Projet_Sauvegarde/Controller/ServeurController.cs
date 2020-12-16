@@ -36,13 +36,8 @@ namespace Projet_Sauvegarde.Controller
             Connecting(serverSocket);
             Thread receiveThread = new Thread(ReceiveMessage);
             receiveThread.Start(clientSocket);
-            Trace.WriteLine("Thread recevant lancé");
-
-
-
-
         }
-        public void TakeList(List<SaveTask> listConfig)
+        public string TakeList(List<SaveTask> listConfig)
         {
             tempList.Clear();
             listShare = listConfig;
@@ -56,7 +51,9 @@ namespace Projet_Sauvegarde.Controller
                 tempList.Add(backup.CompleteSavePath);
                 tempList.Add(backup.Progression.ToString());
             }
-            Result = String.Join("*", tempList);
+            string temp = String.Join("*", tempList);
+            return temp;
+
         }
         public void Connecting(Socket socket)
         {
@@ -66,13 +63,20 @@ namespace Projet_Sauvegarde.Controller
 
         private void SendMessageS(string msg)
         {
-            while (clientSocket == null)
+            lock (this)
+            {
+                while (clientSocket == null)
             {
 
             }
 
-            byte[] msgbuffer = Encoding.Default.GetBytes(msg);
-            clientSocket.Send(msgbuffer, 0, msgbuffer.Length, 0);
+                byte[] msgbuffer = Encoding.Default.GetBytes(msg);
+                clientSocket.Send(msgbuffer, 0, msgbuffer.Length, 0);
+
+            Thread.Sleep(50);
+            }
+
+
 
 
 
@@ -81,12 +85,16 @@ namespace Projet_Sauvegarde.Controller
 
         public void UpdateProgressionClients(List<SaveTask> list)
         {
-            string r = "progression";
-            foreach (SaveTask saveTask in list)
+            lock (this)
             {
-                r += "*" + saveTask.Name + "*" + saveTask.Progression;
+                string r = "progression";
+                foreach (SaveTask saveTask in list)
+                {
+                    r += "*" + saveTask.Name + "*" + saveTask.Progression;
+                }
+                SendMessageS(r);
             }
-            SendMessageS(r);
+
         }
 
 
@@ -96,8 +104,10 @@ namespace Projet_Sauvegarde.Controller
             Socket myClientSocket = (Socket)clientSocket;
             while (true)
             {
+                Thread.Sleep(200);
+                try
+                {
 
-                    Thread.Sleep(200);
 
                     if (clientSocket != null)
                     {
@@ -111,7 +121,6 @@ namespace Projet_Sauvegarde.Controller
                         {
 
                             SendMessageS(Result);
-                            Trace.WriteLine(Result);
                             Thread.Sleep(100);
                         }
                         else if (ClientMsg.StartsWith("Start*"))
@@ -122,17 +131,12 @@ namespace Projet_Sauvegarde.Controller
                                 mainWindow.saveController.StartOneSave(mainWindow.saveController.ListSave.Find((a) => a.Name == infosStart[1]));
                                 mainWindow.AddSaveToAllBackupLaunch(mainWindow.saveController.ListSave.Find((a) => a.Name == infosStart[1]));
                                 mainWindow.UpdateProgression();
-                                Trace.WriteLine("StartSave");
-                                string aller = "saveinprogress";
-
-                                SendMessageS(aller);
-
                                 Thread.Sleep(200);
                             }
                         }
                         else if (ClientMsg.StartsWith("StartAll*"))
                         {
-                            
+
                             int club = 1;
                             string[] infosStart = ClientMsg.Split("*");
                             if (infosStart[1] != "")
@@ -142,40 +146,33 @@ namespace Projet_Sauvegarde.Controller
                                     mainWindow.saveController.StartOneSave(mainWindow.saveController.ListSave.Find((a) => a.Name == infosStart[club]));
                                     club += 1;
                                 }
-                                
-                                Trace.WriteLine("StartSave");
-                                string aller = "saveinprogress";
 
-                                SendMessageS(aller);
 
                                 Thread.Sleep(200);
                             }
                         }
                         else if (ClientMsg.StartsWith("Stop"))
                         {
-                            
+
                             string[] infosStop = ClientMsg.Split("*");
                             if (infosStop[1] != "")
                             {
-                                Trace.WriteLine("recu le stop");
                                 mainWindow.saveController.ListSave.Find((a) => a.Name == infosStop[1]).Stop();
-                                Trace.WriteLine("Stop Save");
-                                SendMessageS("STOP1");
+                                Thread.Sleep(200);
                             }
-                            
+
+
                         }
                         else if (ClientMsg.StartsWith("Pause"))
                         {
-                            Trace.WriteLine(ClientMsg);
                             string[] infosPause = ClientMsg.Split("*");
                             if (infosPause[1] != "")
                             {
-                                mainWindow.saveController.ListSave.Find((a) => a.Name == infosPause[1]).Stop();
-                                Trace.WriteLine("Pause");
-                                SendMessageS("Pause");
+                                mainWindow.saveController.ListSave.Find((a) => a.Name == infosPause[1]).Pause();
+                                mainWindow.UpdateProgression();
                             }
 
-                           
+
                         }
                         /*else if (ClientMsg.StartsWith("continuesave"))
                         {
@@ -185,7 +182,14 @@ namespace Projet_Sauvegarde.Controller
                             Thread.Sleep(200);
                         }*/
 
+                    }
                 }
+                catch (Exception e)
+                {
+                    Trace.WriteLine(e);
+                    serverSocket.Close();
+                }
+
         }
 
         }
@@ -194,8 +198,8 @@ namespace Projet_Sauvegarde.Controller
         public void UpdateListShare(List<SaveTask> listQuelq)
         {
             listShare = listQuelq;
-            TakeList(listQuelq);
-            SendMessageS(Result);
+            
+            SendMessageS(TakeList(listQuelq));
 
         }
     }

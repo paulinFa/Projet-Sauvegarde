@@ -112,10 +112,7 @@ namespace Projet_Sauvegarde.Model
                             this.TallMax = parameterFile.TallMax;
                         }
                     }
-
-
-                    Trace.WriteLine(Extension);
-                }
+                    }
                 catch (Exception e)
                 {
                     Console.WriteLine(e.Message);

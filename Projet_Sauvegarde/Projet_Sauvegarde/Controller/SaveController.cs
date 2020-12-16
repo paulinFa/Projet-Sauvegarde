@@ -87,10 +87,18 @@ namespace Projet_Sauvegarde.Controller
         /// <param name="saveTask">Save to launch</param>
         public void StartOneSave(SaveTask saveTask)
         {
-            if(!this.ListSave.Find((a) => a.Name == saveTask.Name).GetIsRunning())
+            if (saveTask != null)
             {
-                this.ListSave.Find((a) => a.Name == saveTask.Name).LaunchThread(this.Extension, logFile, stateFile, this.Tall);
+                if (!this.ListSave.Find((a) => a.Name == saveTask.Name).GetIsRunning())
+                {
+                    this.ListSave.Find((a) => a.Name == saveTask.Name).LaunchThread(this.Extension, logFile, stateFile, this.Tall);
+                }
             }
+            else
+            {
+                Trace.WriteLine("error task not existed");   
+            }
+
         }
         /// <summary>
         /// Start all Saves in list

@@ -6,14 +6,14 @@
         xmlns:local="clr-namespace:Client_EasySave" d:DataContext="{d:DesignInstance Type=local:MainWindow}"
         x:Name="rootWindows"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
+        Title="MainWindow" Height="450" Width="800" ResizeMode="NoResize">
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="31*"/>
             <ColumnDefinition/>
         </Grid.ColumnDefinitions>
-        <ScrollViewer Margin="20,23,111,61" Height="350">
-            <DataGrid  x:Name="ConfigBackupList" AutoGenerateColumns="False" IsReadOnly="True" ItemsSource="{Binding AllNeedSave}">
+        <ScrollViewer Margin="20,23,111,61" Height="350" >
+            <DataGrid  x:Name="ConfigBackupList" AutoGenerateColumns="False" IsReadOnly="True" ItemsSource="{Binding AllNeedSave}" MouseUp="UIElement_OnMouseUp" >
                 <DataGrid.Columns>
                     <DataGridTextColumn Binding="{Binding TypeS}"  Header="Type" Width="70"/>
                     <DataGridTextColumn Binding="{Binding Name}"  Header="Name" Width="*"/>
@@ -25,10 +25,9 @@
                 </DataGrid.Columns>
             </DataGrid>
         </ScrollViewer>
-        <Button x:Name="StartButton" Content="Start" HorizontalAlignment="Left" Margin="682,71,0,0" VerticalAlignment="Top" Height="24" Width="48" Click="Button_Click"/>
+        <Button x:Name="StartButton" Content="Start" HorizontalAlignment="Left" Margin="682,71,0,0" VerticalAlignment="Top" Height="24" Width="48" Click="Start_Click"/>
         <Button x:Name="StopButton" Content="STOP" HorizontalAlignment="Left" Margin="682,154,0,0" VerticalAlignment="Top" Height="24" Width="48" Click="StopButton_Click"/>
         <Button x:Name="PauseButton" Content="Pause" HorizontalAlignment="Left" Margin="682,112,0,0" VerticalAlignment="Top" Height="25" Width="48" Click="PauseButton_Click"/>
-        <Button x:Name="StartAllButton" Content="Start All" HorizontalAlignment="Left" Margin="682,217,0,0" VerticalAlignment="Top" Height="23" Width="69" Click="StartAllButton_Click"/>
 
     </Grid>
 </Window>

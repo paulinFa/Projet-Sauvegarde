@@ -23,6 +23,10 @@ namespace Projet_Sauvegarde.Model
             this.Tall = tall;
             this.isRunning = true;
             this.Progression = 0;
+
+            this.IsPaused = false;
+            this.IsPausedProcess = false;
+            this.IsStop = false;
             //Initialize all values
             DateTime firstDate = DateTime.Now;
             this.SourcePath = saveTask.SourcePath;
@@ -144,7 +148,6 @@ namespace Projet_Sauvegarde.Model
                             else
                             {
                                 TimeEncryption += float.Parse(CryptTime);
-                                Trace.WriteLine(CryptTime);
                                 CryptoSoft.WaitForExit();
                             }
                         }

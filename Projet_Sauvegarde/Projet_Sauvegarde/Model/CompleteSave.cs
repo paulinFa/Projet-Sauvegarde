@@ -23,7 +23,10 @@ namespace Projet_Sauvegarde.Model
         {
             this.Tall = tall;
             this.isRunning = true;
-            
+            this.IsPaused = false;
+            this.IsPausedProcess = false;
+            this.IsStop = false;
+
             this.Progression = 0;
             //Initialize all values
             DateTime firstDate = DateTime.Now;
@@ -129,7 +132,6 @@ namespace Projet_Sauvegarde.Model
                         else
                         {
                             TimeEncryption += float.Parse(CryptTime);
-                            Trace.WriteLine(CryptTime);
                         }
                     }
                     else
@@ -146,7 +148,6 @@ namespace Projet_Sauvegarde.Model
                     
                     //Watch the progress of moving files relative to their size
                     Progression = RemainingLengthFile != 0 ? Convert.ToSingle(TotalLengthFile - RemainingLengthFile) / Convert.ToSingle(TotalLengthFile) * 100 : 100;
-                    Trace.WriteLine("real"+Progression);
                     stateFile.ModifyData(DateTime.Now.ToString("MM-dd-yyyy_hh.ss.mm_tt"), Name, name, TotalNumberFile, (int)TotalLengthFile, Progression, RemainingNumberFile, (int)RemainingLengthFile, SourcePath, DestinationPath);
                    }
 
