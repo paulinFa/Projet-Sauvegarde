@@ -93,11 +93,9 @@ namespace Projet_Sauvegarde.Model
 
                 while (this.IsPaused == true)
                 {
-                    Thread.Sleep(200);
                 }
                 while (this.IsPausedProcess == true)
                 {
-                    Thread.Sleep(200);
                 }
                 while (this.IsStop == true)
                 {
@@ -133,6 +131,8 @@ namespace Projet_Sauvegarde.Model
                             CryptoSoft.StartInfo.WindowStyle = ProcessWindowStyle.Normal;
                             CryptoSoft.StartInfo.Arguments = $"{file} {dest}";
                             CryptoSoft.StartInfo.RedirectStandardOutput = true;
+
+                            CryptoSoft.StartInfo.CreateNoWindow = true;
                             CryptoSoft.Start();
                             StreamReader reader = CryptoSoft.StandardOutput;
                             string CryptTime = reader.ReadToEnd();
