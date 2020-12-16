@@ -38,7 +38,7 @@ namespace Projet_Sauvegarde.Controller
             }
             Result = String.Join(",", tempList);
 
-            IPAddress ip = IPAddress.Parse("192.168.1.13");
+            IPAddress ip = IPAddress.Parse("127.0.0.1");
             serverSocket = new Socket(AddressFamily.InterNetwork, SocketType.Stream, ProtocolType.Tcp);
             serverSocket.Bind(new IPEndPoint(ip, myPort));
             serverSocket.Listen(10);

@@ -35,7 +35,7 @@ namespace Client_EasySave
         public MainWindow()
         {
             InitializeComponent();
-            IPAddress ip = IPAddress.Parse("192.168.1.13");
+            IPAddress ip = IPAddress.Parse("127.0.0.1");
             clientSocket = new Socket(AddressFamily.InterNetwork, SocketType.Stream, ProtocolType.Tcp);
 
             try

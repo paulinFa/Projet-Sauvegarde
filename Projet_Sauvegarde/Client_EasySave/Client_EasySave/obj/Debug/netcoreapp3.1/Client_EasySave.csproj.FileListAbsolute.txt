@@ -17,3 +17,22 @@ C:\Users\flori\source\repos\paulinFa\Projet-Sauvegarde\Projet_Sauvegarde\Client_
 C:\Users\flori\source\repos\paulinFa\Projet-Sauvegarde\Projet_Sauvegarde\Client_EasySave\Client_EasySave\obj\Debug\netcoreapp3.1\Client_EasySave.dll
 C:\Users\flori\source\repos\paulinFa\Projet-Sauvegarde\Projet_Sauvegarde\Client_EasySave\Client_EasySave\obj\Debug\netcoreapp3.1\Client_EasySave.pdb
 C:\Users\flori\source\repos\paulinFa\Projet-Sauvegarde\Projet_Sauvegarde\Client_EasySave\Client_EasySave\obj\Debug\netcoreapp3.1\Client_EasySave.genruntimeconfig.cache
+D:\Bureau\Projet C#\Projet-Sauvegarde\Projet_Sauvegarde\Client_EasySave\Client_EasySave\bin\Debug\netcoreapp3.1\Client_EasySave.exe
+D:\Bureau\Projet C#\Projet-Sauvegarde\Projet_Sauvegarde\Client_EasySave\Client_EasySave\bin\Debug\netcoreapp3.1\Client_EasySave.deps.json
+D:\Bureau\Projet C#\Projet-Sauvegarde\Projet_Sauvegarde\Client_EasySave\Client_EasySave\bin\Debug\netcoreapp3.1\Client_EasySave.runtimeconfig.json
+D:\Bureau\Projet C#\Projet-Sauvegarde\Projet_Sauvegarde\Client_EasySave\Client_EasySave\bin\Debug\netcoreapp3.1\Client_EasySave.runtimeconfig.dev.json
+D:\Bureau\Projet C#\Projet-Sauvegarde\Projet_Sauvegarde\Client_EasySave\Client_EasySave\bin\Debug\netcoreapp3.1\Client_EasySave.dll
+D:\Bureau\Projet C#\Projet-Sauvegarde\Projet_Sauvegarde\Client_EasySave\Client_EasySave\bin\Debug\netcoreapp3.1\Client_EasySave.pdb
+D:\Bureau\Projet C#\Projet-Sauvegarde\Projet_Sauvegarde\Client_EasySave\Client_EasySave\obj\Debug\netcoreapp3.1\Client_EasySave.csprojAssemblyReference.cache
+D:\Bureau\Projet C#\Projet-Sauvegarde\Projet_Sauvegarde\Client_EasySave\Client_EasySave\obj\Debug\netcoreapp3.1\MainWindow.g.cs
+D:\Bureau\Projet C#\Projet-Sauvegarde\Projet_Sauvegarde\Client_EasySave\Client_EasySave\obj\Debug\netcoreapp3.1\App.g.cs
+D:\Bureau\Projet C#\Projet-Sauvegarde\Projet_Sauvegarde\Client_EasySave\Client_EasySave\obj\Debug\netcoreapp3.1\Client_EasySave_MarkupCompile.cache
+D:\Bureau\Projet C#\Projet-Sauvegarde\Projet_Sauvegarde\Client_EasySave\Client_EasySave\obj\Debug\netcoreapp3.1\Client_EasySave_MarkupCompile.lref
+D:\Bureau\Projet C#\Projet-Sauvegarde\Projet_Sauvegarde\Client_EasySave\Client_EasySave\obj\Debug\netcoreapp3.1\MainWindow.baml
+D:\Bureau\Projet C#\Projet-Sauvegarde\Projet_Sauvegarde\Client_EasySave\Client_EasySave\obj\Debug\netcoreapp3.1\Client_EasySave.g.resources
+D:\Bureau\Projet C#\Projet-Sauvegarde\Projet_Sauvegarde\Client_EasySave\Client_EasySave\obj\Debug\netcoreapp3.1\Client_EasySave.AssemblyInfoInputs.cache
+D:\Bureau\Projet C#\Projet-Sauvegarde\Projet_Sauvegarde\Client_EasySave\Client_EasySave\obj\Debug\netcoreapp3.1\Client_EasySave.AssemblyInfo.cs
+D:\Bureau\Projet C#\Projet-Sauvegarde\Projet_Sauvegarde\Client_EasySave\Client_EasySave\obj\Debug\netcoreapp3.1\Client_EasySave.csproj.CoreCompileInputs.cache
+D:\Bureau\Projet C#\Projet-Sauvegarde\Projet_Sauvegarde\Client_EasySave\Client_EasySave\obj\Debug\netcoreapp3.1\Client_EasySave.dll
+D:\Bureau\Projet C#\Projet-Sauvegarde\Projet_Sauvegarde\Client_EasySave\Client_EasySave\obj\Debug\netcoreapp3.1\Client_EasySave.pdb
+D:\Bureau\Projet C#\Projet-Sauvegarde\Projet_Sauvegarde\Client_EasySave\Client_EasySave\obj\Debug\netcoreapp3.1\Client_EasySave.genruntimeconfig.cache
