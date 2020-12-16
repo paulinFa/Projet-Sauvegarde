@@ -211,29 +211,10 @@ namespace Projet_Sauvegarde
         private void StartSaveButton_Click(object sender, RoutedEventArgs e) //Method who start all the backup on click
         {
             saveController.StartMultipleSaves(AllBackupLaunch.ToList());
-            
+
+            UpdateProgression();
 
 
-            (new Thread(() =>
-            {
-                Thread.Sleep(20);
-                while (!everithingIsFinish(AllBackupLaunch))
-                {
-                    Thread.Sleep(400);
-                    foreach (SaveTask saveTask in AllBackupLaunch)
-                    {
-                            saveTask.Progression = saveController.GetProgression(saveTask);
-
-                            Trace.WriteLine(saveController.GetProgression(saveTask));
-                            
-                            OnPropertyChanged("AllBackupLaunch");
-                            this.Dispatcher.Invoke(() =>
-                            {
-                                BackupListLaunch.Items.Refresh();
-                            });
-                    }
-                }
-            })).Start();
 
             /*ObservableCollection<SaveTask> AllBackupLaunchTemp = AllBackupLaunch;
             while (!everithingIsFinish(AllBackupLaunchTemp))
@@ -249,11 +230,50 @@ namespace Projet_Sauvegarde
 
         }
 
+        public void AddSaveToAllBackupLaunch(SaveTask saveTask)
+        {
+            this.Dispatcher.Invoke(() =>
+            {
+                AllBackupLaunch.Add(saveTask);
+            });
+            this.Dispatcher.Invoke(() =>
+            {
+                BackupListLaunch.Items.Refresh();
+            });
+
+        }
+
+        public void UpdateProgression()
+        {
+            (new Thread(() =>
+            {
+                Thread.Sleep(20);
+                while (!everithingIsFinish(AllBackupLaunch))
+                {
+                    Thread.Sleep(400);
+                    serveurController.UpdateListShare(saveController.ListSave);
+                    foreach (SaveTask saveTask in AllBackupLaunch)
+                    {
+                        saveTask.Progression = saveController.GetProgression(saveTask);
+
+                        Trace.WriteLine(saveController.GetProgression(saveTask));
+
+                        OnPropertyChanged("AllBackupLaunch");
+                        this.Dispatcher.Invoke(() =>
+                        {
+                            BackupListLaunch.Items.Refresh();
+                        });
+                    }
+                    
+                }
+                serveurController.UpdateListShare(saveController.ListSave);
+            })).Start();
+        }
+
         private bool everithingIsFinish(ObservableCollection<SaveTask> allBackupLaunchTemp)
         {
             return !(allBackupLaunchTemp.ToList().Count((a) => a.Progression != 100.0 && a.GetIfStop() == false) > 0);
         }
-
 
 
         /*private void takeProgression()

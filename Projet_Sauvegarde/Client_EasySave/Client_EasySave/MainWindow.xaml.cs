@@ -4,6 +4,7 @@ using System.Linq;
 using System.Net;
 using System.Net.Sockets;
 using System.Text;
+using System.Linq;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
@@ -90,6 +91,17 @@ namespace Client_EasySave
                             Thread.Sleep(100);
 
                         }
+                        if (GoodResult.StartsWith("progression"))
+                        {
+                            Trace.WriteLine(GoodResult);
+                            ChangeProgression();
+
+                            string argo = "progression";
+                            SendMessage(argo);
+
+                            Thread.Sleep(100);
+
+                        }
                         /*else if (GoodResult == "saveinprogress")
                         {
                             
@@ -135,6 +147,27 @@ namespace Client_EasySave
             clientSocket.Send(msgbuffer, 0, msgbuffer.Length, 0);
         }
 
+        public void ChangeProgression()
+        {
+            int a = 0;
+            string[] configs = GoodResult.Split("*");
+            int large = configs.Length;
+            a = (large - 1) / 2;
+            while (a != 0)
+            {
+                foreach (ConfBackup confBackup in AllNeedSave)
+                {
+                    if (configs[(a * 2) - 2] == confBackup.Name)
+                    {
+                        confBackup.Progression = configs[(a * 2) - 1];
+                    }
+                }
+
+                Dispatcher.Invoke(() => ConfigBackupList.Items.Refresh());
+                a--;
+            }
+        }
+
       
         public void ChangeAff()
         {
@@ -142,8 +175,7 @@ namespace Client_EasySave
             int up = 0;
             int sah = 0;
             
-            string[] configs = GoodResult.Split(",");
-            List<ConfBackup> listBack = new List<ConfBackup>();
+            string[] configs = GoodResult.Split("*");
             int large = configs.Length;
             Dispatcher.Invoke(() => AllNeedSave.Clear());
             while (sah < large / 6)
@@ -162,12 +194,15 @@ namespace Client_EasySave
         public ConfBackup nameOfBackup;
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-           
-            nameOfBackup = (ConfBackup)ConfigBackupList.SelectedItems[0];
-            Thread.Sleep(200);
-            Thread sendStart = new Thread(SendStart);
-            sendStart.Start();
-            Trace.WriteLine("Start," + nameOfBackup.Name);
+            if (ConfigBackupList.SelectedItems.Count > 0)
+            {
+                nameOfBackup = (ConfBackup)ConfigBackupList.SelectedItems[0];
+                Thread.Sleep(200);
+                Thread sendStart = new Thread(SendStart);
+                sendStart.Start();
+                Trace.WriteLine("Start," + nameOfBackup.Name);
+            }
+
             
         }
 
@@ -186,11 +221,14 @@ namespace Client_EasySave
         public ConfBackup stopBackup;
         private void StopButton_Click(object sender, RoutedEventArgs e)
         {
-            stopBackup = (ConfBackup)ConfigBackupList.SelectedItems[0];
-            Thread.Sleep(200);
-            Thread sendStop = new Thread(SendStop);
-            sendStop.Start();
-            Trace.WriteLine("Stop," + stopBackup.Name);
+            if (ConfigBackupList.SelectedItems.Count > 0)
+            {
+                stopBackup = (ConfBackup) ConfigBackupList.SelectedItems[0];
+                Thread.Sleep(200);
+                Thread sendStop = new Thread(SendStop);
+                sendStop.Start();
+                Trace.WriteLine("Stop," + stopBackup.Name);
+            }
 
         }
         public void SendStop()
@@ -205,11 +243,14 @@ namespace Client_EasySave
         public ConfBackup pauseBackup;
         private void PauseButton_Click(object sender, RoutedEventArgs e)
         {
-            pauseBackup = (ConfBackup)ConfigBackupList.SelectedItems[0];
-            Thread.Sleep(200);
-            Thread sendPause = new Thread(SendPause);
-            sendPause.Start();
-            Trace.WriteLine("Pause," + pauseBackup.Name);
+            if (ConfigBackupList.SelectedItems.Count > 0)
+            {
+                pauseBackup = (ConfBackup) ConfigBackupList.SelectedItems[0];
+                Thread.Sleep(200);
+                Thread sendPause = new Thread(SendPause);
+                sendPause.Start();
+                Trace.WriteLine("Pause," + pauseBackup.Name);
+            }
 
         }
         public void SendPause()
@@ -239,7 +280,7 @@ namespace Client_EasySave
         public void SendStartAll()
         {
             Thread.Sleep(200);
-            string startallMsg = String.Join(",", allSaves);
+            string startallMsg = String.Join("*", allSaves);
             Trace.WriteLine(startallMsg);
             byte[] hopli = Encoding.Default.GetBytes(startallMsg);
             clientSocket.Send(hopli, 0, hopli.Length, 0);

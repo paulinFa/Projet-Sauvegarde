@@ -56,7 +56,7 @@ namespace Projet_Sauvegarde.Controller
                 tempList.Add(backup.CompleteSavePath);
                 tempList.Add(backup.Progression.ToString());
             }
-            Result = String.Join(",", tempList);
+            Result = String.Join("*", tempList);
         }
         public void Connecting(Socket socket)
         {
@@ -77,6 +77,16 @@ namespace Projet_Sauvegarde.Controller
 
 
 
+        }
+
+        public void UpdateProgressionClients(List<SaveTask> list)
+        {
+            string r = "progression";
+            foreach (SaveTask saveTask in list)
+            {
+                r += "*" + saveTask.Name + "*" + saveTask.Progression;
+            }
+            SendMessageS(r);
         }
 
 
@@ -108,10 +118,12 @@ namespace Projet_Sauvegarde.Controller
                         }
                         else if (ClientMsg.StartsWith("Start,"))
                         {
-                            string[] infosStart = ClientMsg.Split(",");
+                            string[] infosStart = ClientMsg.Split("*");
                             if (infosStart[1] != "")
                             {
                                 mainWindow.saveController.StartOneSave(mainWindow.saveController.ListSave.Find((a) => a.Name == infosStart[1]));
+                                mainWindow.AddSaveToAllBackupLaunch(mainWindow.saveController.ListSave.Find((a) => a.Name == infosStart[1]));
+                                mainWindow.UpdateProgression();
                                 Trace.WriteLine("StartSave");
                                 string aller = "saveinprogress";
 
@@ -124,7 +136,7 @@ namespace Projet_Sauvegarde.Controller
                         {
                             
                             int club = 1;
-                            string[] infosStart = ClientMsg.Split(",");
+                            string[] infosStart = ClientMsg.Split("*");
                             if (infosStart[1] != "")
                             {
                                 foreach (string nameDiff in infosStart)
@@ -144,7 +156,7 @@ namespace Projet_Sauvegarde.Controller
                         else if (ClientMsg.StartsWith("Stop"))
                         {
                             
-                            string[] infosStop = ClientMsg.Split(",");
+                            string[] infosStop = ClientMsg.Split("*");
                             if (infosStop[1] != "")
                             {
                                 Trace.WriteLine("recu le stop");
@@ -157,7 +169,7 @@ namespace Projet_Sauvegarde.Controller
                         else if (ClientMsg.StartsWith("Pause"))
                         {
                             Trace.WriteLine(ClientMsg);
-                            string[] infosPause = ClientMsg.Split(",");
+                            string[] infosPause = ClientMsg.Split("*");
                             if (infosPause[1] != "")
                             {
                                 mainWindow.saveController.ListSave.Find((a) => a.Name == infosPause[1]).Stop();
