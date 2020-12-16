@@ -29,11 +29,13 @@
     <sys:String x:Key="save">Sauvegarder</sys:String>
     <sys:String x:Key="extensionActive">Extension Active :</sys:String>
     <sys:String x:Key="processActive">Processus Active :</sys:String>
+    <sys:String x:Key="tallActive">Tall Active :</sys:String>
     <sys:String x:Key="deleteConfig">Supprimer Config</sys:String>
     <sys:String x:Key="popupErrorProcessTitle">Erreur Sauvegarde Arreté</sys:String>
     <sys:String x:Key="popupErrorSaveTitle">Erreur dans l'ajout d'une sauvegarde</sys:String>
     <sys:String x:Key="popupErrorSaveSourceMessage">La Source n'existe pas</sys:String>
     <sys:String x:Key="popupErrorSaveNameMessage">Entrer un Nom Valide</sys:String>
+    <sys:String x:Key="popupErrorSaveNameMessageExist">Le Nom Existe Deja</sys:String>
     <sys:String x:Key="popupErrorSaveDestinationMessage">La Destination n'existe pas</sys:String>
     <sys:String x:Key="popupErrorSaveCompleteMessage">La Sauvegarde Complète n'existe pas</sys:String>
     <sys:String x:Key="popupErrorSaveTypeMessage">Selectionnez le Type de Sauvegarde</sys:String>

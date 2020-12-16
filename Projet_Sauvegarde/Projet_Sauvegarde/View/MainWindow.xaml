@@ -68,6 +68,7 @@
                     <DataGridTextColumn Binding="{Binding SourcePath}" Header="Source" Width="2*"/>
                     <DataGridTextColumn Binding="{Binding DestinationPath}" Header="Destination" Width="2*"/>
                     <DataGridTextColumn Binding="{Binding CompleteSavePath}" Header="Complete" Width="*"/>
+                    <DataGridTextColumn Binding="{Binding Progression}" Header="Progression" Width="*"/>
                 </DataGrid.Columns>
             </DataGrid>
         </ScrollViewer>
@@ -101,6 +102,17 @@
         <Label Content="{DynamicResource ResourceKey=processActive}" HorizontalAlignment="Left" Margin="1050,491,0,0" VerticalAlignment="Top"/>
         <Label Content="{Binding ExtensionSave}" HorizontalAlignment="Left" Margin="1150,448,0,0" VerticalAlignment="Top"/>
         <Label Content="{Binding ProcessSave}" HorizontalAlignment="Left" Margin="1150,491,0,0" VerticalAlignment="Top"/>
+        <Button x:Name="Pause" Content="Pause" HorizontalAlignment="Left" Margin="945,404,0,0" VerticalAlignment="Top" Click="Pause_Click"/>
+        <Button x:Name="Stop" Content="Stop" HorizontalAlignment="Left" Margin="1038,404,0,0" VerticalAlignment="Top" Click="Stop_Click"/>
+        <TextBox x:Name="TallText" HorizontalAlignment="Left" Margin="419,500,0,0" TextWrapping="NoWrap" VerticalAlignment="Top" Width="120"/>
+        <Button x:Name="SaveTall" Content="{DynamicResource ResourceKey=save}" HorizontalAlignment="Left" Margin="558,500,0,0" VerticalAlignment="Top" Click="SaveTall_Click">
+            <Button.Effect>
+                <DropShadowEffect/>
+            </Button.Effect>
+        </Button>
+        <Label Content="{DynamicResource ResourceKey=tallActive}" HorizontalAlignment="Left" Margin="635,496,0,0" VerticalAlignment="Top"/>
+        <Label Content="{Binding TallSave}" HorizontalAlignment="Left" Margin="715,497,0,0" VerticalAlignment="Top"/>
+
 
     </Grid>
 </Window>

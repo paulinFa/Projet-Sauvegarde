@@ -18,6 +18,7 @@ namespace Projet_Sauvegarde.Model
         public string Extension { get; set; }
         public List<SaveTask> SaveTasksList { get; set; }
         public string Software { get; set; }
+        public string TallMax { get; set; }
         public ParameterFile()
         {
             SaveTasksList = new List<SaveTask>();
@@ -71,6 +72,7 @@ namespace Projet_Sauvegarde.Model
             parameterJson.SaveTasksList = this.SaveTasksList;
             parameterJson.Extension = this.Extension;
             parameterJson.Software = this.Software;
+            parameterJson.TallMax = this.TallMax;
             string WroteJson = JsonConvert.SerializeObject(parameterJson, Formatting.Indented); //object to add parameters into the JSON file
             using (var tw = new StreamWriter(pathParameterFile, false))
             {
@@ -105,6 +107,10 @@ namespace Projet_Sauvegarde.Model
                         {
                             this.Software = parameterFile.Software;
                         }
+                        if (parameterFile.TallMax != null)
+                        {
+                            this.TallMax = parameterFile.TallMax;
+                        }
                     }
 
 
@@ -130,6 +136,7 @@ public class ParameterJson
 {
     public string Software { get; set; }
     public string Extension { get; set; }
+    public string TallMax { get; set; }
     public List<SaveTask> SaveTasksList { get; set; }
 }
 

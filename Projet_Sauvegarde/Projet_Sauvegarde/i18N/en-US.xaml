@@ -29,12 +29,15 @@
     <sys:String x:Key="save">Save</sys:String>
     <sys:String x:Key="extensionActive">Extension Active :</sys:String>
     <sys:String x:Key="processActive">Process Active :</sys:String>
+
+    <sys:String x:Key="tallActive">Taille Active :</sys:String>
     <sys:String x:Key="deleteConfig">Delete Config</sys:String>
     <sys:String x:Key="succes">Succes</sys:String>
     <sys:String x:Key="popupErrorProcessTitle">Error Save Stop</sys:String>
     <sys:String x:Key="popupErrorSaveTitle">Error Add Save</sys:String>
     <sys:String x:Key="popupErrorSaveSourceMessage">The Source Path does not exist</sys:String>
     <sys:String x:Key="popupErrorSaveNameMessage">Enter a Valid Name</sys:String>
+    <sys:String x:Key="popupErrorSaveNameMessageExist">Name Already Exist</sys:String>
     <sys:String x:Key="popupErrorSaveDestinationMessage">The Destination Path does not exist</sys:String>
     <sys:String x:Key="popupErrorSaveCompleteMessage">The Complete Backup does not exist</sys:String>
     <sys:String x:Key="popupErrorSaveTypeMessage">Select Type Of Backup</sys:String>

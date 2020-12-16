@@ -1,8 +1,6 @@
 ﻿using Newtonsoft.Json;
 using System.IO;
-
-
-
+using System.Threading;
 
 namespace Projet_Sauvegarde.Model
 {
@@ -14,6 +12,8 @@ namespace Projet_Sauvegarde.Model
 
         JsonFileLog dataJsonLog = new JsonFileLog();
 
+        private readonly object _lockObject = new object();
+
         /// <summary>
         /// Constructor
         /// </summary>
@@ -24,36 +24,26 @@ namespace Projet_Sauvegarde.Model
         /// <param name="sizeSave"></param>
         /// <param name="transfertTime"></param>
         /// <param name="timeEncryptionTransfert"></param>
-        public LogFile(string timestamp, string nameOfSave, string sourcePath, string destinationPath, int sizeSave, string transfertTime,float timeEncryptionTransfert) //Method where objetcs are used into parameters, then create the LogFile and insert the parameters in it.
+        public LogFile() //Method where objetcs are used into parameters, then create the LogFile and insert the parameters in it.
         {
 
 
             CreateFolderLog();
 
+        }
 
-            dataJsonLog.Timestamp = timestamp;
-            dataJsonLog.NameOfSave = nameOfSave;
-            dataJsonLog.SourcePath = sourcePath;
-            dataJsonLog.DestinationPath = destinationPath;
-            dataJsonLog.SizeOfSave = sizeSave;
-            dataJsonLog.TransfertTime = transfertTime;
-            dataJsonLog.TimeEncryptionTransfert = timeEncryptionTransfert;
+        public void ModifyData(string timestamp, string nameOfSave, string sourcePath, string destinationPath, int sizeSave, string transfertTime, float timeEncryptionTransfert)
+        {
+                PathLogFile = @"D:\EasySave\Logs\Log" + "_" + StringDateLogFile + ".json"; //Definition path of LogFile + json format
+                dataJsonLog.Timestamp = timestamp;
+                dataJsonLog.NameOfSave = nameOfSave;
+                dataJsonLog.SourcePath = sourcePath;
+                dataJsonLog.DestinationPath = destinationPath;
+                dataJsonLog.SizeOfSave = sizeSave;
+                dataJsonLog.TransfertTime = transfertTime;
+                dataJsonLog.TimeEncryptionTransfert = timeEncryptionTransfert;
+                new Thread(() => TransformToJsonLog());
 
-
-            PathLogFile = @"D:\EasySave\Logs\Log" + "_" + StringDateLogFile + ".json"; //Definition path of LogFile + json format
-
-            if (File.Exists(PathLogFile)) //Verification if PathLogFile is already create
-            {
-
-
-                TransformToJsonLog(); //insert parameters
-            }
-
-            else if (!File.Exists(PathLogFile)) //create and insert parameters
-            {
-
-                TransformToJsonLog();
-            }
         }
 
         private void TransformToJsonLog() //Method to create the JSON file and insert parameters in it 
@@ -61,13 +51,19 @@ namespace Projet_Sauvegarde.Model
 
             string WroteJson = JsonConvert.SerializeObject(dataJsonLog, Formatting.Indented); //object to add parameters into the JSON file
 
-            using (var tw = new StreamWriter(PathLogFile, true))
+            lock (_lockObject)
             {
-                tw.WriteLine(WroteJson.ToString()); //We write the object WroteJson into the file
-                tw.Close();
+                FileStream fs = new FileStream(PathLogFile, FileMode.OpenOrCreate);
+                StreamWriter str = new StreamWriter(fs);
+                str.BaseStream.Seek(0, SeekOrigin.End);
+                str.WriteLine(WroteJson.ToString());
+                str.Flush();
+                str.Close();
+                fs.Close();
             }
 
         }
+
     } // end class LogFile 
     class JsonFileLog //class to declare alls objects for the parameters 
     {
