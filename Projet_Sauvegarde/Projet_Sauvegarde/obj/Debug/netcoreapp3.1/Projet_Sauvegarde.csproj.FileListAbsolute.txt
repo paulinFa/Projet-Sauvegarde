@@ -137,3 +137,6 @@ C:\Users\Paulin\Desktop\Projet-Sauvegarde\Projet_Sauvegarde\Projet_Sauvegarde\ob
 D:\Bureau\Projet C#\Projet-Sauvegarde\Projet_Sauvegarde\Projet_Sauvegarde\obj\Debug\netcoreapp3.1\Projet_Sauvegarde.View.en.resources
 D:\Bureau\Projet C#\Projet-Sauvegarde\Projet_Sauvegarde\Projet_Sauvegarde\obj\Debug\netcoreapp3.1\Projet_Sauvegarde.View.fr.resources
 D:\Bureau\Projet C#\Projet-Sauvegarde\Projet_Sauvegarde\Projet_Sauvegarde\obj\Debug\netcoreapp3.1\Projet_Sauvegarde.csproj.GenerateResource.cache
+C:\Users\flori\source\repos\paulinFa\Projet-Sauvegarde\Projet_Sauvegarde\Projet_Sauvegarde\obj\Debug\netcoreapp3.1\Projet_Sauvegarde.View.en.resources
+C:\Users\flori\source\repos\paulinFa\Projet-Sauvegarde\Projet_Sauvegarde\Projet_Sauvegarde\obj\Debug\netcoreapp3.1\Projet_Sauvegarde.View.fr.resources
+C:\Users\flori\source\repos\paulinFa\Projet-Sauvegarde\Projet_Sauvegarde\Projet_Sauvegarde\obj\Debug\netcoreapp3.1\Projet_Sauvegarde.csproj.GenerateResource.cache

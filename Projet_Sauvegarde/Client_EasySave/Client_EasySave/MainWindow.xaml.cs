@@ -17,6 +17,7 @@ using System.Windows.Shapes;
 using System.Runtime.Serialization.Formatters.Binary;
 using System.Diagnostics;
 using System.Threading;
+using System.Collections.ObjectModel;
 
 namespace Client_EasySave
 {
@@ -26,7 +27,7 @@ namespace Client_EasySave
     /// </summary>
     public partial class MainWindow : Window
     {
-
+        public ObservableCollection<ConfBackup> AllNeedSave { get; set; }
         public string GoodResult { get; set; }
         public string Progression { get; set; }
         public string Sending { get; set; }
@@ -34,6 +35,8 @@ namespace Client_EasySave
         Socket clientSocket;
         public MainWindow()
         {
+            AllNeedSave = new ObservableCollection<ConfBackup>();
+            DataContext = this;
             InitializeComponent();
             IPAddress ip = IPAddress.Parse("127.0.0.1");
             clientSocket = new Socket(AddressFamily.InterNetwork, SocketType.Stream, ProtocolType.Tcp);
@@ -78,7 +81,7 @@ namespace Client_EasySave
                         Thread.Sleep(100);
                         if (GoodResult.StartsWith("complete") || GoodResult.StartsWith("differential"))
                         {
-
+                            Trace.WriteLine(GoodResult);
                             ChangeAff();
                             Trace.WriteLine("afffais");
                             string argo = "argowitch";
@@ -104,7 +107,7 @@ namespace Client_EasySave
                 }
                 catch (Exception ex)
                 {
-
+                    Trace.WriteLine(ex.Message);
                 }
 
 
@@ -123,20 +126,25 @@ namespace Client_EasySave
       
         public void ChangeAff()
         {
+
             int up = 0;
             int sah = 0;
             
             string[] configs = GoodResult.Split(",");
             List<ConfBackup> listBack = new List<ConfBackup>();
             int large = configs.Length;
+            Dispatcher.Invoke(() => AllNeedSave.Clear());
             while (sah < large / 5)
             {
-                listBack.Add(new ConfBackup() { TypeS = configs[0 + up], Name = configs[1 + up], SourcePath = configs[2 + up], DestinationPath = configs[3 + up], CompleteSavePath = configs[4 + up] });
+
+                Dispatcher.Invoke(() => AllNeedSave.Add(new ConfBackup() { TypeS = configs[0 + up], Name = configs[1 + up], SourcePath = configs[2 + up], DestinationPath = configs[3 + up], CompleteSavePath = configs[4 + up] }));
+               
+                //listBack.Add(new ConfBackup() { TypeS = configs[0 + up], Name = configs[1 + up], SourcePath = configs[2 + up], DestinationPath = configs[3 + up], CompleteSavePath = configs[4 + up] });
                 sah += 1;
                 up += 5;
             }
-
-            Dispatcher.Invoke(() => ConfigBackupList.ItemsSource = listBack);
+            
+            //Dispatcher.Invoke(() => ConfigBackupList.Items.Refresh());
             Trace.WriteLine("passé");
         }
         public ConfBackup nameOfBackup;

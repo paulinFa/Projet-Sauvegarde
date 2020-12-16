@@ -25,7 +25,25 @@ namespace Projet_Sauvegarde.Controller
         Socket clientSocket;
         public ServeurController(MainWindow mainWindow, List<SaveTask> listConfig)
         {
+           
 
+
+            IPAddress ip = IPAddress.Parse("127.0.0.1");
+            serverSocket = new Socket(AddressFamily.InterNetwork, SocketType.Stream, ProtocolType.Tcp);
+            serverSocket.Bind(new IPEndPoint(ip, myPort));
+            serverSocket.Listen(10);
+            Connecting(serverSocket);
+            Thread receiveThread = new Thread(ReceiveMessage);
+            receiveThread.Start(clientSocket);
+            Trace.WriteLine("Thread recevant lancé");
+
+
+
+
+        }
+        public void TakeList(List<SaveTask> listConfig)
+        {
+            tempList.Clear();
             listShare = listConfig;
 
             foreach (SaveTask backup in listShare)
@@ -37,19 +55,6 @@ namespace Projet_Sauvegarde.Controller
                 tempList.Add(backup.CompleteSavePath);
             }
             Result = String.Join(",", tempList);
-
-            IPAddress ip = IPAddress.Parse("127.0.0.1");
-            serverSocket = new Socket(AddressFamily.InterNetwork, SocketType.Stream, ProtocolType.Tcp);
-            serverSocket.Bind(new IPEndPoint(ip, myPort));
-            serverSocket.Listen(10);
-            Connecting(serverSocket);
-            Thread receiveThread = new Thread(ReceiveMessage);
-            receiveThread.Start(clientSocket);
-            Trace.WriteLine("Threag recevant lancé");
-
-
-
-
         }
         public void Connecting(Socket socket)
         {
@@ -137,7 +142,7 @@ namespace Projet_Sauvegarde.Controller
         public void UpdateListShare(List<SaveTask> listQuelq)
         {
             listShare = listQuelq;
-
+            TakeList(listQuelq);
             SendMessageS(Result);
 
         }

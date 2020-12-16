@@ -3,7 +3,8 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:local="clr-namespace:Client_EasySave"
+        xmlns:local="clr-namespace:Client_EasySave" d:DataContext="{d:DesignInstance Type=local:MainWindow}"
+        x:Name="rootWindows"
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800">
     <Grid>
@@ -12,7 +13,7 @@
             <ColumnDefinition/>
         </Grid.ColumnDefinitions>
         <ScrollViewer Margin="20,23,111,61" Height="350">
-            <DataGrid  x:Name="ConfigBackupList" AutoGenerateColumns="False" IsReadOnly="True" ItemsSource="{Binding AllConfigBackup}">
+            <DataGrid  x:Name="ConfigBackupList" AutoGenerateColumns="False" IsReadOnly="True" ItemsSource="{Binding AllNeedSave}">
                 <DataGrid.Columns>
                     <DataGridTextColumn Binding="{Binding TypeS}"  Header="Type" Width="70"/>
                     <DataGridTextColumn Binding="{Binding Name}"  Header="Name" Width="*"/>
