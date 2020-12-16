@@ -82,20 +82,41 @@ namespace Projet_Sauvegarde.Controller
 
                 try
                 {
-                    Thread.Sleep(100);
-                    Trace.WriteLine("stp");
+                    Thread.Sleep(200);
+                    
                     if (clientSocket != null)
                     {
                         byte[] msgbuffer = new byte[8192];
                         int receiveNumber = myClientSocket.Receive(msgbuffer, 0, msgbuffer.Length, 0);
                         Array.Resize(ref msgbuffer, receiveNumber);
                         ClientMsg = Encoding.Default.GetString(msgbuffer);
+                        Trace.WriteLine("Recup data sur serv");
+                        Thread.Sleep(100);
                         if (ClientMsg == "Connecte")
                         {
 
                             SendMessageS(Result);
                             Trace.WriteLine(Result);
                             Thread.Sleep(100);
+                        }
+                        else if (ClientMsg.StartsWith("Start"))
+                        {
+                            string aller = "renvoyé";
+                            SendMessageS(aller);
+                            Trace.WriteLine("hop");
+                            Thread.Sleep(200);
+                        }
+                        else if (ClientMsg.StartsWith("Stop"))
+                        {
+                            Trace.WriteLine("Stop Save");
+                            SendMessageS("STOP1");
+                        }
+                        else if (ClientMsg.StartsWith("continue"))
+                        {
+                            string cont = "renvoyé";
+                            SendMessageS(cont);
+                            Trace.WriteLine("renvoyé");
+                            Thread.Sleep(200);
                         }
                     }
 

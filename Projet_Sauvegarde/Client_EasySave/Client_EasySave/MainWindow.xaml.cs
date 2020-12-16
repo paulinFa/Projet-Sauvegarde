@@ -20,14 +20,15 @@ using System.Threading;
 
 namespace Client_EasySave
 {
-    
+
     /// <summary>
     /// Interaction logic for MainWindow.xaml
     /// </summary>
     public partial class MainWindow : Window
     {
-        
+
         public string GoodResult { get; set; }
+        public string Progression { get; set; }
         public string Sending { get; set; }
         private static byte[] result = new byte[1024];
         Socket clientSocket;
@@ -42,11 +43,12 @@ namespace Client_EasySave
                 clientSocket.Connect(new IPEndPoint(ip, 11000));
 
                 string message = "Connecte";
+
                 byte[] msgbuffer = Encoding.Default.GetBytes(message);
                 clientSocket.Send(msgbuffer, 0, msgbuffer.Length, 0);
 
-                Thread listen = new Thread(new ThreadStart(Listen));
-                listen.Start();
+                Thread listen = new Thread(Listen);
+                listen.Start(clientSocket);
                 Trace.WriteLine("ListenThread");
 
             }
@@ -56,73 +58,137 @@ namespace Client_EasySave
                 return;
             }
 
-
-            
-            
-
-           
-
-
-           
         }
 
 
-        public void Listen()
+        public void Listen(Object socket)
         {
-            while(true)
+            while (true)
             {
-                Trace.WriteLine("Lancé ecoute");
-                byte[] msgbuffer = new byte[8192];
-                int receiveMsg = clientSocket.Receive(msgbuffer, 0, msgbuffer.Length, 0);
-                Array.Resize(ref msgbuffer, receiveMsg);
-                GoodResult = Encoding.Default.GetString(msgbuffer);
-                ChangeAff();
-                Thread send = new Thread(new ThreadStart(SendMessage));
-                send.Start();
+                try
+                {
+                    Thread.Sleep(100);
+                    if (clientSocket != null)
+                    {
+                        byte[] msgbuffer = new byte[8192];
+                        int receiveMsg = clientSocket.Receive(msgbuffer, 0, msgbuffer.Length, 0);
+                        Array.Resize(ref msgbuffer, receiveMsg);
+                        GoodResult = Encoding.Default.GetString(msgbuffer);
+                        Trace.WriteLine("Réécup data sur client");
+                        Thread.Sleep(100);
+                        if (GoodResult.StartsWith("complete") || GoodResult.StartsWith("differential"))
+                        {
+
+                            ChangeAff();
+                            Trace.WriteLine("afffais");
+                            string argo = "argowitch";
+                            SendMessage(argo);
+                            Trace.WriteLine("argoenvoyé");
+                            Thread.Sleep(100);
+
+                        }
+                        else if (GoodResult == "renvoyé")
+                        {
+                            Trace.WriteLine("continue");
+                            SendMessage("continue");
+                            Thread.Sleep(200);
+                        }
+                        else if (GoodResult == "STOP1")
+                        {
+                            Trace.WriteLine("STOP");
+
+                            Thread.Sleep(200);
+                        }
+
+                    }
+                }
+                catch (Exception ex)
+                {
+
+                }
+
+
+
             }
-          
-        }
 
-        public void SendMessage()
+        }
+        
+
+        public void SendMessage(string msg)
         {
-            Sending = "prtouy";
-            byte[] msgbuffer = Encoding.Default.GetBytes(Sending);
+            byte[] msgbuffer = Encoding.Default.GetBytes(msg);
             clientSocket.Send(msgbuffer, 0, msgbuffer.Length, 0);
+        }
 
-        }
-        public void UpdateScreen()
-        {
-            
-        }
+      
         public void ChangeAff()
         {
             int up = 0;
             int sah = 0;
-   
+            
             string[] configs = GoodResult.Split(",");
             List<ConfBackup> listBack = new List<ConfBackup>();
             int large = configs.Length;
-            while( sah < large/5)
+            while (sah < large / 5)
             {
-
                 listBack.Add(new ConfBackup() { TypeS = configs[0 + up], Name = configs[1 + up], SourcePath = configs[2 + up], DestinationPath = configs[3 + up], CompleteSavePath = configs[4 + up] });
-
-                Trace.WriteLine(configs[up]);
                 sah += 1;
                 up += 5;
-                
-
             }
-            ConfigBackupList.ItemsSource = listBack;
+
+            Dispatcher.Invoke(() => ConfigBackupList.ItemsSource = listBack);
+            Trace.WriteLine("passé");
+        }
+        public ConfBackup nameOfBackup;
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+           
+            nameOfBackup = (ConfBackup)ConfigBackupList.SelectedItems[0];
+            Thread.Sleep(200);
+            Thread sendStart = new Thread(SendStart);
+            sendStart.Start();
+            Trace.WriteLine("Start," + nameOfBackup.Name);
+            
+        }
+
+
+        public void SendStart()
+        {
+            Thread.Sleep(200);
+            string startMsg = "Start," + nameOfBackup.Name;
+            byte[] hopla = Encoding.Default.GetBytes(startMsg);
+            clientSocket.Send(hopla, 0, hopla.Length, 0);
+            Trace.WriteLine("AppelStart");
+
+
+        }
+
+       
+        private void StopButton_Click(object sender, RoutedEventArgs e)
+        {
+            
+            Thread.Sleep(200);
+            Thread sendStop = new Thread(SendStop);
+            sendStop.Start();
+           
+           
+        }
+        public void SendStop()
+        {
+            Thread.Sleep(200);
+            string stopMsg = "Stop";
+            byte[] hopli = Encoding.Default.GetBytes(stopMsg);
+            clientSocket.Send(hopli, 0, hopli.Length, 0);
+            Trace.WriteLine(stopMsg);
         }
     }
     public class ConfBackup
     {
-        public string TypeS{ get; set; }
+        public string TypeS { get; set; }
         public string Name { get; set; }
         public string SourcePath { get; set; }
         public string DestinationPath { get; set; }
         public string CompleteSavePath { get; set; }
     }
- 
+
 }

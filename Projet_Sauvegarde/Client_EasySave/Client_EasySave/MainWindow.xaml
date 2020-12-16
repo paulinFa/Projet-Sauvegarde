@@ -23,7 +23,8 @@
                 </DataGrid.Columns>
             </DataGrid>
         </ScrollViewer>
-        <Button Content="Button" HorizontalAlignment="Left" Margin="682,71,0,0" VerticalAlignment="Top" Height="14"/>
+        <Button x:Name="StartButton" Content="Start" HorizontalAlignment="Left" Margin="682,71,0,0" VerticalAlignment="Top" Height="24" Width="48" Click="Button_Click"/>
+        <Button x:Name="StopButton" Content="STOP" HorizontalAlignment="Left" Margin="690,125,0,0" VerticalAlignment="Top" Height="24" Width="40" Click="StopButton_Click"/>
 
     </Grid>
 </Window>
