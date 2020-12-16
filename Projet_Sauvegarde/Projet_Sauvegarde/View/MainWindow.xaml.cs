@@ -33,7 +33,7 @@ namespace Projet_Sauvegarde
     public partial class MainWindow : INotifyPropertyChanged
     {
         
-        SaveController saveController;
+        public SaveController saveController;
         ServeurController serveurController;
         private string _extensionSave;
         public string ExtensionSave //Getter and setter for Event (Extension)

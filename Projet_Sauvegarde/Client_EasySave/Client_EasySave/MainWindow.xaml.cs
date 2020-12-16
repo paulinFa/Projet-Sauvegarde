@@ -77,28 +77,40 @@ namespace Client_EasySave
                         int receiveMsg = clientSocket.Receive(msgbuffer, 0, msgbuffer.Length, 0);
                         Array.Resize(ref msgbuffer, receiveMsg);
                         GoodResult = Encoding.Default.GetString(msgbuffer);
-                        Trace.WriteLine("Réécup data sur client");
+                       
                         Thread.Sleep(100);
                         if (GoodResult.StartsWith("complete") || GoodResult.StartsWith("differential"))
                         {
                             Trace.WriteLine(GoodResult);
                             ChangeAff();
-                            Trace.WriteLine("afffais");
+                           
                             string argo = "argowitch";
                             SendMessage(argo);
-                            Trace.WriteLine("argoenvoyé");
+                            
                             Thread.Sleep(100);
 
                         }
-                        else if (GoodResult == "renvoyé")
+                        else if (GoodResult == "saveinprogress")
                         {
-                            Trace.WriteLine("continue");
-                            SendMessage("continue");
+                            
+                            SendMessage("continuesave");
                             Thread.Sleep(200);
                         }
                         else if (GoodResult == "STOP1")
                         {
                             Trace.WriteLine("STOP");
+
+                            Thread.Sleep(200);
+                        }
+                        else if (GoodResult == "Pause")
+                        {
+                            Trace.WriteLine("Save is in Pause");
+
+                            Thread.Sleep(200);
+                        }
+                        else if (GoodResult == "StartAll")
+                        {
+                            Trace.WriteLine("All Saves are laucnh");
 
                             Thread.Sleep(200);
                         }
@@ -134,14 +146,14 @@ namespace Client_EasySave
             List<ConfBackup> listBack = new List<ConfBackup>();
             int large = configs.Length;
             Dispatcher.Invoke(() => AllNeedSave.Clear());
-            while (sah < large / 5)
+            while (sah < large / 6)
             {
 
-                Dispatcher.Invoke(() => AllNeedSave.Add(new ConfBackup() { TypeS = configs[0 + up], Name = configs[1 + up], SourcePath = configs[2 + up], DestinationPath = configs[3 + up], CompleteSavePath = configs[4 + up] }));
+                Dispatcher.Invoke(() => AllNeedSave.Add(new ConfBackup() { TypeS = configs[0 + up], Name = configs[1 + up], SourcePath = configs[2 + up], DestinationPath = configs[3 + up], CompleteSavePath = configs[4 + up] , Progression = configs[5 + up]}));
                
                 //listBack.Add(new ConfBackup() { TypeS = configs[0 + up], Name = configs[1 + up], SourcePath = configs[2 + up], DestinationPath = configs[3 + up], CompleteSavePath = configs[4 + up] });
                 sah += 1;
-                up += 5;
+                up += 6;
             }
             
             //Dispatcher.Invoke(() => ConfigBackupList.Items.Refresh());
@@ -171,24 +183,70 @@ namespace Client_EasySave
 
         }
 
-       
+        public ConfBackup stopBackup;
         private void StopButton_Click(object sender, RoutedEventArgs e)
         {
-            
+            stopBackup = (ConfBackup)ConfigBackupList.SelectedItems[0];
             Thread.Sleep(200);
             Thread sendStop = new Thread(SendStop);
             sendStop.Start();
-           
-           
+            Trace.WriteLine("Stop," + stopBackup.Name);
+
         }
         public void SendStop()
         {
             Thread.Sleep(200);
-            string stopMsg = "Stop";
+            string stopMsg = "Stop," + stopBackup.Name;
             byte[] hopli = Encoding.Default.GetBytes(stopMsg);
             clientSocket.Send(hopli, 0, hopli.Length, 0);
             Trace.WriteLine(stopMsg);
         }
+
+        public ConfBackup pauseBackup;
+        private void PauseButton_Click(object sender, RoutedEventArgs e)
+        {
+            pauseBackup = (ConfBackup)ConfigBackupList.SelectedItems[0];
+            Thread.Sleep(200);
+            Thread sendPause = new Thread(SendPause);
+            sendPause.Start();
+            Trace.WriteLine("Pause," + pauseBackup.Name);
+
+        }
+        public void SendPause()
+        {
+            Thread.Sleep(200);
+            string pauseMsg = "Pause," + pauseBackup.Name;
+            byte[] hoplo = Encoding.Default.GetBytes(pauseMsg);
+            clientSocket.Send(hoplo, 0, hoplo.Length, 0);
+            Trace.WriteLine(pauseMsg);
+        }
+        public ConfBackup startAllBackup;
+        List<String> allSaves = new List<string>();
+        private void StartAllButton_Click(object sender, RoutedEventArgs e)
+        {
+            allSaves.Add("StartAll");
+            foreach (ConfBackup rils in AllNeedSave)
+            { 
+                allSaves.Add(rils.Name);
+            }
+            
+            
+            Thread.Sleep(200);
+            Thread sendStartall = new Thread(SendStartAll);
+            sendStartall.Start();
+            
+        }
+        public void SendStartAll()
+        {
+            Thread.Sleep(200);
+            string startallMsg = String.Join(",", allSaves);
+            Trace.WriteLine(startallMsg);
+            byte[] hopli = Encoding.Default.GetBytes(startallMsg);
+            clientSocket.Send(hopli, 0, hopli.Length, 0);
+            Trace.WriteLine(startallMsg);
+        }
+
+        
     }
     public class ConfBackup
     {
@@ -197,6 +255,8 @@ namespace Client_EasySave
         public string SourcePath { get; set; }
         public string DestinationPath { get; set; }
         public string CompleteSavePath { get; set; }
+
+        public string Progression { get; set; }
     }
 
 }

@@ -23,10 +23,11 @@ namespace Projet_Sauvegarde.Controller
         private static int myPort = 11000;
         Socket serverSocket;
         Socket clientSocket;
+        MainWindow mainWindow;
         public ServeurController(MainWindow mainWindow, List<SaveTask> listConfig)
         {
-           
 
+            this.mainWindow = mainWindow;
 
             IPAddress ip = IPAddress.Parse("127.0.0.1");
             serverSocket = new Socket(AddressFamily.InterNetwork, SocketType.Stream, ProtocolType.Tcp);
@@ -53,6 +54,7 @@ namespace Projet_Sauvegarde.Controller
                 tempList.Add(backup.SourcePath);
                 tempList.Add(backup.DestinationPath);
                 tempList.Add(backup.CompleteSavePath);
+                tempList.Add(backup.Progression.ToString());
             }
             Result = String.Join(",", tempList);
         }
@@ -73,7 +75,7 @@ namespace Projet_Sauvegarde.Controller
             clientSocket.Send(msgbuffer, 0, msgbuffer.Length, 0);
 
 
-            Trace.WriteLine("Envoie lancé");
+
 
         }
 
@@ -88,14 +90,14 @@ namespace Projet_Sauvegarde.Controller
                 try
                 {
                     Thread.Sleep(200);
-                    
+
                     if (clientSocket != null)
                     {
                         byte[] msgbuffer = new byte[8192];
                         int receiveNumber = myClientSocket.Receive(msgbuffer, 0, msgbuffer.Length, 0);
                         Array.Resize(ref msgbuffer, receiveNumber);
                         ClientMsg = Encoding.Default.GetString(msgbuffer);
-                        Trace.WriteLine("Recup data sur serv");
+
                         Thread.Sleep(100);
                         if (ClientMsg == "Connecte")
                         {
@@ -104,23 +106,72 @@ namespace Projet_Sauvegarde.Controller
                             Trace.WriteLine(Result);
                             Thread.Sleep(100);
                         }
-                        else if (ClientMsg.StartsWith("Start"))
+                        else if (ClientMsg.StartsWith("Start,"))
                         {
-                            string aller = "renvoyé";
-                            SendMessageS(aller);
-                            Trace.WriteLine("hop");
-                            Thread.Sleep(200);
+                            string[] infosStart = ClientMsg.Split(",");
+                            if (infosStart[1] != "")
+                            {
+                                mainWindow.saveController.StartOneSave(mainWindow.saveController.ListSave.Find((a) => a.Name == infosStart[1]));
+                                Trace.WriteLine("StartSave");
+                                string aller = "saveinprogress";
+
+                                SendMessageS(aller);
+
+                                Thread.Sleep(200);
+                            }
+                        }
+                        else if (ClientMsg.StartsWith("StartAll,"))
+                        {
+                            
+                            int club = 1;
+                            string[] infosStart = ClientMsg.Split(",");
+                            if (infosStart[1] != "")
+                            {
+                                foreach (string nameDiff in infosStart)
+                                {
+                                    mainWindow.saveController.StartOneSave(mainWindow.saveController.ListSave.Find((a) => a.Name == infosStart[club]));
+                                    club += 1;
+                                }
+                                
+                                Trace.WriteLine("StartSave");
+                                string aller = "saveinprogress";
+
+                                SendMessageS(aller);
+
+                                Thread.Sleep(200);
+                            }
                         }
                         else if (ClientMsg.StartsWith("Stop"))
                         {
-                            Trace.WriteLine("Stop Save");
-                            SendMessageS("STOP1");
+                            
+                            string[] infosStop = ClientMsg.Split(",");
+                            if (infosStop[1] != "")
+                            {
+                                Trace.WriteLine("recu le stop");
+                                mainWindow.saveController.ListSave.Find((a) => a.Name == infosStop[1]).Stop();
+                                Trace.WriteLine("Stop Save");
+                                SendMessageS("STOP1");
+                            }
+                            
                         }
-                        else if (ClientMsg.StartsWith("continue"))
+                        else if (ClientMsg.StartsWith("Pause"))
                         {
-                            string cont = "renvoyé";
+
+                            string[] infosPause = ClientMsg.Split(",");
+                            if (infosPause[1] != "")
+                            {
+                                mainWindow.saveController.ListSave.Find((a) => a.Name == infosPause[1]).Stop();
+                                Trace.WriteLine("Pause");
+                                SendMessageS("Pause");
+                            }
+
+                           
+                        }
+                        else if (ClientMsg.StartsWith("continuesave"))
+                        {
+                            string cont = "saveinprogress";
                             SendMessageS(cont);
-                            Trace.WriteLine("renvoyé");
+
                             Thread.Sleep(200);
                         }
                     }
