@@ -8,19 +8,19 @@
     ".NETCoreApp,Version=v3.1": []
   },
   "packageFolders": {
-    "C:\\Users\\monli\\.nuget\\packages\\": {}
+    "C:\\Users\\flori\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "D:\\Bureau\\Projet C#\\Projet-Sauvegarde\\Projet_Sauvegarde\\Client_EasySave\\Client_EasySave\\Client_EasySave.csproj",
+      "projectUniqueName": "C:\\Users\\flori\\source\\repos\\paulinFa\\Projet-Sauvegarde\\Projet_Sauvegarde\\Client_EasySave\\Client_EasySave\\Client_EasySave.csproj",
       "projectName": "Client_EasySave",
-      "projectPath": "D:\\Bureau\\Projet C#\\Projet-Sauvegarde\\Projet_Sauvegarde\\Client_EasySave\\Client_EasySave\\Client_EasySave.csproj",
-      "packagesPath": "C:\\Users\\monli\\.nuget\\packages\\",
-      "outputPath": "D:\\Bureau\\Projet C#\\Projet-Sauvegarde\\Projet_Sauvegarde\\Client_EasySave\\Client_EasySave\\obj\\",
+      "projectPath": "C:\\Users\\flori\\source\\repos\\paulinFa\\Projet-Sauvegarde\\Projet_Sauvegarde\\Client_EasySave\\Client_EasySave\\Client_EasySave.csproj",
+      "packagesPath": "C:\\Users\\flori\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\flori\\source\\repos\\paulinFa\\Projet-Sauvegarde\\Projet_Sauvegarde\\Client_EasySave\\Client_EasySave\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
-        "C:\\Users\\monli\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\flori\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
@@ -66,13 +66,5 @@
         "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.100\\RuntimeIdentifierGraph.json"
       }
     }
-  },
-  "logs": [
-    {
-      "code": "Undefined",
-      "level": "Warning",
-      "warningLevel": 1,
-      "message": "Problème de lecture du fichier cache D:\\Bureau\\Projet C#\\Projet-Sauvegarde\\Projet_Sauvegarde\\Client_EasySave\\Client_EasySave\\obj\\project.nuget.cache : Invalid property identifier character: <. Path 'version', line 3, position 0."
-    }
-  ]
+  }
 }

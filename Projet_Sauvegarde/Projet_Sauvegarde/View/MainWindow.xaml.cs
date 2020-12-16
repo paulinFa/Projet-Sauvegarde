@@ -21,7 +21,7 @@ using System.IO;
 using System.ComponentModel;
 using System.Resources;
 using Projet_Sauvegarde.Utils;
-susing Projet_Sauvegarde.View;
+using Projet_Sauvegarde.View;
 using System.Diagnostics;
 
 namespace Projet_Sauvegarde
