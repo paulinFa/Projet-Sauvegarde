@@ -97,8 +97,6 @@ namespace Projet_Sauvegarde.Controller
             while (true)
             {
 
-                try
-                {
                     Thread.Sleep(200);
 
                     if (clientSocket != null)
@@ -116,7 +114,7 @@ namespace Projet_Sauvegarde.Controller
                             Trace.WriteLine(Result);
                             Thread.Sleep(100);
                         }
-                        else if (ClientMsg.StartsWith("Start,"))
+                        else if (ClientMsg.StartsWith("Start*"))
                         {
                             string[] infosStart = ClientMsg.Split("*");
                             if (infosStart[1] != "")
@@ -132,7 +130,7 @@ namespace Projet_Sauvegarde.Controller
                                 Thread.Sleep(200);
                             }
                         }
-                        else if (ClientMsg.StartsWith("StartAll,"))
+                        else if (ClientMsg.StartsWith("StartAll*"))
                         {
                             
                             int club = 1;
@@ -186,18 +184,9 @@ namespace Projet_Sauvegarde.Controller
 
                             Thread.Sleep(200);
                         }*/
-                    }
 
                 }
-                catch (Exception ex)
-                {
-                    Console.WriteLine(ex.Message);
-                    myClientSocket.Shutdown(SocketShutdown.Both);
-                    myClientSocket.Close();
-                    break;
-                }
-
-            }
+        }
 
         }
 

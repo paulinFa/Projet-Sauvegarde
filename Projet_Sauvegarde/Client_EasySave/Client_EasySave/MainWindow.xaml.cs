@@ -69,8 +69,6 @@ namespace Client_EasySave
         {
             while (true)
             {
-                try
-                {
                     Thread.Sleep(100);
                     if (clientSocket != null)
                     {
@@ -128,11 +126,6 @@ namespace Client_EasySave
                         }
 
                     }
-                }
-                catch (Exception ex)
-                {
-                    Trace.WriteLine(ex.Message);
-                }
 
 
 
@@ -200,7 +193,7 @@ namespace Client_EasySave
                 Thread.Sleep(200);
                 Thread sendStart = new Thread(SendStart);
                 sendStart.Start();
-                Trace.WriteLine("Start," + nameOfBackup.Name);
+                Trace.WriteLine("Start*" + nameOfBackup.Name);
             }
 
             
@@ -210,7 +203,7 @@ namespace Client_EasySave
         public void SendStart()
         {
             Thread.Sleep(200);
-            string startMsg = "Start," + nameOfBackup.Name;
+            string startMsg = "Start*" + nameOfBackup.Name;
             byte[] hopla = Encoding.Default.GetBytes(startMsg);
             clientSocket.Send(hopla, 0, hopla.Length, 0);
             Trace.WriteLine("AppelStart");
@@ -227,14 +220,14 @@ namespace Client_EasySave
                 Thread.Sleep(200);
                 Thread sendStop = new Thread(SendStop);
                 sendStop.Start();
-                Trace.WriteLine("Stop," + stopBackup.Name);
+                Trace.WriteLine("Stop*" + stopBackup.Name);
             }
 
         }
         public void SendStop()
         {
             Thread.Sleep(200);
-            string stopMsg = "Stop," + stopBackup.Name;
+            string stopMsg = "Stop*" + stopBackup.Name;
             byte[] hopli = Encoding.Default.GetBytes(stopMsg);
             clientSocket.Send(hopli, 0, hopli.Length, 0);
             Trace.WriteLine(stopMsg);
@@ -249,14 +242,14 @@ namespace Client_EasySave
                 Thread.Sleep(200);
                 Thread sendPause = new Thread(SendPause);
                 sendPause.Start();
-                Trace.WriteLine("Pause," + pauseBackup.Name);
+                Trace.WriteLine("Pause*" + pauseBackup.Name);
             }
 
         }
         public void SendPause()
         {
             Thread.Sleep(200);
-            string pauseMsg = "Pause," + pauseBackup.Name;
+            string pauseMsg = "Pause*" + pauseBackup.Name;
             byte[] hoplo = Encoding.Default.GetBytes(pauseMsg);
             clientSocket.Send(hoplo, 0, hoplo.Length, 0);
             Trace.WriteLine(pauseMsg);
