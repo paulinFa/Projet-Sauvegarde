@@ -156,7 +156,7 @@ namespace Projet_Sauvegarde.Controller
                         }
                         else if (ClientMsg.StartsWith("Pause"))
                         {
-
+                            Trace.WriteLine(ClientMsg);
                             string[] infosPause = ClientMsg.Split(",");
                             if (infosPause[1] != "")
                             {
@@ -167,13 +167,13 @@ namespace Projet_Sauvegarde.Controller
 
                            
                         }
-                        else if (ClientMsg.StartsWith("continuesave"))
+                        /*else if (ClientMsg.StartsWith("continuesave"))
                         {
                             string cont = "saveinprogress";
                             SendMessageS(cont);
 
                             Thread.Sleep(200);
-                        }
+                        }*/
                     }
 
                 }

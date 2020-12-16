@@ -90,12 +90,12 @@ namespace Client_EasySave
                             Thread.Sleep(100);
 
                         }
-                        else if (GoodResult == "saveinprogress")
+                        /*else if (GoodResult == "saveinprogress")
                         {
                             
                             SendMessage("continuesave");
                             Thread.Sleep(200);
-                        }
+                        }*/
                         else if (GoodResult == "STOP1")
                         {
                             Trace.WriteLine("STOP");
