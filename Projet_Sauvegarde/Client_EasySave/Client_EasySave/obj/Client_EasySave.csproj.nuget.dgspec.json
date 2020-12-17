@@ -1,20 +1,23 @@
 {
   "format": 1,
   "restore": {
-    "D:\\Bureau\\Projet C#\\Projet-Sauvegarde\\Projet_Sauvegarde\\Client_EasySave\\Client_EasySave\\Client_EasySave.csproj": {}
+    "C:\\Users\\Paulin\\Desktop\\git\\Projet-Sauvegarde\\Projet_Sauvegarde\\Client_EasySave\\Client_EasySave\\Client_EasySave.csproj": {}
   },
   "projects": {
-    "D:\\Bureau\\Projet C#\\Projet-Sauvegarde\\Projet_Sauvegarde\\Client_EasySave\\Client_EasySave\\Client_EasySave.csproj": {
+    "C:\\Users\\Paulin\\Desktop\\git\\Projet-Sauvegarde\\Projet_Sauvegarde\\Client_EasySave\\Client_EasySave\\Client_EasySave.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\Bureau\\Projet C#\\Projet-Sauvegarde\\Projet_Sauvegarde\\Client_EasySave\\Client_EasySave\\Client_EasySave.csproj",
+        "projectUniqueName": "C:\\Users\\Paulin\\Desktop\\git\\Projet-Sauvegarde\\Projet_Sauvegarde\\Client_EasySave\\Client_EasySave\\Client_EasySave.csproj",
         "projectName": "Client_EasySave",
-        "projectPath": "D:\\Bureau\\Projet C#\\Projet-Sauvegarde\\Projet_Sauvegarde\\Client_EasySave\\Client_EasySave\\Client_EasySave.csproj",
-        "packagesPath": "C:\\Users\\monli\\.nuget\\packages\\",
-        "outputPath": "D:\\Bureau\\Projet C#\\Projet-Sauvegarde\\Projet_Sauvegarde\\Client_EasySave\\Client_EasySave\\obj\\",
+        "projectPath": "C:\\Users\\Paulin\\Desktop\\git\\Projet-Sauvegarde\\Projet_Sauvegarde\\Client_EasySave\\Client_EasySave\\Client_EasySave.csproj",
+        "packagesPath": "C:\\Users\\Paulin\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\Paulin\\Desktop\\git\\Projet-Sauvegarde\\Projet_Sauvegarde\\Client_EasySave\\Client_EasySave\\obj\\",
         "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
+        ],
         "configFilePaths": [
-          "C:\\Users\\monli\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\Paulin\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [

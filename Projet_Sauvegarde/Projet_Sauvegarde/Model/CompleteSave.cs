@@ -61,6 +61,8 @@ namespace Projet_Sauvegarde.Model
             //Calcul time duration copy
             string diffString = diff.ToString();
 
+            Progression = 100;
+
 
             logFile.ModifyData(DateTime.Now.ToString("MM-dd-yyyy_hh.ss.mm_tt"), Name, SourcePath, DestinationPath, (int)TotalLengthFile, diffString, TimeEncryption);
             stateFile.ModifyData(DateTime.Now.ToString("MM-dd-yyyy_hh.ss.mm_tt"), Name, "active", TotalNumberFile, (int)TotalLengthFile, Progression, RemainingNumberFile, (int)RemainingLengthFile, SourcePath, DestinationPath);
@@ -126,13 +128,13 @@ namespace Projet_Sauvegarde.Model
                         string CryptTime = reader.ReadToEnd();
                         if (CryptTime == "ERROR" || CryptTime == null || CryptTime == "")
                         {
-                            Trace.WriteLine("LE CRYPTAGE A ECHOUE");
                         }
 
                         else
                         {
                             TimeEncryption += float.Parse(CryptTime);
                         }
+                        CryptoSoft.Close();
                     }
                     else
                     {
@@ -198,16 +200,9 @@ namespace Projet_Sauvegarde.Model
         {
             return this.isRunning;
         }
-        public void ModifyPauseProcess()
+        public void ModifyPauseProcess(bool a)
         {
-            if (IsPausedProcess)
-            {
-                IsPausedProcess = false;
-            }
-            else
-            {
-                IsPausedProcess = true;
-            }
+            IsPausedProcess = a;
         }
         public bool GetIsPausedProcess()
         {

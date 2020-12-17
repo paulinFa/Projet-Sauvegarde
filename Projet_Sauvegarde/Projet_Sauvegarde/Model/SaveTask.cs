@@ -122,9 +122,9 @@ namespace Projet_Sauvegarde.Model
         {
             return this.StartSave.GetIsRunning();
         }
-        public void PauseProcess()
+        public void PauseProcess(bool a)
         {
-            this.StartSave.ModifyPauseProcess();
+            this.StartSave.ModifyPauseProcess(a);
         }
         public bool GetIfPauseProcess()
         {

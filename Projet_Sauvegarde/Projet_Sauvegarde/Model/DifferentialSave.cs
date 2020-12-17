@@ -22,11 +22,11 @@ namespace Projet_Sauvegarde.Model
         {
             this.Tall = tall;
             this.isRunning = true;
-            this.Progression = 0;
-
             this.IsPaused = false;
             this.IsPausedProcess = false;
             this.IsStop = false;
+
+            this.Progression = 0;
             //Initialize all values
             DateTime firstDate = DateTime.Now;
             this.SourcePath = saveTask.SourcePath;
@@ -58,6 +58,8 @@ namespace Projet_Sauvegarde.Model
 
             //Calcul time duration copy
             string diffString = diff.ToString();
+
+            Progression = 100;
 
             //Update log and state file
             logFile.ModifyData(DateTime.Now.ToString("MM-dd-yyyy_hh.ss.mm_tt"), Name, SourcePath, DestinationPath, (int)TotalLengthFile, diffString,TimeEncryption);
@@ -107,10 +109,7 @@ namespace Projet_Sauvegarde.Model
                     this.isRunning = false;
                     Thread.CurrentThread.Interrupt();
                 }
-                while (Save.IsCopyBigFile == true)
-                {
-                    Thread.Sleep(200);
-                }
+
                 //Verify if file existe in destination or if source file and complete file
                 if (!File.Exists(CompleteSavePath + destWithoutParents) || fiComplete.LastWriteTimeUtc != fiSource.LastWriteTimeUtc)
                 {
@@ -128,33 +127,30 @@ namespace Projet_Sauvegarde.Model
 
                     if (Path.GetExtension(dest) == Extension)
                     {
-                        if (Path.GetExtension(dest) == Extension)
-                        {
                             Process CryptoSoft = new Process();
                             CryptoSoft.StartInfo.FileName = AppDomain.CurrentDomain.BaseDirectory + "/EasySave/CryptoSoft.exe";
                             CryptoSoft.StartInfo.WindowStyle = ProcessWindowStyle.Normal;
                             CryptoSoft.StartInfo.Arguments = $"{file} {dest}";
                             CryptoSoft.StartInfo.RedirectStandardOutput = true;
 
-                            CryptoSoft.StartInfo.CreateNoWindow = true;
+                            CryptoSoft.StartInfo.CreateNoWindow = false;
                             CryptoSoft.Start();
                             StreamReader reader = CryptoSoft.StandardOutput;
                             string CryptTime = reader.ReadToEnd();
                             if (CryptTime == "ERROR" || CryptTime == null || CryptTime == "")
                             {
-                                Trace.WriteLine("LE CRYPTAGE A ECHOUE");
                             }
 
                             else
                             {
                                 TimeEncryption += float.Parse(CryptTime);
-                                CryptoSoft.WaitForExit();
+                                
                             }
-                        }
+                        CryptoSoft.Close();
                     }
                     else
                     {
-                        TimeEncryption = 0;
+                        
                         File.Copy(file, dest);
                     }
                     if (this.Tall != "" || fi1.Length >= int.Parse(this.Tall))
@@ -217,16 +213,9 @@ namespace Projet_Sauvegarde.Model
         {
             return this.isRunning;
                 }
-        public void ModifyPauseProcess()
+        public void ModifyPauseProcess(bool a)
         {
-            if (IsPaused)
-            {
-                IsPausedProcess = false;
-            }
-            else
-            {
-                IsPausedProcess = true;
-            }
+            IsPausedProcess = a;
         }
         public bool GetIsPausedProcess()
         {

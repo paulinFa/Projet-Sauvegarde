@@ -16,7 +16,7 @@ namespace Projet_Sauvegarde.Model
         public bool GetIfStop();
         public bool GetIfPause();
         public bool GetIsRunning();
-        public void ModifyPauseProcess();
+        public void ModifyPauseProcess(bool a);
         public bool GetIsPausedProcess();
 
     }

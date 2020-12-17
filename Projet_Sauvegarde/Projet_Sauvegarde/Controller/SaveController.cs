@@ -51,7 +51,7 @@ namespace Projet_Sauvegarde.Controller
         /// <param name="completeSavePath">If is differential save</param>
         public void AddOneSave(string type, string name, string sourcePath, string destinationPath, string completeSavePath = "")
         {
-            SaveTask saveTask = new SaveTask(type, name, sourcePath, destinationPath,completeSavePath);
+            SaveTask saveTask = new SaveTask(type, name, sourcePath, destinationPath,Tall,completeSavePath);
             ListSave.Add(saveTask);
             parameterFile.SaveTasksList = this.ListSave;
             parameterFile.Update();
@@ -171,7 +171,7 @@ namespace Projet_Sauvegarde.Controller
                 {
                     if(saveTask.GetIfPauseProcess()==false)
                     {
-                        saveTask.PauseProcess();
+                        saveTask.PauseProcess(true);
                     }
                 }
             }
@@ -181,7 +181,7 @@ namespace Projet_Sauvegarde.Controller
                 {
                     if (saveTask.GetIfPauseProcess() == true)
                     {
-                        saveTask.PauseProcess();
+                        saveTask.PauseProcess(false);
                     }
                 }
             }
