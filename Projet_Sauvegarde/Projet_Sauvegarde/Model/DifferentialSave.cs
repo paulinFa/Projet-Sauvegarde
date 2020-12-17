@@ -107,6 +107,7 @@ namespace Projet_Sauvegarde.Model
                 {
                     Save.IsCopyBigFile = false;
                     this.isRunning = false;
+                    this.Progression = 0;
                     Thread.CurrentThread.Interrupt();
                 }
 
@@ -132,7 +133,6 @@ namespace Projet_Sauvegarde.Model
                             CryptoSoft.StartInfo.WindowStyle = ProcessWindowStyle.Normal;
                             CryptoSoft.StartInfo.Arguments = $"{file} {dest}";
                             CryptoSoft.StartInfo.RedirectStandardOutput = true;
-
                             CryptoSoft.StartInfo.CreateNoWindow = false;
                             CryptoSoft.Start();
                             StreamReader reader = CryptoSoft.StandardOutput;

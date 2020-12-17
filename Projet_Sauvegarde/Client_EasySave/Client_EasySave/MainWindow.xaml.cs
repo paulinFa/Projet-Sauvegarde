@@ -130,7 +130,6 @@ namespace Client_EasySave
                         confBackup.Progression = configs[(a * 2) - 1];
                     }
                 }
-
                 Dispatcher.Invoke(() => ConfigBackupList.Items.Refresh());
                 a--;
             }

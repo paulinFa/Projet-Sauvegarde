@@ -98,6 +98,7 @@ namespace Projet_Sauvegarde.Model
                 {
                     this.isRunning = false;
                     Save.IsCopyBigFile = false;
+                    this.Progression = 0;
                     Thread.CurrentThread.Interrupt();
                 }
 

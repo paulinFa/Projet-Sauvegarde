@@ -42,7 +42,7 @@ namespace Projet_Sauvegarde.Model
                 dataJsonLog.SizeOfSave = sizeSave;
                 dataJsonLog.TransfertTime = transfertTime;
                 dataJsonLog.TimeEncryptionTransfert = timeEncryptionTransfert;
-                new Thread(() => TransformToJsonLog());
+                new Thread(() => TransformToJsonLog()).Start();
 
         }
 

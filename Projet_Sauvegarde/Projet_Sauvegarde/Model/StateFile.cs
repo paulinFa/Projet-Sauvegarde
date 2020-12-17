@@ -44,7 +44,7 @@ namespace Projet_Sauvegarde.Model
             dataJsonState.DestinationPath = destinationPath;
 
             PathStateFile = @"D:\EasySave\Status\StatusBackup" + "_" + nameOfSave + ".json"; //Definition path of StateFile + json format
-            new Thread(() => TransformToJsonState());
+            new Thread(() => TransformToJsonState()).Start();
         }
 
         /// <summary>
