@@ -65,7 +65,7 @@ namespace Projet_Sauvegarde.Model
 
 
             logFile.ModifyData(DateTime.Now.ToString("MM-dd-yyyy_hh.ss.mm_tt"), Name, SourcePath, DestinationPath, (int)TotalLengthFile, diffString, TimeEncryption);
-            stateFile.ModifyData(DateTime.Now.ToString("MM-dd-yyyy_hh.ss.mm_tt"), Name, "active", TotalNumberFile, (int)TotalLengthFile, Progression, RemainingNumberFile, (int)RemainingLengthFile, SourcePath, DestinationPath);
+            stateFile.ModifyData(DateTime.Now.ToString("MM-dd-yyyy_hh.ss.mm_tt"), Name, "inactive", TotalNumberFile, (int)TotalLengthFile, Progression, RemainingNumberFile, (int)RemainingLengthFile, SourcePath, DestinationPath);
             this.isRunning = false;
         }
 
@@ -129,10 +129,12 @@ namespace Projet_Sauvegarde.Model
                         string CryptTime = reader.ReadToEnd();
                         if (CryptTime == "ERROR" || CryptTime == null || CryptTime == "")
                         {
+
                         }
 
                         else
                         {
+                            CryptTime = CryptTime.Substring(0,CryptTime.Length - 4);
                             TimeEncryption += float.Parse(CryptTime);
                         }
                         CryptoSoft.Close();
@@ -151,7 +153,7 @@ namespace Projet_Sauvegarde.Model
                     
                     //Watch the progress of moving files relative to their size
                     Progression = RemainingLengthFile != 0 ? Convert.ToSingle(TotalLengthFile - RemainingLengthFile) / Convert.ToSingle(TotalLengthFile) * 100 : 100;
-                    stateFile.ModifyData(DateTime.Now.ToString("MM-dd-yyyy_hh.ss.mm_tt"), Name, name, TotalNumberFile, (int)TotalLengthFile, Progression, RemainingNumberFile, (int)RemainingLengthFile, SourcePath, DestinationPath);
+                    stateFile.ModifyData(DateTime.Now.ToString("MM-dd-yyyy_hh.ss.mm_tt"), Name,"active", TotalNumberFile, (int)TotalLengthFile, Progression, RemainingNumberFile, (int)RemainingLengthFile, SourcePath, DestinationPath);
                    }
 
             }
